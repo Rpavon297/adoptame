@@ -5,6 +5,7 @@ body ul{
     margin-bottom: 0em;
     margin-left: 0em;
     margin-right: 0em;
+    padding-left: 0em;
 }
 
 
@@ -50,9 +51,24 @@ header{
 
 /* inicio footer nevigation */
 .footer-navigation{
-
+    background: rgb(180, 189, 182);
 }
 
+.footer-navigation ul{
+    list-style: none;
+}
+.footer-navigation a{
+    text-decoration: none;
+    color: rgb(46, 38, 38);
+}
+
+.footer-navigation p{
+    border-bottom: 1px solid black;
+}
+
+.footer-navigation .section-footer{
+    padding: 1.5em 5%;
+}
 
 
 /*fin footer navigation */
