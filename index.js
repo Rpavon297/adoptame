@@ -69,8 +69,8 @@ app.get("/", (req, res) => {
   res.render("Landing", {errMsg: null});
 });
 
-  app.get("/Login.html", function (request, response) {
-    response.render("Login", {errMsg: null});
+app.get("/Login.html", function (request, response) {
+  response.render("Login", {errMsg: null});
 })
 
 /**
