@@ -73,14 +73,18 @@ app.get("/Home.html", (req, res) => {
   res.render("Landing", {errMsg: null});
 });
 
-
 app.get("/Contact.html", (req, res) => {
   res.render("Contact", {errMsg: null});
+});
+
+app.get("/Ayuda.html", (req, res) => {
+  res.render("Ayuda", {errMsg: null});
 });
 
   app.get("/Login.html", function (request, response) {
     response.render("Login", {errMsg: null});
 })
+
 
 /**
  * Server Activation
