@@ -69,7 +69,6 @@ app.get("/", (req, res) => {
   res.render("Landing", {errMsg: null});
 });
 
-
 app.get("/Home.html", (req, res) => {
   res.render("Landing", {errMsg: null});
 });
