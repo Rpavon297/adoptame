@@ -1,0 +1,162 @@
+
+/* fix de estilos molestos de bootstrap*/
+body ul{
+    margin-top: 0em;
+    margin-bottom: 0em;
+    margin-left: 0em;
+    margin-right: 0em;
+    padding-left: 0em;
+}
+
+/*main menu*/
+header{
+    position: fixed;
+    top:0;
+    height: 4em;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.3);
+    width: 100%;
+    border-bottom: 1px solid rgb(133, 134, 134);
+}
+
+.menu-content{
+    display: flex;
+    justify-content: space-between;
+    height: max-content;
+}
+.menu{
+    overflow: hidden;
+}
+
+.menu a{
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+
+    color: black;
+    text-decoration: none;
+    font-size: 19px;
+}
+
+.menu a:hover{
+    color: rgb(96, 96, 107);
+}
+
+.menu .icon{
+    display: none;
+}
+.menu .login-option{
+    display: none;
+}
+
+.icon-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Query que oculta las opciones del menú que sobresalen de la pantalla y muestra el icono de expandir */
+@media screen and (max-width: 1000px) {
+    .menu a:not(:first-child) {display: none;}
+    .icon-login{display: none;}
+    .menu a.icon {
+      float: right;
+      display: block;
+    }
+}
+
+/* La clase "responsive" se añade al menu al hacer click en el botón */
+@media screen and (max-width: 1000px) {
+    .menu.responsive {
+        position: relative;
+        background: rgba(255, 255, 255, 0.3);
+    }
+    .menu.responsive a.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .menu.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+}
+  
+
+/* fin main menu */
+
+/* inicio footer nevigation */
+.footer-navigation{
+    background: rgb(180, 189, 182, 0.2);
+}
+
+.footer-navigation ul{
+    list-style: none;
+}
+.footer-navigation a{
+    text-decoration: none;
+    color: rgb(46, 38, 38);
+}
+
+.footer-navigation p{
+    border-bottom: 1px solid black;
+}
+
+.footer-navigation .section-footer{
+    padding: 1.5em 5%;
+}
+
+
+/*fin footer navigation */
+
+
+/*home */
+.main-img{   
+   /* min-height: 1000px; 
+    background-image: url("/resources/img/dog2.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: auto;*/
+}
+
+.main-section{
+    margin-top: 4em;
+    min-height: 40em;
+}
+
+.prueba{
+    margin: 1em;
+    height: 15em;
+    border: 1px solid black;
+}
+
+
+.cuadro1{
+    background: red;
+}
+
+.cuadro2{
+    background: green;
+}
+
+.cuadro3{
+    background: rgb(12, 185, 216);
+
+}
+
+.cuadro4{
+    background: pink;
+}
+
+.cuadro5{
+    background: orange;
+}
+
+.cuadro6{
+    background: grey;
+}
+/*fin home */
