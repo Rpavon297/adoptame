@@ -17,69 +17,168 @@
 
 <body>
     <!-- el header deberia ser un codigo comun en todas las views-->
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 menu-content">
-                    <div class="logo">  
-                    </div>
-                    <ul class="menu">
-                        <li> <a href="/Home.html">Inicio</a></li>
-                        <li><a href="">Animales</a></li>
-                        <li><a href="">Protectoras</a></li>
-                        <li><a href="">Sobre Nosotros</a></li>
-                        <li><a href="/Contact.html">Contacto</a></li>
-                        <li><a href="/Ayuda.html">Ayuda</a></li>
-                    </ul>
-                    <div class="icon-login">
-                        <img src="/resources/icons/user-login.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <%- include('./Header'); %>
 	
 	<!-- Mi codigo-->
     <div id="content">
        
         <h1 class="encabezado" id="datos1">Cosas a tener en cuenta antes de adoptar</h1>
+		<div class="row cajatexto centrar">
+            <div class="col-md-3"> <!--tamaño de la imagen-->
+                <img src="/resources/img/ayuda_1.jpg" class="img-thumbnail">
+            </div>
 
+            <!--negrita: <span class="tnegrita">texto</span>-->
+            <div class=" col-md-7"> <!--longitud del texto-->
+                <p class="quienes">
+                    <p class="justify">Los animales de compañía ocupan un lugar destacado en la sociedad actual. Tener uno puede producir <span class="tnegrita">efectos beneficiosos</span> en la vida de las personas de muchas maneras ya que, además de proporcionar compañía, puede incrementar el contacto social, fomentar el sentido de la <span class="tnegrita">responsabilidad</span> o promover el ejercicio físico. Pero un animal de compañía también <span class="tnegrita">puede ser una fuente de conflictos</span>, tanto dentro del hogar donde vive como fuera de él, lo que puede derivar en problemas para el propietario así como para el animal.</p>
+                    <p class="justify">Conseguir tener un animal es relativamente fácil, pero debemos asegurarnos de que se dan las <span class="tnegrita">circunstancias adecuadas</span> para ello. Siempre será mejor aplazar la decisión de tener un animal de compañía que engrosar la lista de personas que <span class="tnegrita">abandonan</span> al suyo.</p>
+                </p>
+            </div>
+        </div>
+
+
+        <h1 class="encabezado" id="datos11">¿Debo tener un animal de compañía?</h1>
+
+        <div class="row cajatexto centrar">
+            <div class=" col-md-7">
+                <p class="justify">Antes de hacerte cargo de un animal, debes plantearte una serie de preguntas y responderlas con sinceridad. El <span class="tnegrita">deseo de tener una mascota</span> puede motivarnos a <span class="tnegrita">superar los obstáculos</span> que pudieran aparecer, poniendo los medios para ello, pero es necesario examinar la situación en detalle antes de tomar una decisión correcta.</p>
+                <p class="justify">Debes comprometerte a tener un animal a tu cargo los <span class="tnegrita">próximos años</span>, que pueden ser muchos si decides adoptar un ave como un loro, que llegan a los 70, 80 o incluso 100 años de edad. Si no es así y solo puedes prever tu situación a pocos años vista, <span class="tnegrita">reflexiona</span>. Hay que tener en cuenta que durante nuestra vida surgirán <span class="tnegrita">cambios imprevistos</span> importantes que trastocarán nuestras rutinas, como la llegada de hijos, separaciones, cambios de domicilio (o incluso de país) o pérdida de trabajo.</p>
+                <p class="justify">Un animal va a <span class="tnegrita">compartir tu hogar</span> con todos los que ya viven en él, ocupando un espacio tanto físico como emocional, por los cuidados y atenciones que necesita y representará un trabajo extra en las tareas cotidianas. Si la decisión no es consensuada entre <span class="tnegrita">todos</span>, es mejor esperar.</p>
+                <p class="justify">Debes de tener el <span class="tnegrita">tiempo necesario</span> para educar y cuidar al animal. Si quieres un <span class="tnegrita">perro</span>, debes saber que son seres sociales por naturaleza y necesitan el contacto de personas y otros animales, así como recibir estímulos externos. Aunque algunos animales aparentemente no requieren muchos cuidados (mantenidos en jaulas, peceras o en terrarios) también se necesita un <span class="tnegrita">tiempo mínimo semanal</span> para los cambios de agua, tierra o limpieza y mensual para el mantenimiento y revisión de los equipos de filtrado y alimentación.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="/resources/img/ayuda_2.jpg" class="imagen img-thumbnail">
+            </div>
+        </div>
+
+        
+        <h1 class="encabezado" id="datos2">¿Cuál sería mi mascota ideal?</h1>
+
+        <div class="row cajatexto centrar">
+            <div class="col-md-4">
+                <img src="/resources/img/ayuda_3.jpg" class="img-thumbnail">
+            </div>
+            <div class=" col-md-7">
+                <p class="justify">Si tras la reflexión consideras que es el momento adecuado, es hora de <span class="tnegrita">elegir al animal</span> que sea más compatible contigo. Elegir a un animal por su <span class="tnegrita">aspecto</span> es un <span class="tnegrita">error</span> tan grande como hacerlo con una persona.</p>
+                <p class="justify">No todas las mascotas necesitan el mismo <span class="tnegrita">espacio</span> para vivir, así que antes de elegir un animal de compañía, asegúrate de que el lugar <span class="tnegrita">dónde vives</span> sea adecuado para tenerlo. Si vives en un <span class="tnegrita">piso pequeño</span> y quieres tener algún animal exótico o algún roedor como las <span class="tnegrita">cobayas, los conejos, o las chinchillas</span>, es importante que tengas un espacio para poner sus jaulas, al igual que si quieres tener como mascota algún tipo de <span class="tnegrita">ave</span>. Pero si por lo contrario prefieres a un <span class="tnegrita">perro o un gato</span>, deberás <span class="tnegrita">pensar en su tamaño y en sus necesidades físicas</span>, porque si tienes un perro grande por ejemplo, necesitarás vivir en un espacio grande y con jardín a ser posible, o estar dispuesto a salir a jugar y pasearlo al aire libre mucho más tiempo que un perro más pequeño.</p>
+                <p class="justify"><span class="tnegrita">Escoge según tu personalidad y estilo de vida</span>. Si eres una persona poco responsable, olvidadiza o simplemente perezosa, es mejor que no adoptes ningún animal de compañía que necesite <span class="tnegrita">muchos cuidados</span> como los <span class="tnegrita">pájaros o los roedores</span>. En cambio si quieres <span class="tnegrita">proteger tu casa</span> de los intrusos o tener un compañero de vida fiel y dedicado, lo ideal es que adoptes a un <span class="tnegrita">perro</span> como mascota porque este te aportará seguridad y mucho cariño. Para aquellos que son más <span class="tnegrita">independientes</span> pero aun así les guste tener un animal de compañía, la mejor elección será tener a un <span class="tnegrita">gato</span> como mascota. Y para los que les gusten las cosas <span class="tnegrita">diferentes o extrañas</span>, la mejor opción son los <span class="tnegrita">reptiles</span>.</p>
+            </div>
+        </div>
+
+
+        <h1 class="encabezado" id="datos11">¿Adoptar una cría o un adulto?</h1>
+
+        <div class="row cajatexto centrar">
+            <div class=" col-md-7">
+                <p class="justify">Debes saber que una <span class="tnegrita">cría</span> requiere más tiempo para darla de comer, vigilarla, enseñarla y socializarla adecuadamente. Es importante tener paciencia porque causará destrozos y ensuciará la casa hasta que aprenda las normas básicas. Los <span class="tnegrita">adultos</span> son más tranquilos y si han sido correctamente socializados, se puede adaptar perfectamente a tu hogar.</p>
+                <p class="justify">Algunos de los animales han sufrido malos tratos y les están enseñando en la protectora a ser más estables y felices. Pero ese trabajo tendrás que seguirlo tú en casa. Es un bonito trabajo cuya recompensa es tener a tu mejor amigo al lado de forma feliz y segura para todos.</p>
+                <p class="justify"><span class="tnegrita">Se desaconseja la adquisición de cachorros de perro o gato a las personas mayores, por su elevada energía y necesidades de ejercicio y juego</span>.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="/resources/img/ayuda_4.jpg" class="imagen img-thumbnail">
+            </div>
+        </div>
+        
+        <h1 class="encabezado" id="datos2">¿Cuáles son sus necesidades?</h1>
+
+        <div class="row cajatexto centrar">
+            <div class="col-md-4">
+                <img src="/resources/img/ayuda_5.jpeg" class="img-thumbnail">
+            </div>
+            <div class=" col-md-7">
+                <p class="justify">Para mantener a tu animal de compañía en condiciones <span class="tnegrita">óptimas</span> será necesario que hagas ciertas cosas, algunas solo una vez en la vida del animal (como <span class="tnegrita">identificarle</span>) y otras a diario como <span class="tnegrita">cuidar su alimentación</span> (o sacarle a pasear, en el caso de los perros).  Si marcas una <span class="tnegrita">rutina para los cuidados</span>, como fijar la fecha de las visitas <span class="tnegrita">periódicas al veterinario</span> asociadas a otra fecha significativa, como su cumpleaños o el tuyo, todo será más fácil y así disfrutarás de tu animal de compañía con más <span class="tnegrita">tranquilidad</span>.</p>
+                <p class="justify">Sigue únicamente las recomendaciones y consejos de un <span class="tnegrita">veterinario</span>. La información que recibes de tus vecinos, <span class="tnegrita">otros</span> propietarios de animales o foros en internet, aunque tenga buena intención, <span class="tnegrita">no siempre es correcta</span> y no se ajusta a las circunstancias y características de tu mascota.</p>
+                <p class="justify">La <span class="tnegrita">identificación electrónica</span> de los <span class="tnegrita">perros</span> mediante transpondedor (microchip) es <span class="tnegrita">obligatoria</span> en toda España dentro de los 3 primeros meses de vida del animal o en el momento de su adquisición. Para los <span class="tnegrita">gatos, hurones y otras especies</span>, es también <span class="tnegrita">obligatoria en algunas comunidades autónomas</span>. La identificación mediante microchip es un proceso <span class="tnegrita">rápido y seguro para el animal</span> y nos facilita su recuperación en el caso de que lo perdamos, por ello, se <span class="tnegrita">recomienda</span> la identificación de <span class="tnegrita">todos</span> los animales de compañía, aunque <span class="tnegrita">no sea obligatorio para su especie</span>.</p>
+                <p class="justify">Debes tener en cuenta que, además de la identificación física del animal, en muchos municipios es obligatorio <span class="tnegrita">registrarlo en el censo municipal</span>. Cuando el animal <span class="tnegrita">viaja a otro país</span>, debe ir acompañado del <span class="tnegrita">pasaporte para animales de compañía</span> europeo y/o del correspondiente certificado veterinario exigido por el país de destino, de forma que si tienes previsto hacerlo, no debes dejar para el último momento el conseguir este documento.</p>
+                <p class="justify">El veterinario te indicará tanto las <span class="tnegrita">vacunas y tratamientos obligatorios</span> así como los otros adecuados, según el tipo de animal de que se trate y su periodicidad, que normalmente es de <span class="tnegrita">un año para las vacunas</span> y <span class="tnegrita">tres meses para los antiparasitarios</span>.</p>
+            </div>
+        </div>
+
+        <h1 class="encabezado" id="datos3">Animales de compañía en sociedad</h1>
+
+        <div class="row cajatexto centrar">
+            <div class=" col-md-7">
+                <p class="justify">Tu animal de compañía no solo va a vivir en tu hogar, sino que también va a ser parte de la sociedad. Por lo tanto tienes que tener en cuenta que los animales pueden <span class="tnegrita">molestar a los vecinos</span> aunque no salgan de casa, por el ruido (canto de los pájaros, ladridos) o por los residuos que generan (heces de aves o de pequeños mamíferos). Por ello, debes conocer las <span class="tnegrita">normas de tu comunidad de vecinos</span> sobre la tenencia de animales y la <span class="tnegrita">ordenanza sobre animales de tu municipio</span>.</p>
+                <p class="justify">Si el animal va a salir de tu domicilio habitualmente (por ejemplo un perro), debes conocer las <span class="tnegrita">normas para pasear al animal</span> y las <span class="tnegrita">zonas a las que tiene acceso</span>. Infórmate sobre los <span class="tnegrita">establecimientos comerciales que aceptan animales</span>, ya que los propietarios pueden tener un cierto margen de restringir o permitir su acceso. Recuerda que no todas las personas admiten el contacto con animales y aunque sea aceptado, debes vigilarlo en todo momento para evitar interacciones con personas que no lo desean.</p>
+                <p class="justify"><span class="tnegrita">Y por último, siempre, SIEMPRE, debes recoger los excrementos que deposite en la vía pública</span>.</p>
+            </div>
+            <div class="col-md-3">
+                <img src="/resources/img/ayuda_6.jpg" class="imagen img-thumbnail">
+            </div>
+        </div>
+
+        <h1 class="encabezado" id="datos4">Las protectoras</h1>
+
+        <div class="row cajatexto centrar abajo">
+            <div class="col-md-4">
+                <img src="/resources/img/ayuda_7.jpg" class="imagen img-thumbnail">
+            </div>
+
+            <div class=" col-md-7">
+                <p class="justify"><span class="tnegrita">En Adóptame trabajamos con muchas protectoras las cuales tienen muchos animales que necesitan un hogar</span>. La mayoría, además, han tenido una vida muy dura y sueñan con tener una familia a la que querer el resto
+                    de su vida.</p>
+                <p class="justify">Estas protectoras <span class="tnegrita">se encargan de que estos animales tengan todo al día</span>: La revisión veterinaria, la esterilización, vacunas, desparasitaciones y que haya recibido cualquier tratamiento que
+                    haya podido necesitar antes de que te lo lleves a casa.</p>
+                    <p><span class="justify">Suelen disponer un pequeño <span class="tnegrita">historial sobre el animal, su vida pasada, sus miedos y traumas, su salud, si se lleva bien con niños o con otros animales</span> y cualquier cosa que necesites
+                        saber antes de adoptar.</span>
+                    </p>
+                    <p class="justify">Esto es ideal porque así puedes <span class="tnegrita">buscar la mascota que más encaje con tu familia</span>. Es muy importante escoger un animal que encaje con vosotros, para evitar que en un futuro tenga que volver a la protectora
+                        de animales. Es una decisión muy importante para ti y para los animales.</p>
+                    <p class="justify">Es habitual que las protectoras hagan un <span class="tnegrita">seguimiento previo y posterior a la adopción</span>. Suelen asegurarse de que el nuevo hogar del animal es el idóneo y ver que allí no van a sufrir más, por lo que querrán ver
+                        tu casa para ver si cumple las condiciones. ¡No te asustes si te lo piden!</p>
+                    <p class="justify">Además, son de gran ayuda porque te ayudarán y asesorarán probablemente durante toda la vida de tu mascota.</p>
+                    <p class="justify"><span class="tnegrita">¡Nunca te dejarán sólo si les necesitas!</span></p>
+            </div>
+        </div>
+
+        <h1 class="encabezado" id="datos3">Coste de tener un animal</h1>
+
+        <div class="row cajatexto centrar">
+            <div class=" col-md-7">
+                <p class="justify">Un animal tiene una serie de <span class="tnegrita">gastos fijos</span> que hay que considerar: alimentación, visita al veterinario, medicamentos, accesorios… Además debes considerar los gastos extras que pueden surgir (cirugías, residencias caninas en vacaciones, adiestramiento, seguros…). </p>
+                <p class="justify">Según algunos estudios, las familias españolas gastan una media de entre <span class="tnegrita">700 y 1500 euros</span> al año en su mascota si es un perro, hasta <span class="tnegrita">700 euros</span> si es un gato y hasta <span class="tnegrita">250 euros</span> si es un ave, así que haz cuentas, revisa tu presupuesto, y así evitarás muchos problemas para ti y para tu animal.</p>
+                <p class="justify">No solo tienes que tener en cuenta los posibles cuidados de tu animal de compañía, sino también las <span class="tnegrita">emergencias médicas inesperadas</span> o los posibles <span class="tnegrita">daños</span> que pueda ocasionar en tu casa y si estás dispuesto a que puedan pasar, como <span class="tnegrita">arañazos en el mobiliario</span> si tienes gatos, o <span class="tnegrita">zapatillas y otros artículos mordidos</span> si tienes perros. Algunas de estas conductas se pueden evitar si los <span class="tnegrita">educamos correctamente desde cachorros</span> pero algunas otras no.</p>
+            </div>
+            <div class="col-md-4">
+                <img src="/resources/img/ayuda_8.jpg" class="imagen img-thumbnail">
+            </div>
+        </div>
+
+        <h1 class="encabezado" id="datos5">¿Cuál es el proceso de adopción?</h1>
+
+        <div class="row cajatexto centrar">
+            <div class="col-md-3">
+                <img src="/resources/img/ayuda_9.jpg" class="imagen img-thumbnail">
+            </div>
+            
+            <div class=" col-md-7">
+                <p class="justify">Ya tienes claro qué animal necesitas, por lo que debes comentárselo al personal de la protectora para que busquen al que mejor pueda encajar con tus necesidades. Ellos <span class="tnegrita">te mostrarán muchísimos animalitos adorables, que te necesitan</span>,
+                    para que les escojas y que la protectora te los reserve.</p>
+                <p class="justify">A veces, las protectoras <span class="tnegrita">hacen visitas a los hogares para comprobar que el animal vaya a estar en unas condiciones inmejorables</span> y que no van a correr ningún peligro.</p>
+                <p class="justify">Y, si dan el visto bueno, ya sólo queda adoptarle. <span class="tnegrita">Habitualmente te cobrarán una pequeña cantidad por los gastos que ellos tienen</span> de vacunas, implantación del microchip y ese tipo de cuestiones. Por lo
+                    general, suele ser muy económico, si lo comparas con lo que te cobraría una clínica veterinaria.</p>
+                <p class="justify">En el caso de los perros, si el que adoptamos <span class="tnegrita">es uno de los considerados por la ley como “<span class="justify">potencialmente peligrosos</span>“, entonces tendrás que sacarte la licencia</span> para la tenencia de perros potencialmente
+                    peligrosos. En este artículo <a href="http://www.terranea.es/blog/pasos-para-obtener-la-licencia-y-el-seguro-de-perro/">te cuentan todo el proceso para sacarse la licencia</a>.</p>
+            </div>
+        </div>
+
+        <div class="texto">
+            <br>
+            <p class="justify">Como ves, ¡es un proceso sencillo! Ahora solo falta que te decidas a adoptar un animal de compañía de forma responsable.</p>
+            <p class="justify">Y recuerda, un animal es una vida, y con la vida no se juega.</p>
+            <blockquote>
+                <p class="justify"><span class="tnegrita">Adóptame contra el Abandono Animal.&nbsp;</span></p>
+            </blockquote>
+            <p>
+               <img class="imagen img-thumbnail" src="/resources/img/ayuda_10.jpeg">
+            </p>
+        </div>
+    </div>
     
 
     <!-- el footer tambien deberia ser otro codigo comun a todas las views, copiarlo y pegarlo-->
-    <div class="footer-navigation">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4 section-footer">
-                    <div>
-                        <div class="logo-footer-navigation">
-
-                        </div>
-                        <div><p>ADOPTAME</p></div>
-                        <div class="RRSS"></div>
-                    </div>
-                </div>
-                <div class="col-sm-4 section-footer">
-                    <p>NAVIGATION</p>
-                    <ul class="menu-footer-navigation">
-                        <li> <a href="/Home.html">Inicio</a></li>
-                        <li><a href="">Animales</a></li>
-                        <li><a href="">Protectoras</a></li>
-                        <li><a href="">Sobre Nosotros</a></li>
-                        <li><a href="/Contact.html">Contacto</a></li>
-                        <li><a href="/Ayuda.html">Ayuda</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-4 section-footer">
-                    <p>LEGAL</p>
-                    <ul class="menu-footer-navigation">
-                        <li><a href="">Terminos y condiciones</a></li>
-                        <li><a href="">Politica de privacidad</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>    
+    <%- include('./Footer'); %>    
 </body>
 
 </html>
