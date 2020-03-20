@@ -196,3 +196,13 @@ header{
     background: grey;
 }
 /*fin home */
+
+/* admin */
+
+.admin-control th {
+    text-align: center !important;
+}
+
+.table-admin{
+    overflow-x: auto;
+}

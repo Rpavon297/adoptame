@@ -85,6 +85,9 @@ app.get("/Ayuda.html", (req, res) => {
     response.render("Login", {errMsg: null});
 })
 
+app.get("/admin", (req, res) => {
+  res.render("Admin", {errMsg: null});
+});
 
 /**
  * Server Activation
