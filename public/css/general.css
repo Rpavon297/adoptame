@@ -119,7 +119,6 @@ header{
     display: block;
     text-align: left;
     padding: 1px 1px;
-
     color: rgb(56, 56, 56);
     text-decoration: none;
     font:bold 22px cursive;
@@ -139,10 +138,23 @@ header{
 
 .footer-navigation .section-footer{
     padding: 1.5em 5%;
+   
 }
-
+.logo{
+    height: 8em;
+    padding-left: 90px;
+    padding-top: 15px;
+}
+.logo1{
+    
+    height: 4.5em;
+    padding-left: 40px;
+    
+}
 .RRSS{
-    height: 3.5em;
+    
+    height: 2.5em;
+   
 }
 
 /*fin footer navigation */
