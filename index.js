@@ -33,6 +33,13 @@ const static = path.join(__dirname,"public");
  // Configuración de las vistas
 app.set("view engine", "ejs");
 app.set("views",path.join(__dirname, "views"));
+app.use(express.static('public')); //Donde se almacenan nuestros archivos tal que html, css, img...
+
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use('/js', express.static(__dirname + '/node_modules/popper.js/dist'));
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
+
 
 // Pool de conexiones
 const pool = mysql.createPool({
@@ -59,8 +66,28 @@ const sessionStore = new MySQLStore({
  */
 
 app.get("/", (req, res) => {
-    res.status(200).send("uwu");
-  });
+  res.render("Landing", {errMsg: null});
+});
+
+app.get("/Home.html", (req, res) => {
+  res.render("Landing", {errMsg: null});
+});
+
+app.get("/Contact.html", (req, res) => {
+  res.render("Contact", {errMsg: null});
+});
+
+app.get("/Ayuda.html", (req, res) => {
+  res.render("Ayuda", {errMsg: null});
+});
+
+  app.get("/Login.html", function (request, response) {
+    response.render("Login", {errMsg: null});
+})
+
+app.get("/admin", (req, res) => {
+  res.render("Admin", {errMsg: null});
+});
 
 /**
  * Server Activation

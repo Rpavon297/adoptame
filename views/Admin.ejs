@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoptame</title>
+    <!-- Siempre que creeis una nueva plantilla ejs, importar las hojas de estilos CSS, en especial la de bootstrap-->
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+</head>
+
+<body>
+    <%- include('./Header'); %>
+    <div class="content main-section">
+        <!-- -->
+        <div class="container">
+            <div class="row">
+                <div class="page-header">
+                    <div class="col-md-12">
+                        <h2>Gestión de usuarios</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 table-admin">
+                    <table class="table table-striped text-center admin-control">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">Fecha de Registro</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">Mark</th>
+                            <td>Perez</td>
+                            <td>20/03/2020</td>
+                            <td><a href="#">l1@gmail.com</a></td>
+                            <td><ion-icon name="create-outline"></ion-icon><a href="#" onclick="delete_user(8)"><ion-icon name="close-outline"></ion-icon></a></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Daniela</th>
+                            <td>Garcia</td>
+                            <td>19/03/2020</td>
+                            <td><a href="#">l2@gmail.com</a></td>
+                            <td><ion-icon name="create-outline"></ion-icon><a href="#" onclick="delete_user(2)"><ion-icon name="close-outline"></ion-icon></a></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Juan</th>
+                            <td>Gonzalez</td>
+                            <td>18/03/2020</td>
+                            <td><a href="#">l3@gmail.com</a></td>
+                            <td><ion-icon name="create-outline"></ion-icon><a href="#" onclick="delete_user(6)"><ion-icon name="close-outline"></ion-icon></a></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Luis</th>
+                            <td>Cerrón</td>
+                            <td>17/03/2020</td>
+                            <td><a href="#">l4@gmail.com</a></td>
+                            <td><ion-icon name="create-outline"></ion-icon><a href="#" onclick="delete_user(5)"><ion-icon name="close-outline"></ion-icon></a></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Alberto</th>
+                            <td>Partida</td>
+                            <td>16/03/2020</td>
+                            <td><a href="#">l5@gmail.com</a></td>
+                            <td><ion-icon name="create-outline"></ion-icon><a href="#" onclick="delete_user(4)"><ion-icon name="close-outline"></ion-icon></a></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Eduardo</th>
+                            <td>Ortega</td>
+                            <td>15/03/2020</td>
+                            <td><a href="#">l6@gmail.com</a></td>
+                            <td><ion-icon name="create-outline"></ion-icon><a href="#" onclick="delete_user(3)"><ion-icon name="close-outline"></ion-icon></a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function delete_user(id_user) {
+          var return_delete = confirm("¿Seguro que quiere eliminar al usuario "+id_user+"?");
+          if(return_delete){
+            alert("Usuario eliminado");
+            // bbdd
+          }
+        }
+    </script> 
+
+    <%- include('./Footer'); %>
+</body>
+
+</html>
