@@ -1,0 +1,64 @@
+			.tnegrita {
+			    font-weight: bold;
+			}
+			
+			.italic {
+			    font-style: italic;
+			}
+			
+			.texto {
+			    font-family: 'Bree Serif', serif;
+			    width: 100%;
+			    font-size: 19px;
+			    padding: 5px 30px;
+			}
+			
+			.imagen {
+			    width: 640;
+			    height: 320;
+			    margin-bottom: 10px;
+			}
+			
+			.justify {
+				font-family: 'Bree Serif', serif;
+				font-size: 20px;
+				color: rgb(115, 115, 115);
+			}
+
+			.cajatexto {
+				padding: 15px 30px;
+				color: rgb(77, 77, 77);
+				background-color: rgb(242, 242, 242);
+			}
+
+			.centrar {
+				display: flex;
+				align-items: center;
+			}
+
+			.encabezado {
+				padding: 5px 30px;
+				margin-top: 4em;
+			}
+
+			.abajo {
+				margin-bottom: 30px;
+			}
+			
+			/***********Registros*********/
+			
+			.formRegistro{
+			width:50%;
+			margin-left:5%;
+			display: inline-block;
+			}
+			@media only screen and (max-width: 600px) {
+				.formRegistro{
+					width:95%;		
+				}
+			}
+			
+			.red{
+				color: red;
+				font-size: 14px;
+			}
