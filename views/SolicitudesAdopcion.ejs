@@ -16,11 +16,15 @@
 <!---->
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> Ivan
 <body>
     <%- include('./header'); %>
     
 
+<<<<<<< HEAD
    <% if(msg!==undefined){ %>
 <div class="modal fade in" id="myModal" role="dialog" style="display: block;">
 <div class="modal-dialog">
@@ -50,18 +54,31 @@
                             No hay solicitudes de protectoras actualmente
                         </div>
                     <% }else{ %>
+=======
+
+        <div class="container">
+                <div class="row col-md-offset-0 col-md-12 custyle">
+                        <h2>Solicitudes de Adopción</h2>
+                   
+>>>>>>> Ivan
                         <table class="table table-striped custab">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Email</th>
                                 <th>Ciudad</th>
+<<<<<<< HEAD
                                 <th>Perro</th>
                                 <th>Raza</th>
+=======
+                                <th>Animal</th>
+                                <th>Nombre</th>
+>>>>>>> Ivan
                                 <th>Mensaje</th>
                                 <th class="text-center">Acción</th>
                             </tr>
                         </thead>
+<<<<<<< HEAD
                             <% solicitudes.forEach(p => { %>
                                 <tr>
                                     <td><%= p.id %></td>
@@ -75,15 +92,58 @@
                                         <form method="POST">
                                             <input type="hidden" name="idSolicitud" value="<%= p.id%>">
                                             <input type="hidden" name="idPerro" value="<%= p.idPerro%>">
+=======
+                            
+                                <tr>
+                                    <td>1</td>
+                                    <td>algo@gmail.com</td>
+                                    <td>Madrid</td>
+                                    <td>Cabra</td>
+                                    <td>Pedro</td>
+                                    <td>Quiero adoptarlo porque me gusta</td>
+                                    
+                                    <td class="text-center">
+                                        <form method="POST">
+>>>>>>> Ivan
                                             <button type="submit"class="btn btn-success btn-xs" formaction="/aceptaradopcion">Aceptar</button>
                                             <button type="submit"class="btn btn-danger btn-xs" formaction="/rechazaradopcion">Rechazar</button>
                                             
                                         </form>                                            
                                     </td>
                                 </tr>
+<<<<<<< HEAD
                             <% }); %>
                     </table>
                     <% }; %>
+=======
+
+                                <tr>
+                                    <td>2</td>
+                                    <td>algo@ucm.com</td>
+                                    <td>Madrid</td>
+                                    <td>Perro</td>
+                                    <td>Juan</td>
+                                    <td>Lo quiero</td>
+                                    
+                                    <td class="text-center">
+                                        <form method="POST">
+                                            <button type="submit"class="btn btn-success btn-xs" formaction="/aceptaradopcion">Aceptar</button>
+                                            <button type="submit"class="btn btn-danger btn-xs" formaction="/rechazaradopcion">Rechazar</button>
+                                            
+                                        </form>                                            
+                                    </td>
+                                </tr>
+                            
+
+
+
+                    </table>
+
+
+
+
+                  
+>>>>>>> Ivan
                 </div>
             </div>
     <%- include('./footer'); %>
