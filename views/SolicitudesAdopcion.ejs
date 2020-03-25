@@ -16,83 +16,27 @@
 <!---->
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> Ivan
 <body>
     <%- include('./header'); %>
     
 
-<<<<<<< HEAD
-   <% if(msg!==undefined){ %>
-<div class="modal fade in" id="myModal" role="dialog" style="display: block;">
-<div class="modal-dialog">
-<!-- Modal content-->
-        <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title"><%= msg %></h4>
-    </div>
-    <div class="modal-body">
-      <p>Pulsa para poder volver a ver el resto de solicitudes .</p>
-    </div>
-    <div class="modal-footer">
-                <a href="/SolicitudesAdopcion" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Volver</a>
-    </div>
-        </div>
-</div>
-</div>
-<% } %>
-
-
-
-        <div class="container">
-                <div class="row col-md-offset-0 col-md-12 custyle">
-                        <h2>Solicitudes de Adopcion</h2>
-                    <% if(solicitudes.length === 0){ %>
-                        <div class="alert alert-warning alerta">
-                            No hay solicitudes de protectoras actualmente
-                        </div>
-                    <% }else{ %>
-=======
 
         <div class="container">
                 <div class="row col-md-offset-0 col-md-12 custyle">
                         <h2>Solicitudes de Adopción</h2>
                    
->>>>>>> Ivan
                         <table class="table table-striped custab">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Email</th>
                                 <th>Ciudad</th>
-<<<<<<< HEAD
-                                <th>Perro</th>
-                                <th>Raza</th>
-=======
                                 <th>Animal</th>
                                 <th>Nombre</th>
->>>>>>> Ivan
                                 <th>Mensaje</th>
                                 <th class="text-center">Acción</th>
                             </tr>
                         </thead>
-<<<<<<< HEAD
-                            <% solicitudes.forEach(p => { %>
-                                <tr>
-                                    <td><%= p.id %></td>
-                                    <td><%= p.email %></td>
-                                    <td><%= p.ciudad %></td>
-                                    <td><%= p.nombre %></td>
-                                    <td><%= p.raza %></td>
-                                    <td><%= p.mensaje %></td>
-                                    
-                                    <td class="text-center">
-                                        <form method="POST">
-                                            <input type="hidden" name="idSolicitud" value="<%= p.id%>">
-                                            <input type="hidden" name="idPerro" value="<%= p.idPerro%>">
-=======
                             
                                 <tr>
                                     <td>1</td>
@@ -104,18 +48,12 @@
                                     
                                     <td class="text-center">
                                         <form method="POST">
->>>>>>> Ivan
                                             <button type="submit"class="btn btn-success btn-xs" formaction="/aceptaradopcion">Aceptar</button>
                                             <button type="submit"class="btn btn-danger btn-xs" formaction="/rechazaradopcion">Rechazar</button>
                                             
                                         </form>                                            
                                     </td>
                                 </tr>
-<<<<<<< HEAD
-                            <% }); %>
-                    </table>
-                    <% }; %>
-=======
 
                                 <tr>
                                     <td>2</td>
@@ -143,7 +81,6 @@
 
 
                   
->>>>>>> Ivan
                 </div>
             </div>
     <%- include('./footer'); %>
