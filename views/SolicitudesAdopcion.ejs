@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoptame</title>
+    <!-- Siempre que creeis una nueva plantilla ejs, importar las hojas de estilos CSS, en especial la de bootstrap-->
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+
+<!---->
+<!-- Hay que cambiar, añadir o eliminar los nombres de los atributos en funcion de como los pongamos-->
+<!---->
+<!---->
+
+
+
+<body>
+    <%- include('./header'); %>
+    
+
+   <% if(msg!==undefined){ %>
+<div class="modal fade in" id="myModal" role="dialog" style="display: block;">
+<div class="modal-dialog">
+<!-- Modal content-->
+        <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title"><%= msg %></h4>
+    </div>
+    <div class="modal-body">
+      <p>Pulsa para poder volver a ver el resto de solicitudes .</p>
+    </div>
+    <div class="modal-footer">
+                <a href="/SolicitudesAdopcion" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Volver</a>
+    </div>
+        </div>
+</div>
+</div>
+<% } %>
+
+
+
+        <div class="container">
+                <div class="row col-md-offset-0 col-md-12 custyle">
+                        <h2>Solicitudes de Adopcion</h2>
+                    <% if(solicitudes.length === 0){ %>
+                        <div class="alert alert-warning alerta">
+                            No hay solicitudes de protectoras actualmente
+                        </div>
+                    <% }else{ %>
+                        <table class="table table-striped custab">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>Ciudad</th>
+                                <th>Perro</th>
+                                <th>Raza</th>
+                                <th>Mensaje</th>
+                                <th class="text-center">Acción</th>
+                            </tr>
+                        </thead>
+                            <% solicitudes.forEach(p => { %>
+                                <tr>
+                                    <td><%= p.id %></td>
+                                    <td><%= p.email %></td>
+                                    <td><%= p.ciudad %></td>
+                                    <td><%= p.nombre %></td>
+                                    <td><%= p.raza %></td>
+                                    <td><%= p.mensaje %></td>
+                                    
+                                    <td class="text-center">
+                                        <form method="POST">
+                                            <input type="hidden" name="idSolicitud" value="<%= p.id%>">
+                                            <input type="hidden" name="idPerro" value="<%= p.idPerro%>">
+                                            <button type="submit"class="btn btn-success btn-xs" formaction="/aceptaradopcion">Aceptar</button>
+                                            <button type="submit"class="btn btn-danger btn-xs" formaction="/rechazaradopcion">Rechazar</button>
+                                            
+                                        </form>                                            
+                                    </td>
+                                </tr>
+                            <% }); %>
+                    </table>
+                    <% }; %>
+                </div>
+            </div>
+    <%- include('./footer'); %>
+    
+</body>
+
+</html>
