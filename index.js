@@ -89,6 +89,12 @@ app.get("/admin", (req, res) => {
   res.render("Admin", {errMsg: null});
 });
 
+
+app.get("/SolicitudesAdopcion.html", (req, res) => {
+  res.render("SolicitudesAdopcion", {errMsg: null});
+});
+
+
 /**
  * Server Activation
  */
