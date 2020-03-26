@@ -7,7 +7,12 @@
     <title>Adoptame</title>
     <!-- Siempre que creeis una nueva plantilla ejs, importar las hojas de estilos CSS, en especial la de bootstrap-->
     <link rel="stylesheet" href="/css/general.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    
+
+
 </head>
 
 <body>
@@ -16,27 +21,31 @@
     <!-- cuerpo de la pagina -->
     <div class="content main-img">
         <div class="container">
-            <div class="row">
+            <div class="row encabezado">
                 <div class="col-md-offset-4 col-md-4">
-                    <form id="login" class="form-login" action="" method="POST">
-                        <h2>Login:</h2>
+                    <form id="login" class="form-login cajatexto texto" action="" method="POST">
+                        <h2 class="">Bienvenido</h2>
+                        <br/>
                         <input type="text" id="loginMail" name="loginMail" class="form-control input-sm chat-input" placeholder="Correo electrónico" required/>
                         </br>
                         <input type="password" id="loginPassword" name="loginPassword" class="form-control input-sm chat-input" placeholder="Contraseña" required/>
                         </br>
                         <div class="radio">
-                            <label><input type="radio" name="tipo" value="Protectora">Protectora</label> 
-                            <label><input type="radio" name="tipo" value="Adoptante">Adoptante</label>
+                            <label><input type="radio" name="tipo" value="Protectora">Protectora</label><br/> 
+                            <label><input type="radio" name="tipo" value="Adoptante">Adoptante</label><br/> 
                             <label><input type="radio" name="tipo" value="Administrador">Administrador</label>
                         </div>
                         <div classs="wrapper">
                             <span class="group-btn">
-                                <!--LO SE, FALTA CSS Y ATRIBUTOS AL BOTON-->
-                                <h2>Lo sé, falta css.</h2>
-                                <button type="submit">Login</button>
+                                <button type="submit" class="btn btn-primary"><span class="tnegrita">Login</span></button>
                             </span>
                         </div>
+                        <div id="registrate">
+                            <!--LINK PARA REGISTRO-->
+                            ¿Aún no tienes cuenta? <a class="btn link" href="">Regístrate</a>
+                        </div>
                     </form>
+                    
                 </div>
             </div>
         </div>
