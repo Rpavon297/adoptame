@@ -97,6 +97,22 @@ app.get("/ContactForm.html", (req, res) => {
   res.render("ContactForm", {errMsg: null});
 });
 
+app.get("/sign-up/", (req, res) => {
+  res.render("SignUpSelection", {errMsg: null});
+});
+
+app.get("/sign-up-adopter/", (req, res) => {
+  res.render("SignUpAdopter", {errMsg: null});
+});
+
+app.get("/sign-up-shelter/", (req, res) => {
+  res.render("SignUpShelter", {errMsg: null});
+});
+
+app.get("/confirmation/", (req, res) => {
+  res.render("SignUpConfirmation", {errMsg: null});
+});
+
 /**
  * Server Activation
  */

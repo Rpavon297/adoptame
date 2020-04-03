@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea tu cuenta - Adoptame</title>
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/signup.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('./Header'); %>
+
+    <div id=content>
+        <div class="container" style="max-width: 630px;">
+            <div class="row">
+                <div class="col sign-up-page" style="margin-top: 110px;"> <!--130px-->
+                    <h1>¡Gracias por unirte a Adóptame!</h1>
+                    <h2>Te hemos enviado un email de confirmación.</h2>
+                    <img src="/resources/icons/envelope.png" width="450px">
+                    <h2>Revisa tu bandeja de entrada y tu carpeta spam. Si no puedes encontrar tu correo haz click en "Reenviar" para volver a enviarlo.</h2>
+                    
+                    <div style="margin-top: 30px; margin-bottom: 100px;">
+                        <button id="redend_button" class="button" onclick=""> Reenviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./Footer'); %>
+</body>
+
+</html>
