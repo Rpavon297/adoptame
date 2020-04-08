@@ -1,0 +1,199 @@
+html * {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.banner {
+    background-color: #e8e8e8;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+}
+
+.banner h1 {
+    font-size: 45px;
+    font-weight: 600;
+}
+
+.text {
+    color: #868686;
+    text-align: center;
+}
+
+.floating-input {
+    font-size: 12pt;
+    font-weight: 100;
+    color: #4d4d4d;
+    height: 65px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #d0d0d0;
+    padding: 20px 57px 0px 18px;
+    margin: auto;
+    display: block;
+}
+  
+.floating-input:focus {
+    outline: none !important;
+    border: 1px solid #97c1cc;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}
+
+label {
+    position: absolute;
+    pointer-events: none;
+    left: 15px;
+    top: 21px;
+    transition: 0.08s ease all;
+    color: #888888;
+    font-size: 12pt;
+    padding: 0px 20px 0px 18px;
+    -moz-transition:0.08s ease all; 
+    -webkit-transition:0.08s ease all;
+}
+  
+.floating-input:focus ~ label, .floating-input:not(:placeholder-shown) ~ label {
+    top: 10px;
+    bottom: 10px;
+    left: 15px;
+    font-size: 13px;
+}
+
+.mandatory {
+    color: #e9e9e9;
+    font-size: 40px;
+    right: 40px;
+    top: 12px;
+    z-index: 9;
+    position: absolute;
+    display: block;
+}
+
+.aclaration {
+    font-size: 13px;
+    font-weight: 300;
+    color: #868686;
+}
+
+.button {
+    font-size: 18px;
+    font-weight: 400;
+    background-color: #97c1cc;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 12px 60px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: auto;
+}
+
+.meter {
+    display: inline-block;
+    margin-top: 10px;
+    width: 50px;
+    height: 8px;
+    background-color: #f8f8f8;
+    border: 1px solid #e9e9e9;
+    border-radius: 10px;
+}
+
+.round-button {
+    display:block;
+    height: 125px;
+    width: 125px;
+    border-radius: 50%;
+    margin: auto;
+    border: 1px solid #97c1cc;
+    background-color: transparent;
+}
+
+.choose_file {
+    position: relative;
+    display: inline-block;
+    color: #7f7f7f;
+    font: normal 14px Myriad Pro, Verdana, Geneva, sans-serif;
+    margin-top: 2px;
+    background: white
+}
+.choose_file input[type="file"]{
+    -webkit-appearance: none; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.text-area {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+#text-area-id {
+    color: #4d4d4d;
+    height: 170px;
+    width: 100%;
+    font-size: 12pt;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+    border-radius: 5px;
+    border: 1px solid #d0d0d0;
+    padding: 20px 40px 0px 18px;
+    margin: auto;
+    display: block;
+    resize: none;
+}
+
+#text-area-id:focus {
+    outline: none !important;
+    border: 1px solid #97c1cc;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}
+
+.sign-up-page {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.sign-up-page h1 {
+    font-size: 35px;
+    font-weight: 500;
+    line-height: 50px;
+    color: #4c4c4c;
+}
+
+.sign-up-page h2 {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 25px;
+    color: #868686;
+}
+
+.sign-up-page h3 {
+    font-size: 26px;
+    font-weight: 500;
+    margin-top: 30px;
+    color: #4c4c4c;
+}
+
+.sign-up-page p {
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 20px;
+    line-height: 25px;
+    color: #868686;
+}
+
+.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    width: 70%;
+}

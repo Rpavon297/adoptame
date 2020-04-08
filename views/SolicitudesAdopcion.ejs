@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoptame</title>
+    <!-- Siempre que creeis una nueva plantilla ejs, importar las hojas de estilos CSS, en especial la de bootstrap-->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/css/solicitudesadopcion.css">
+</head>
+
+<!---->
+<!-- Hay que cambiar, añadir o eliminar los nombres de los atributos en funcion de como los pongamos-->
+<!---->
+<!---->
+
+
+<body>
+    <header>
+        <%- include('./header'); %>
+    </header>
+    <main>
+    <div class="content main-section">
+        <div class="container"> 
+            <div class="row">
+                <div class="row col-md-offset-0 col-md-12 custyle">
+                    
+                        <h2>Solicitudes de Adopción</h2>
+                   
+                        <table class="table table-striped custab">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>Ciudad</th>
+                                <th>Animal</th>
+                                <th>Nombre</th>
+                                <th>Mensaje</th>
+                                <th class="text-center">Acción</th>
+                            </tr>
+                        </thead>
+                            
+                                <tr>
+                                    <td>1</td>
+                                    <td>algo@gmail.com</td>
+                                    <td>Madrid</td>
+                                    <td>Cabra</td>
+                                    <td>Pedro</td>
+                                    <td>Quiero adoptarlo porque me gusta</td>
+                                    
+                                    <td class="text-center">
+                                        <form method="POST">
+                                            <button type="submit"class="btn btn-success btn-xs" formaction="/aceptaradopcion">Aceptar</button>
+                                            <button type="submit"class="btn btn-danger btn-xs" formaction="/rechazaradopcion">Rechazar</button>
+                                            
+                                        </form>                                            
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>2</td>
+                                    <td>algo@ucm.com</td>
+                                    <td>Madrid</td>
+                                    <td>Perro</td>
+                                    <td>Juan</td>
+                                    <td>Lo quiero</td>
+                                    
+                                    <td class="text-center">
+                                        <form method="POST">
+                                            <button type="submit"class="btn btn-success btn-xs" formaction="/aceptaradopcion">Aceptar</button>
+                                            <button type="submit"class="btn btn-danger btn-xs" formaction="/rechazaradopcion">Rechazar</button>
+                                            
+                                        </form>                                            
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>1</td>
+                                    <td>algo@gmail.com</td>
+                                    <td>Madrid</td>
+                                    <td>Cabra</td>
+                                    <td>Pedro</td>
+                                    <td>Quiero adoptarlo porque me gusta</td>
+                                    
+                                    <td class="text-center">
+                                        <form method="POST">
+                                            <button type="submit"class="btn btn-success btn-xs" formaction="/aceptaradopcion">Aceptar</button>
+                                            <button type="submit"class="btn btn-danger btn-xs" formaction="/rechazaradopcion">Rechazar</button>
+                                            
+                                        </form>                                            
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>1</td>
+                                    <td>algo@gmail.com</td>
+                                    <td>Madrid</td>
+                                    <td>Cabra</td>
+                                    <td>Pedro</td>
+                                    <td>Quiero adoptarlo porque me gusta</td>
+                                    
+                                    <td class="text-center">
+                                        <form method="POST">
+                                            <button type="submit"class="btn btn-success btn-xs" formaction="/aceptaradopcion">Aceptar</button>
+                                            <button type="submit"class="btn btn-danger btn-xs" formaction="/rechazaradopcion">Rechazar</button>
+                                            
+                                        </form>                                            
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>1</td>
+                                    <td>algo@gmail.com</td>
+                                    <td>Madrid</td>
+                                    <td>Cabra</td>
+                                    <td>Pedro</td>
+                                    <td>Quiero adoptarlo porque me gusta</td>
+                                    
+                                    <td class="text-center">
+                                        <form method="POST">
+                                            <button type="submit"class="btn btn-success btn-xs" formaction="/aceptaradopcion">Aceptar</button>
+                                            <button type="submit"class="btn btn-danger btn-xs" formaction="/rechazaradopcion">Rechazar</button>
+                                            
+                                        </form>                                            
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>1</td>
+                                    <td>algo@gmail.com</td>
+                                    <td>Madrid</td>
+                                    <td>Cabra</td>
+                                    <td>Pedro</td>
+                                    <td>Quiero adoptarlo porque me gusta</td>
+                                    
+                                    <td class="text-center">
+                                        <form method="POST">
+                                            <button type="submit"class="btn btn-success btn-xs" formaction="/aceptaradopcion">Aceptar</button>
+                                            <button type="submit"class="btn btn-danger btn-xs" formaction="/rechazaradopcion">Rechazar</button>
+                                            
+                                        </form>                                            
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>1</td>
+                                    <td>algo@gmail.com</td>
+                                    <td>Madrid</td>
+                                    <td>Cabra</td>
+                                    <td>Pedro</td>
+                                    <td>Quiero adoptarlo porque me gusta</td>
+                                    
+                                    <td class="text-center">
+                                        <form method="POST">
+                                            <button type="submit"class="btn btn-success btn-xs" formaction="/aceptaradopcion">Aceptar</button>
+                                            <button type="submit"class="btn btn-danger btn-xs" formaction="/rechazaradopcion">Rechazar</button>
+                                            
+                                        </form>                                            
+                                    </td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+            </div>
+        </div>
+        </main>
+    
+
+    <%- include('./footer'); %>
+    
+</body>
+
+</html>
