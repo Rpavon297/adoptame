@@ -73,14 +73,45 @@ app.get("/Home.html", (req, res) => {
   res.render("Landing", {errMsg: null});
 });
 
-
 app.get("/Contact.html", (req, res) => {
   res.render("Contact", {errMsg: null});
+});
+
+app.get("/Ayuda.html", (req, res) => {
+  res.render("Ayuda", {errMsg: null});
 });
 
   app.get("/Login.html", function (request, response) {
     response.render("Login", {errMsg: null});
 })
+
+app.get("/admin", (req, res) => {
+  res.render("Admin", {errMsg: null});
+});
+
+app.get("/SolicitudesAdopcion.html", (req, res) => {
+  res.render("SolicitudesAdopcion", {errMsg: null});
+});
+
+app.get("/ContactForm.html", (req, res) => {
+  res.render("ContactForm", {errMsg: null});
+});
+
+app.get("/sign-up/", (req, res) => {
+  res.render("SignUpSelection", {errMsg: null});
+});
+
+app.get("/sign-up-adopter/", (req, res) => {
+  res.render("SignUpAdopter", {errMsg: null});
+});
+
+app.get("/sign-up-shelter/", (req, res) => {
+  res.render("SignUpShelter", {errMsg: null});
+});
+
+app.get("/confirmation/", (req, res) => {
+  res.render("SignUpConfirmation", {errMsg: null});
+});
 
 /**
  * Server Activation
