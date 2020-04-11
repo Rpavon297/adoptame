@@ -1,0 +1,53 @@
+.cajaglobal{
+    border-radius: 1em;
+    width: 1000px;
+    background-color:  rgb(242, 242, 242);
+
+    margin: auto;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    text-align: center;
+    font-size: 100%;
+}
+
+.cajatexto {
+
+    border-style: outset;
+    width: 500px;
+    border-radius: 1em;
+    background-color: rgb(211, 208, 208);
+
+    margin: auto;
+    text-align: center;
+    font-size: 100%;
+    
+}
+
+.marge{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.texto{
+    font-family: 'Bree Serif', serif;
+    width: 100%;
+    font-size: 15px;
+    padding: 30px 30px;
+}
+
+.titulo{
+    margin-top: 80px;
+    font-family: 'Bree Serif', serif;
+    text-align: center;
+    color: black;
+  
+
+}
+
+.subtitulo{
+    color: grey;
+    text-align: center;
+    font-family: 'Bree Serif', serif;
+}
+
+
