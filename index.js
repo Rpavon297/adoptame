@@ -113,6 +113,9 @@ app.get("/confirmation/", (req, res) => {
   res.render("SignUpConfirmation", {errMsg: null});
 });
 
+app.get("/AboutUs.html", (req, res) => {
+  res.render("AboutUs", {errMsg: null});
+});
 app.get("/profile", (req, res) => {
   res.render("VerPerfilAdoptante", {errMsg: null});
 });
