@@ -390,7 +390,7 @@
         function validate_web() {
             var web_input = document.getElementById('web');
 
-            if (test_web(web_input.value)) {
+            if (web_input.value == "" || test_web(web_input.value)) {
                 web_input.setCustomValidity('');
                 change_normal('web', false);
             }
