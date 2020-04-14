@@ -116,6 +116,13 @@ app.get("/confirmation/", (req, res) => {
 app.get("/AboutUs.html", (req, res) => {
   res.render("AboutUs", {errMsg: null});
 });
+app.get("/profile", (req, res) => {
+  res.render("VerPerfilAdoptante", {errMsg: null});
+});
+app.get("/modprofile", (req, res) => {
+  res.render("ModificarPerfilAdoptante", {errMsg: null});
+});
+
 /**
  * Server Activation
  */
