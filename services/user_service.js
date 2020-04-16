@@ -79,6 +79,9 @@ class UserService{
                                 }
                             );
                         }
+                        else{
+                            callback(null);
+                        }
                     }
                 }
             );
