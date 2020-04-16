@@ -16,6 +16,7 @@ const session = require("express-session");
 const sessionMSQL = require("express-mysql-session");
 const expressValidator = require("express-validator");
 
+
 /**
  * App Variables
  */
@@ -61,6 +62,33 @@ const sessionStore = new MySQLStore({
     database: globals.mysqlConfig.database
 });
 
+// Sesión de la web
+const middlewareSession = session ({
+  saveUninitialized: false,
+  secret: "foobar34",
+  resave: false,
+  store: sessionStore    
+});
+
+/**
+ * Middlewares
+ */ 
+app.use(middlewareSession);
+app.use(expressValidator());
+
+// Si el request saliera de index.js, tiene que llevar la instancia del servicio como atributo
+app.use(function (request,response,next){
+  if(userService){
+      request.userService = userService;
+      next();
+  }
+  else{
+      response.status(500);
+      response.end("Error, al conectar con la base de datos!");
+      console.log("Error, al conectar con la base de datos!");
+  }
+});
+
 /**
  * Routes Definitions
  */
@@ -81,8 +109,8 @@ app.get("/Ayuda.html", (req, res) => {
   res.render("Ayuda", {errMsg: null});
 });
 
-  app.get("/Login.html", function (request, response) {
-    response.render("Login", {errMsg: null});
+app.get("/Login.html", function (request, response) {
+  response.render("Login", {errMsg: null});
 })
 
 app.get("/admin", (req, res) => {
@@ -126,6 +154,7 @@ app.get("/profile", (req, res) => {
 app.get("/modprofile", (req, res) => {
   res.render("ModificarPerfilAdoptante", {errMsg: null});
 });
+
 
 /**
  * Server Activation
