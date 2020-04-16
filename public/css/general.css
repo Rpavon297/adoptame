@@ -186,6 +186,11 @@ header{
     text-align: center !important;
 }
 
+.admin-control, .modal-dialog{
+    font-family: 'Bree Serif', serif;
+    font-size: 15px;
+}
+
 .table-admin{
     overflow-x: auto;
 }
@@ -196,4 +201,8 @@ header{
 
 .cuadrarHeader {
     margin-top: 4em;
+}
+
+.cursor{
+    cursor: pointer;
 }
