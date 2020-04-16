@@ -5,7 +5,7 @@ create table account(
     surnames varchar(60) not null,
     birthdate date not null,
 
-    is_shelter boolean not null
+    isShelter boolean not null
 );
 
 create table shelter(
