@@ -30,24 +30,24 @@
             </div>
         </div>
         
-        <form id="reg_adopter" method="POST">
+        <form id="reg_adopter" method="POST" action="/sign-up-adopter">
             
             <div class="container" style="max-width: 750px; padding: 0px 100px 0px 100px; margin-top: 30px;">
                 <div class="row" style="margin-top: -25px;">
                     <div class="col-md col-sm-12" style="margin-top: 25px;">
-                        <input id="name" type="text" class="floating-input" placeholder=" " required>
+                        <input name="name" type="text" class="floating-input" placeholder=" " required>
                         <label id="name_tag" style="font-weight: 100;">Nombre</label>
                         <span id="name_asterisk" class="mandatory">*</span>
                     </div>
                     <div class="col-md col-sm-12" style="margin-top: 25px;">
-                        <input id="surname" type="text" class="floating-input" placeholder=" " required>
+                        <input name="surname" type="text" class="floating-input" placeholder=" " required>
                         <label id="surname_tag" style="font-weight: 100">Apellidos</label>
                         <span id="surname_asterisk" class="mandatory">*</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col" style="margin-top: 25px;">
-                        <input id="date"  name="jqueryDate" type="text" maxlength="10" class="floating-input" placeholder=" ">
+                        <input name="jqueryDate" type="text" maxlength="10" class="floating-input" placeholder=" ">
                         <label id="date_tag" style="font-weight: 100;">Fecha de nacimiento</label>
                         <p class="aclaration" style="margin-top: 15px;">Ejemplo: 01/01/2001</p>
                     </div>
@@ -65,7 +65,7 @@
             <div class="container" style="max-width: 750px; padding: 0px 100px 0px 100px;">
                 <div class="row">
                     <div class="col">
-                        <input id="email" type="email" class="floating-input" placeholder=" " required>
+                        <input name="email" type="email" class="floating-input" placeholder=" " required>
                         <label id="email_tag" style="font-weight: 100;">Correo electrónico</label>
                         <span id="email_asterisk" class="mandatory">*</span>
                         <p class="aclaration" style="margin-top: 15px;">Recibirás un correo de confirmación</p>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="row">
                     <div class="col" style="margin-top: 15px;">
-                        <input id="password" name="jqueryPassword" type="password" class="floating-input" placeholder=" " required>
+                        <input name="password" name="jqueryPassword" type="password" class="floating-input" placeholder=" " required>
                         <label id="password_tag" style="font-weight: 100;">Contraseña</label>
                         <span id="password_asterisk" class="mandatory">*</span>
                         <span id="password_icon" class="mandatory far fa-eye-slash" style="right: -30px; top: +21.5px; color: #e9e9e9; cursor: pointer; font-size: 22px;" onclick="password_visibility()"></span>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="row">
                     <div class="col" style="margin-top: 12px;">
-                        <input id="confirm_password" type="password" class="floating-input" oninput="check(this)" placeholder=" " required>
+                        <input name="confirm_password" type="password" class="floating-input" oninput="check(this)" placeholder=" " required>
                         <script language='javascript' type='text/javascript'>
                             function check(input) {
                                 if (input.value != document.getElementById('password').value) {
@@ -120,7 +120,7 @@
                         <a href="#" style="color: #97c1cc; font-weight: 400;">Términos y Condiciones</a> y la 
                         <a href="#" style="color: #97c1cc; font-weight: 400;">Política de Privacidad</a> de Adóptame.</p>
                         <button type="submit" id="submit-button" class="button" style="margin-top: 25px;" onclick="submit_form()">Continuar</button>
-<!--TODO eliminar-->    <button type="button" class="button" style="margin-top: 25px; background-color: #ffbb00;" onclick="window.location.href='/confirmation'">Confirmar</button>
+<!--TODO eliminar-->    <button type="button" class="button" style="margin-top: 25px; background-color: #ffbb00;">Confirmar</button>
                     </div>
                 </div>
             </div>
