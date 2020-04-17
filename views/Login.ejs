@@ -23,18 +23,13 @@
         <div class="container">
             <div class="row cuadrarHeader">
                 <div class="col-md-offset-4 col-md-4">
-                    <form id="login" class="form-login cajatexto texto" action="" method="POST">
+                    <form class="form-login cajatexto texto" action="/Login" method="POST">
                         <h2 class="">Bienvenido</h2>
                         <br/>
-                        <input type="text" id="loginMail" name="loginMail" class="form-control input-sm chat-input" placeholder="Correo electrónico" required/>
+                        <input type="text" name="loginMail" class="form-control input-sm chat-input" placeholder="Correo electrónico" required/>
                         </br>
-                        <input type="password" id="loginPassword" name="loginPassword" class="form-control input-sm chat-input" placeholder="Contraseña" required/>
+                        <input type="password"  name="loginPassword" class="form-control input-sm chat-input" placeholder="Contraseña" required/>
                         </br>
-                        <div class="radio">
-                            <label><input type="radio" name="tipo" value="Protectora">Protectora</label><br/> 
-                            <label><input type="radio" name="tipo" value="Adoptante">Adoptante</label><br/> 
-                            <label><input type="radio" name="tipo" value="Administrador">Administrador</label>
-                        </div>
                         <div classs="wrapper">
                             <span class="group-btn">
                                 <button type="submit" class="btn btn-primary"><span class="tnegrita">Login</span></button>
@@ -45,7 +40,10 @@
                             ¿Aún no tienes cuenta? <a class="btn link" href="/sign-up">Regístrate</a>
                         </div>
                     </form>
-                    
+                    <% if(errMsg !== null) { %>
+                        <div class="error">
+                            <span>Dirección de correo y/o contraseña no válidos</span>
+                        </div> <% } %>
                 </div>
             </div>
         </div>
