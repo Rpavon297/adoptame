@@ -1,5 +1,8 @@
 
 .ucm {}
+.padding{
+	padding: 25px 30px;
+}
 
 .cajatexto {
     padding: 15px 30px;
