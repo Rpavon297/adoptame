@@ -47,46 +47,44 @@ class UserService{
      * @param {*} forename 
      * @param {*} surnames 
      * @param {*} birthdate 
-     * @param {*} isShelter True si es una cuenta de protectora, false si es adoptante
+     * @param {*} userType posee tres valores, admin si es administrador, adoptante o protectora, son strings
      * @param {*} shelterEmail 
      * @param {*} shelterAddress 
      * @param {*} shelterDescription 
      * @param {*} webpage 
      */
-    createAccount(email, pass, forename, surnames, birthdate, isShelter, shelterName=undefined, shelterAddress=undefined, shelterDescription=undefined, webpage=undefined, callback){
+    createAccount(user, callback){
         this.pool.getConnection((err,connection) => {
             if(err){
                 callback(err);
                 return;
             }
+            console.log(user)
             connection.query(
-                "insert into account(email,pass,forename,surnames,birthdate, isShelter) values (?,?,?,?,?,?)",
-                [email,pass, forename, surnames, birthdate, isShelter],
-                (err, result) =>{
+                "insert into account(email,pass,forename,surnames,birthdate, userType) values (?,?,?,?,?,?)",
+                [user.email, user.password, user.name, user.surname, user.jqueryDate, user.type],
+                (err) =>{
                     if(err){
                         callback(err);
+                        return ;
                     }
                     else{
-                        if(isShelter){
+                        if(user.type === 'protectora'){
                             connection.query(
                                 "insert into shelter(userEmail, shelterName, shelterAddress, shelterDescription, webpage) values (?,?,?,?,?)",
-                                [email, shelterName, shelterAddress, shelterDescription, webpage],
-                                (err, result) =>{
+                                [user.email, user.shelter_name, user.location, user.descripcion, user.web],
+                                (err) =>{
                                     if(err){
                                         callback(err);
                                     }
-                                    callback(null);
+                                    connection.release();
+                                    callback(null, true);
                                 }
                             );
-                        }
-                        else{
-                            callback(null);
-                        }
+                        }  
                     }
                 }
             );
-
-            connection.release();
         });
     }
 }

@@ -14,7 +14,7 @@ header{
     top:0;
     height: 4em;
     z-index: 999;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255);
     width: 100%;
     border-bottom: 1px solid rgb(133, 134, 134);
 }
@@ -90,7 +90,7 @@ header{
 @media screen and (max-width: 1000px) {
     .menu.responsive {
         position: relative;
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255);
     }
     .menu.responsive a.icon {
       position: absolute;
@@ -176,37 +176,8 @@ header{
     min-height: 40em;
 }
 
-.prueba{
-    margin: 1em;
-    height: 15em;
-    border: 1px solid black;
-}
 
 
-.cuadro1{
-    background: red;
-}
-
-.cuadro2{
-    background: green;
-}
-
-.cuadro3{
-    background: rgb(12, 185, 216);
-
-}
-
-.cuadro4{
-    background: pink;
-}
-
-.cuadro5{
-    background: black;
-}
-
-.cuadro6{
-    background: grey;
-}
 /*fin home */
 
 /* admin */
@@ -222,6 +193,14 @@ header{
 
 .table-admin{
     overflow-x: auto;
+}
+
+.encabezado{
+    padding: 0.5em;
+}
+
+.cuadrarHeader {
+    margin-top: 4em;
 }
 
 .cursor{

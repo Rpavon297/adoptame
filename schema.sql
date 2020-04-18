@@ -4,8 +4,7 @@ create table account(
     forename varchar(30) not null,
     surnames varchar(60) not null,
     birthdate date not null,
-
-    isShelter boolean not null
+    userType varchar(20) not null
 );
 
 create table shelter(
@@ -14,7 +13,9 @@ create table shelter(
     shelterAddress varchar(80) not null,
     webpage varchar(80) not null,
     shelterDescription varchar(360) not null,
-
-    foreign key (userEmail) references account(email).
+    foreign key (userEmail) references account(email),
     primary key (userEmail, shelterName)
 );
+
+
+insert into account VALUES ('adoptame@gmail.com', '1234', 'admin', 'supremo', '1996-17-03', 'admin')
