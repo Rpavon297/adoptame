@@ -15,6 +15,8 @@ const userServices = require("./services/user_service");
 const session = require("express-session");
 const sessionMSQL = require("express-mysql-session");
 const expressValidator = require("express-validator");
+const bodyParser = require("body-parser");
+
 
 /**
  * App Variables
@@ -61,6 +63,34 @@ const sessionStore = new MySQLStore({
     database: globals.mysqlConfig.database
 });
 
+// Sesión de la web
+const middlewareSession = session ({
+  saveUninitialized: false,
+  secret: "foobar34",
+  resave: false,
+  store: sessionStore    
+});
+
+/**
+ * Middlewares
+ */ 
+app.use(middlewareSession);
+app.use(expressValidator());
+app.use(bodyParser.urlencoded({ extended: false })); //middleware que permite procesar aquello recibido
+
+// Si el request saliera de index.js, tiene que llevar la instancia del servicio como atributo
+app.use(function (request,response,next){
+  if(userService){
+      request.userService = userService;
+      next();
+  }
+  else{
+      response.status(500);
+      response.end("Error, al conectar con la base de datos!");
+      console.log("Error, al conectar con la base de datos!");
+  }
+});
+
 /**
  * Routes Definitions
  */
@@ -81,12 +111,32 @@ app.get("/Ayuda.html", (req, res) => {
   res.render("Ayuda", {errMsg: null});
 });
 
-  app.get("/Login.html", function (request, response) {
-    response.render("Login", {errMsg: null});
+app.get("/Login.html", function (request, response) {
+  response.render("Login", {errMsg: null});
+})
+
+app.post("/Login", function(request, response){
+  userService.validate(request.body.loginMail, request.body.loginPassword, (err, check) => {
+      if(check === true){
+          //Guardo en la session el usuario COMPLETO, por comodidad y llevarlo mejor durante toda la practica
+          // daoU.getFullUser(request.body.email, (err, userBD)=>{
+          //     if(err){response.end()}
+          //     userBD.email = request.body.email;
+          //     request.session.currentUser = userBD;
+          //     response.redirect("/Profile.html");
+          // })
+          response.redirect("/profile");
+      }
+      else  response.render("Login", {errMsg: ""});
+  })
 })
 
 app.get("/admin", (req, res) => {
   res.render("Admin", {errMsg: null});
+});
+
+app.get("/solicitudesProtectoras", (req, res) => {
+  res.render("solicitudesProtectoras", {errMsg: null});
 });
 
 app.get("/SolicitudesAdopcion.html", (req, res) => {
@@ -101,27 +151,68 @@ app.get("/sign-up/", (req, res) => {
   res.render("SignUpSelection", {errMsg: null});
 });
 
-app.get("/sign-up-adopter/", (req, res) => {
+app.get("/sign-up-adopter", (req, res) => {
   res.render("SignUpAdopter", {errMsg: null});
 });
 
-app.get("/sign-up-shelter/", (req, res) => {
+app.post("/sign-up-adopter", function(request, response){
+  request.body.type = 'adoptante';
+  userService.createAccount(request.body, (err, check) => {
+      if(check === true){
+          //Guardo en la session el usuario COMPLETO, por comodidad y llevarlo mejor durante toda la practica
+          // daoU.getFullUser(request.body.email, (err, userBD)=>{
+          //     if(err){response.end()}
+          //     userBD.email = request.body.email;
+          //     request.session.currentUser = userBD;
+          //     response.redirect("/Profile.html");
+          // })
+          response.redirect("/confirmation");
+      }
+      else { console.log("fuck"); response.render("Login", {errMsg: ""}); }
+  })
+}) 
+
+
+app.get("/sign-up-shelter", (req, res) => {
   res.render("SignUpShelter", {errMsg: null});
 });
 
-app.get("/confirmation/", (req, res) => {
+app.post("/sign-up-shelter", function(request, response){
+  request.body.type = 'protectora';
+  userService.createAccount(request.body, (err, check) => {
+      if(check === true){
+          //Guardo en la session el usuario COMPLETO, por comodidad y llevarlo mejor durante toda la practica
+          // daoU.getFullUser(request.body.email, (err, userBD)=>{
+          //     if(err){response.end()}
+          //     userBD.email = request.body.email;
+          //     request.session.currentUser = userBD;
+          //     response.redirect("/Profile.html");
+          // })
+          response.redirect("/confirmation");
+      }
+      else { console.log("fuck"); response.render("Login", {errMsg: ""}); }
+  })
+})
+
+
+app.get("/confirmation", (req, res) => {
   res.render("SignUpConfirmation", {errMsg: null});
 });
+
 
 app.get("/AboutUs.html", (req, res) => {
   res.render("AboutUs", {errMsg: null});
 });
+
 app.get("/profile", (req, res) => {
+  console.log("no llega")
   res.render("VerPerfilAdoptante", {errMsg: null});
 });
+
 app.get("/modprofile", (req, res) => {
   res.render("ModificarPerfilAdoptante", {errMsg: null});
 });
+
 
 /**
  * Server Activation
