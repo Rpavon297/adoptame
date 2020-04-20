@@ -129,12 +129,22 @@ app.post("/Login", function(request, response){
   userService.validate(request.body.loginMail, request.body.loginPassword, (err, check) => {
       if(check === true){
           //Guardo en la session el usuario COMPLETO, por comodidad y llevarlo mejor durante toda la practica
-          userService.getFullUser(request.body.loginMail, (err, userBD)=>{
-              if(err){response.end()}
-              userBD.email = request.body.loginMail;
-              request.session.currentUser = userBD;
-              response.redirect("/profile.html");
-          })
+          userService.getUser(request.body.loginMail, (err, userBD)=>{
+              if(err){
+                console.log(err)
+                response.end()
+              }
+              else{
+                userBD.email = request.body.loginMail;
+                request.session.currentUser = userBD;
+                console.log(userBD)
+                if(userBD.userType === "adoptante"){
+                  response.redirect("/profile");
+                }if(userBD.userType === "protectora"){
+                  response.redirect("/profileshelter");
+                }              
+              }
+          });
       }
       else  response.render("Login", {errMsg: ""});
   })
@@ -176,12 +186,18 @@ app.post("/sign-up-adopter", function(request, response){
   userService.createAccount(request.body, (err, check) => {
       if(check === true){
           //Guardo en la session el usuario COMPLETO, por comodidad y llevarlo mejor durante toda la practica
-          // daoU.getFullUser(request.body.email, (err, userBD)=>{
-          //     if(err){response.end()}
-          //     userBD.email = request.body.email;
-          //     request.session.currentUser = userBD;
-          //     response.redirect("/Profile.html");
-          // })
+          userService.getUser(request.body.loginMail, (err, userBD)=>{
+            if(err){
+              console.log(err)
+              response.end()
+            }
+            else{
+              console.log(userBD)
+              userBD.email = request.body.loginMail;
+              request.session.currentUser = userBD;
+              response.redirect("/profile");
+            }
+        });
           response.redirect("/confirmation");
       }
       else { console.log("fuck"); response.render("Login", {errMsg: ""}); }
@@ -198,13 +214,20 @@ app.post("/sign-up-shelter", function(request, response){
   userService.createAccount(request.body, (err, check) => {
       if(check === true){
           //Guardo en la session el usuario COMPLETO, por comodidad y llevarlo mejor durante toda la practica
-          // daoU.getFullUser(request.body.email, (err, userBD)=>{
-          //     if(err){response.end()}
-          //     userBD.email = request.body.email;
-          //     request.session.currentUser = userBD;
-          //     response.redirect("/Profile.html");
-          // })
-          response.redirect("/confirmation");
+          userService.getUser(request.body.loginMail, (err, userBD)=>{
+            if(err){
+              console.log(err)
+              response.end()
+            }
+            else{
+              console.log(userBD)
+              userBD.email = request.body.loginMail;
+              request.session.currentUser = userBD;
+              response.redirect("/profileshelter");
+            }
+        });
+        // No se que es esto, pero no puede ir aqui, un response no puede pasar por dos redirects
+          //response.redirect("/confirmation");
       }
       else { console.log("fuck"); response.render("Login", {errMsg: ""}); }
   })
@@ -221,7 +244,11 @@ app.get("/AboutUs.html", (req, res) => {
 });
 
 app.get("/profile", (req, res) => {
-  console.log("no llega")
+  res.render("VerPerfilAdoptante", {errMsg: null});
+});
+
+app.get("/profileshelter", (req, res) => {
+  // Aqui pondría mi vista de perfil de adoptadora... SI LA TUVIESE
   res.render("VerPerfilAdoptante", {errMsg: null});
 });
 
