@@ -213,3 +213,7 @@ header{
 .cursor{
     cursor: pointer;
 }
+
+body .logout{
+    color: blue;
+}

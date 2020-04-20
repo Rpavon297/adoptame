@@ -4,6 +4,7 @@ create table account(
     forename varchar(30) not null,
     surnames varchar(60) not null,
     birthdate date not null,
+    tlf varchar(60) not null,
     userType varchar(20) not null
 );
 
@@ -18,4 +19,4 @@ create table shelter(
 );
 
 
-insert into account VALUES ('adoptame@gmail.com', '1234', 'admin', 'supremo', '1996-17-03', 'admin')
+insert into account VALUES ('adoptame@gmail.com', '1234', 'admin', 'supremo', '1996/17/03', '101011010', 'admin');

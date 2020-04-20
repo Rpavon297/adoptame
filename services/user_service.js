@@ -40,6 +40,46 @@ class UserService{
         });
     }
 
+    getUser(email, callback){
+        this.pool.getConnection((err,connection) => {
+            if(err){
+                callback(err);
+                return;
+            }
+            connection.query(
+                "Select * from account where email = ?",
+                [email],
+                (err,user) => {
+                    if(err){
+                        callback(err);
+                    }
+                    if(user.userType === 'protectora'){
+                        connection.query(
+                            "Select * from shelter where userEmail = ?",
+                            [email],
+                            (err, shelter) => {
+                                console.log(shelter)
+                                if(err){
+                                    callback(err);
+                                }
+                                else{
+                                    user = user[0]
+                                    shelter = shelter[0]
+                                    full_account = {user, shelter};
+                                    console.log(full_account)
+                                    callback(false, full_account);
+                                }
+                            }
+                        )
+                    }else{
+                        callback(false,user[0]);
+                    }
+                }
+            );
+            connection.release();
+        });
+    }
+
     /**
      * Crea una cuenta de adoptante o de protectora
      * @param {*} email 
@@ -61,8 +101,8 @@ class UserService{
             }
             console.log(user)
             connection.query(
-                "insert into account(email,pass,forename,surnames,birthdate, userType) values (?,?,?,?,?,?)",
-                [user.email, user.password, user.name, user.surname, user.jqueryDate, user.type],
+                "insert into account(email,pass,forename,surnames,birthdate, tlf,  userType) values (?,?,?,?,?,?)",
+                [user.email, user.password, user.name, user.surname, user.jqueryDate, user.tlf, user.type],
                 (err) =>{
                     if(err){
                         callback(err);
