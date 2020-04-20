@@ -101,8 +101,8 @@ class UserService{
             }
             console.log(user)
             connection.query(
-                "insert into account(email,pass,forename,surnames,birthdate, userType) values (?,?,?,?,?,?)",
-                [user.email, user.password, user.name, user.surname, user.jqueryDate, user.type],
+                "insert into account(email,pass,forename,surnames,birthdate, tlf,  userType) values (?,?,?,?,?,?)",
+                [user.email, user.password, user.name, user.surname, user.jqueryDate, user.tlf, user.type],
                 (err) =>{
                     if(err){
                         callback(err);

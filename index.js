@@ -71,6 +71,13 @@ const middlewareSession = session ({
   store: sessionStore    
 });
 
+function initialVarLogin (request, response, next){
+  if(request.session.currentUser === undefined){
+    response.locals.login = false;
+  }else response.locals.login = true;
+  next();
+};
+
 function middCheckUser(request, response, next){
   //Si existe ese atributo, no puede ser undefined...
   if(request.session.currentUser.email !== undefined){
@@ -85,6 +92,7 @@ function middCheckUser(request, response, next){
  * Middlewares
  */ 
 app.use(middlewareSession);
+app.use(initialVarLogin);
 app.use(expressValidator());
 app.use(bodyParser.urlencoded({ extended: false })); //middleware que permite procesar aquello recibido
 
@@ -106,6 +114,7 @@ app.use(function (request,response,next){
  */
 
 app.get("/", (req, res) => {
+  console.log("llega")
   res.render("Landing", {errMsg: null});
 });
 
@@ -137,8 +146,9 @@ app.post("/Login", function(request, response){
               else{
                 userBD.email = request.body.loginMail;
                 request.session.currentUser = userBD;
+                console.log("aqui tienes los datos")
                 console.log(userBD)
-                if(userBD.userType === "adoptante"){
+                if(userBD.userType === "adoptante" || userBD.userType === "admin"){
                   response.redirect("/profile");
                 }if(userBD.userType === "protectora"){
                   response.redirect("/profileshelter");
@@ -161,11 +171,11 @@ app.get("/admin", (req, res) => {
   res.render("Admin", {errMsg: null});
 });
 
-app.get("/solicitudesProtectoras", (req, res) => {
+app.get("/solicitudesProtectoras", middCheckUser, (req, res) => {
   res.render("solicitudesProtectoras", {errMsg: null});
 });
 
-app.get("/SolicitudesAdopcion.html", (req, res) => {
+app.get("/SolicitudesAdopcion.html", middCheckUser, (req, res) => {
   res.render("SolicitudesAdopcion", {errMsg: null});
 });
 
@@ -173,7 +183,7 @@ app.get("/ContactForm.html", (req, res) => {
   res.render("ContactForm", {errMsg: null});
 });
 
-app.get("/sign-up/", (req, res) => {
+app.get("/sign-up", (req, res) => {
   res.render("SignUpSelection", {errMsg: null});
 });
 
@@ -243,16 +253,16 @@ app.get("/AboutUs.html", (req, res) => {
   res.render("AboutUs", {errMsg: null});
 });
 
-app.get("/profile", (req, res) => {
+app.get("/profile", middCheckUser, (req, res) => {
   res.render("VerPerfilAdoptante", {errMsg: null});
 });
 
-app.get("/profileshelter", (req, res) => {
+app.get("/profileshelter", middCheckUser, (req, res) => {
   // Aqui pondría mi vista de perfil de adoptadora... SI LA TUVIESE
   res.render("VerPerfilAdoptante", {errMsg: null});
 });
 
-app.get("/modprofile", (req, res) => {
+app.get("/modprofile", middCheckUser , (req, res) => {
   res.render("ModificarPerfilAdoptante", {errMsg: null});
 });
 
