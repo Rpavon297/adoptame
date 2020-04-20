@@ -12,9 +12,9 @@ body ul{
 header{
     position: fixed;
     top:0;
-    height: 5.5em;
+    height: 4em;
     z-index: 999;
-    background: white;
+    background: rgba(255, 255, 255, 0.85);
     width: 100%;
     box-shadow: 0 0 10px rgb(0, 0, 0, 0.15);
     -webkit-backdrop-filter: blur(8px);
@@ -22,7 +22,7 @@ header{
 
 .menu-content{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     height: max-content;
 }
 .menu{
@@ -38,9 +38,9 @@ header{
     color: #4d4d4d;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
-    margin-top: 12.5px;
+    margin-top: 3px;
     /*text-shadow: rgb(202, 228, 223) 2px 2px 4px;*/
 }
 
@@ -65,17 +65,17 @@ header{
 }
 
 .logo_negro{
-    margin-top: 20px;
+    margin-top: 12px;
     display: block;
     justify-content: right;
-    height: 35px;
+    height: 30px;
 }
 
 .icon-login{
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    margin-top: 13px;
+    margin-top: 4px;
 }
 
 .icon-login:hover{
