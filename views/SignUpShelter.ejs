@@ -17,7 +17,7 @@
     
     <div id="content">
         <div class="container-fluid banner" style="background-image: url('/resources/img/banner-shelter.png'); margin-bottom: 75px;">
-            <h1 style="margin-top: 190px; margin-bottom: 130px;">Crea tu cuenta</h1> <!--210px-->
+            <h1 style="margin-top: 180px; margin-bottom: 130px;">Crea tu cuenta</h1> <!--210px-->
         </div>
 
         <div class="container" style="max-width: 925px; padding: 0px 100px 0px 100px;">
@@ -161,7 +161,7 @@
                         <a href="#" style="color: #97c1cc; font-weight: 400;">Términos y Condiciones</a> y la 
                         <a href="#" style="color: #97c1cc; font-weight: 400;">Política de Privacidad</a> de Adóptame.</p>
                         <button type="submit" id="submit-button" class="button" style="margin-top: 25px;" onclick="submit_form()">Continuar</button>
-<!--TODO eliminar-->    <button type="button" class="button" style="margin-top: 25px; background-color: #ffbb00;">Confirmar</button>
+<!--TODO eliminar-->    <button type="button" class="button" style="margin-top: 25px; background-color: #ffbb00;" onclick="window.location.href='/confirmation'">Confirmar</button>
                     </div>
                 </div>
             </div>
@@ -390,7 +390,7 @@
         function validate_web() {
             var web_input = document.getElementById('web');
 
-            if (test_web(web_input.value)) {
+            if (web_input.value == "" || test_web(web_input.value)) {
                 web_input.setCustomValidity('');
                 change_normal('web', false);
             }
