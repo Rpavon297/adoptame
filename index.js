@@ -71,6 +71,16 @@ const middlewareSession = session ({
   store: sessionStore    
 });
 
+function middCheckUser(request, response, next){
+  //Si existe ese atributo, no puede ser undefined...
+  if(request.session.currentUser.email !== undefined){
+       //Guardo en la response.locals el usuario COMPLETO, por comodidad y llevarlo mejor durante toda la sesion
+      response.locals.user = request.session.currentUser;
+      next();
+  }
+  else  response.redirect("/Login.html");
+};
+
 /**
  * Middlewares
  */ 
@@ -119,17 +129,23 @@ app.post("/Login", function(request, response){
   userService.validate(request.body.loginMail, request.body.loginPassword, (err, check) => {
       if(check === true){
           //Guardo en la session el usuario COMPLETO, por comodidad y llevarlo mejor durante toda la practica
-          // daoU.getFullUser(request.body.email, (err, userBD)=>{
-          //     if(err){response.end()}
-          //     userBD.email = request.body.email;
-          //     request.session.currentUser = userBD;
-          //     response.redirect("/Profile.html");
-          // })
-          response.redirect("/profile");
+          userService.getFullUser(request.body.loginMail, (err, userBD)=>{
+              if(err){response.end()}
+              userBD.email = request.body.loginMail;
+              request.session.currentUser = userBD;
+              response.redirect("/profile.html");
+          })
       }
       else  response.render("Login", {errMsg: ""});
   })
 })
+
+
+app.get("/Logout", middCheckUser,function(request, response){
+  request.session.destroy();
+  response.redirect("/Login.html");
+})
+
 
 app.get("/admin", (req, res) => {
   res.render("Admin", {errMsg: null});
