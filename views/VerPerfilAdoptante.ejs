@@ -33,17 +33,17 @@
                 <div class="row" style="margin-top: -25px;">
                     <div class="col-md col-sm-12" style="margin-top: 25px;">
                         <class id="name" type="text" class="floating-input" placeholder=" " required>
-                        <label id="name_tag" style="font-weight: 100;">Pedro</label>
+                        <label id="name_tag" style="font-weight: 100;"><%= user.forename %></label>
                     </div>
                     <div class="col-md col-sm-12" style="margin-top: 25px;">
                         <class id="surname" type="text" class="floating-input" placeholder=" " required>
-                        <label id="surname_tag" style="font-weight: 100">Martín Martín</label>
+                        <label id="surname_tag" style="font-weight: 100"><%= user.surnames %></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col" style="margin-top: 25px;">
                         <class id="date"  name="jqueryDate" type="text" maxlength="10" class="floating-input" placeholder=" ">
-                        <label id="date_tag" style="font-weight: 100;">20/01/2001</label>
+                        <label id="date_tag" style="font-weight: 100;"><%= user.birthdate %></label>
                     </div>
                 </div>
             </div>
@@ -53,20 +53,13 @@
                 <div class="row">
                     <div class="col"style="margin-top: 25px;">
                         <class id="email" type="email" class="floating-input" placeholder=" " required> 
-                        <label id="email_tag" style="font-weight: 100;">pedrito@gmail.es</label>
+                        <label id="email_tag" style="font-weight: 100;"><%= user.email %></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col"style="margin-top: 25px;">
                         <class id="telephone" type="email" class="floating-input" placeholder=" " required>
-                        <label id="telephone_tag" style="font-weight: 100;">555444777</label>
-                        <p style="margin-top: 15px;"></p>
-                    </div>
-                </div>
-                <div class="row"style="margin-top: 25px;">
-                    <div class="col">
-                        <class id="direccion" type="email" class="floating-input" placeholder=" " required>
-                        <label id="direccion_tag" style="font-weight: 100;">Calle Santa Fe, 24</label>
+                        <label id="telephone_tag" style="font-weight: 100;"><%= user.tlf %></label>
                         <p style="margin-top: 15px;"></p>
                     </div>
                 </div>
