@@ -114,7 +114,6 @@ app.use(function (request,response,next){
  */
 
 app.get("/", (req, res) => {
-  console.log("llega")
   res.render("Landing", {errMsg: null});
 });
 
@@ -195,22 +194,10 @@ app.post("/sign-up-adopter", function(request, response){
   request.body.type = 'adoptante';
   userService.createAccount(request.body, (err, check) => {
       if(check === true){
-          //Guardo en la session el usuario COMPLETO, por comodidad y llevarlo mejor durante toda la practica
-          userService.getUser(request.body.loginMail, (err, userBD)=>{
-            if(err){
-              console.log(err)
-              response.end()
-            }
-            else{
-              console.log(userBD)
-              userBD.email = request.body.loginMail;
-              request.session.currentUser = userBD;
-              response.redirect("/profile");
-            }
-        });
+        console.log("porque explota, i dont understand")
           response.redirect("/confirmation");
       }
-      else { console.log("fuck"); response.render("Login", {errMsg: ""}); }
+      else { console.log("no inserta bien"); response.render("Login", {errMsg: "No se pudo efectuar el registro correctamente"}); }
   })
 }) 
 
@@ -223,25 +210,12 @@ app.post("/sign-up-shelter", function(request, response){
   request.body.type = 'protectora';
   userService.createAccount(request.body, (err, check) => {
       if(check === true){
-          //Guardo en la session el usuario COMPLETO, por comodidad y llevarlo mejor durante toda la practica
-          userService.getUser(request.body.loginMail, (err, userBD)=>{
-            if(err){
-              console.log(err)
-              response.end()
-            }
-            else{
-              console.log(userBD)
-              userBD.email = request.body.loginMail;
-              request.session.currentUser = userBD;
-              response.redirect("/profileshelter");
-            }
-        });
-        // No se que es esto, pero no puede ir aqui, un response no puede pasar por dos redirects
-          //response.redirect("/confirmation");
-      }
-      else { console.log("fuck"); response.render("Login", {errMsg: ""}); }
+        console.log("porque explota, i dont understand")
+        response.redirect("/confirmation");
+        }
+        else { response.render("Login", {errMsg: "No se pudo registrar"}); };
   })
-})
+});
 
 
 app.get("/confirmation", (req, res) => {

@@ -99,9 +99,8 @@ class UserService{
                 callback(err);
                 return;
             }
-            console.log(user)
             connection.query(
-                "insert into account(email,pass,forename,surnames,birthdate, tlf,  userType) values (?,?,?,?,?,?)",
+                "insert into account(email,pass,forename,surnames,birthdate, tlf,  userType) values (?,?,?,?,?,?,?)",
                 [user.email, user.password, user.name, user.surname, user.jqueryDate, user.tlf, user.type],
                 (err) =>{
                     if(err){
@@ -121,7 +120,7 @@ class UserService{
                                     callback(null, true);
                                 }
                             );
-                        }  
+                        }  else  callback(null, true);
                     }
                 }
             );
