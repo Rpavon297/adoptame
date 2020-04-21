@@ -112,7 +112,15 @@ app.get("/Ayuda.html", (req, res) => {
 });
 
 app.get("/Login.html", function (request, response) {
-  response.render("Login", {errMsg: null});
+  if(request.session.currentUser != undefined){
+    if(request.session.currentUser.userType === "adoptante" || request.session.currentUser.userType === "admin"){
+      response.redirect("/profile");
+    }if(request.session.currentUser.userType === "protectora"){
+      response.redirect("/profileshelter");
+    }
+  }else{
+    response.render("Login", {errMsg: null});
+  }
 })
 
 app.post("/Login", function(request, response){
@@ -128,7 +136,7 @@ app.post("/Login", function(request, response){
                 userBD.email = request.body.loginMail;
                 request.session.currentUser = userBD;
                 console.log(userBD)
-                if(userBD.userType === "adoptante"){
+                if(userBD.userType === "adoptante" || userBD.userType === "admin"){
                   response.redirect("/profile");
                 }if(userBD.userType === "protectora"){
                   response.redirect("/profileshelter");
