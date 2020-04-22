@@ -125,6 +125,15 @@ app.get("/Contact.html", (req, res) => {
   res.render("Contact", {errMsg: null});
 });
 
+app.get("/Animals.html", (req, res) => {
+  res.render("Animals", {errMsg: null});
+});
+
+
+app.get("/Shelters.html", (req, res) => {
+  res.render("Shelters", {errMsg: null});
+});
+
 app.get("/Ayuda.html", (req, res) => {
   res.render("Ayuda", {errMsg: null});
 });
