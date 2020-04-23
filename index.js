@@ -164,7 +164,7 @@ app.post("/Login", function(request, response){
               else{
                 userBD.email = request.body.loginMail;
                 request.session.currentUser = userBD;
-                console.log("aqui tienes los datos")
+                console.log("Se ha logueado correctamente, se guardaran estos datos de sesion")
                 console.log(userBD)
                 if(userBD.userType === "adoptante" || userBD.userType === "admin"){
                   response.redirect("/profile");
@@ -264,6 +264,6 @@ app.get("/modprofile", middCheckUser , (req, res) => {
  * Server Activation
  */
 
-app.listen(port, "0.0.0.0", () => {
+app.listen(port, () => {
     console.log(`Listening to requests on http://localhost:${port}`);
   });

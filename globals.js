@@ -13,6 +13,4 @@ module.exports = {
         user: "bb8fb3efb33790",
         password: "d4801e94"
     },
-    
-    port: 3000
 }
