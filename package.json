@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm install && exit 0",
     "dev": "nodemon ./index.js",
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
