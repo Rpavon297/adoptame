@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoptame</title>
+    <!-- Siempre que creeis una nueva plantilla ejs, importar las hojas de estilos CSS, en especial la de bootstrap-->
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    
+
+
+</head>
+
+<body>
+    <%- include('./Header'); %>
+
+    <!-- cuerpo de la pagina -->
+    <div class="content main-img">
+        <div class="container">
+            <div class="row cuadrarHeader">
+                <div class="col-md-offset-4 col-md-4">
+                    <form class="form-login cajatexto texto" action="/Login" method="POST">
+                        <h2 class="">Bienvenido</h2>
+                        <br/>
+                        <input type="text" name="loginMail" class="form-control input-sm chat-input" placeholder="Correo electrónico" required/>
+                        </br>
+                        <input type="password"  name="loginPassword" class="form-control input-sm chat-input" placeholder="Contraseña" required/>
+                        </br>
+                        <div classs="wrapper">
+                            <span class="group-btn">
+                                <button type="submit" class="btn btn-primary"><span class="tnegrita">Login</span></button>
+                            </span>
+                        </div>
+                        <div id="registrate">
+                            <!--LINK PARA REGISTRO-->
+                            ¿Aún no tienes cuenta? <a class="btn link" href="/sign-up">Regístrate</a>
+                        </div>
+                    </form>
+                    <% if(errMsg !== null) { %>
+                        <div class="error">
+                            <span>Dirección de correo y/o contraseña no válidos</span>
+                        </div> <% } %>
+                </div>
+            </div>
+        </div>
+        <!--<img src="/resources/img/dog2.png" class="img-fluid">-->
+    </div>
+
+    <%- include('./Footer'); %>
+</body>
+
+</html>

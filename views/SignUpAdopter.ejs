@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea tu cuenta - Adoptame</title>
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/signup.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <%- include('./Header'); %>
+    
+    <div id="content">
+        <div class="container-fluid banner" style="background-image: url('/resources/img/banner-adopter.png'); margin-bottom: 75px;">
+            <h1 style="margin-top: 180px; margin-bottom: 130px;">Crea tu cuenta</h1> <!--210px-->
+        </div>
+
+        <div class="container" style="max-width: 925px; padding: 0px 100px 0px 100px;">
+            <div class="row">
+                <div class="col" style="color: #868686; text-align: center;">
+                    <h2 style="font-size: 18px; font-weight: 300; line-height: 28px;">Crea tu cuenta para empezar una nueva vida al lado de tu próximo compañero. ¿Ya tienes cuenta? 
+                        <a href="/Login.html" style="color: #97c1cc; font-weight: 400;">Inicia sesión</a>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        
+        <form id="reg_adopter" method="POST" action="/sign-up-adopter">
+            
+            <div class="container" style="max-width: 750px; padding: 0px 100px 0px 100px; margin-top: 30px;">
+                <div class="row" style="margin-top: -25px;">
+                    <div class="col-md col-sm-12" style="margin-top: 25px;">
+                        <input name="name" id="name" type="text" class="floating-input" placeholder=" " required>
+                        <label id="name_tag" style="font-weight: 100;">Nombre</label>
+                        <span id="name_asterisk" class="mandatory">*</span>
+                    </div>
+                    <div class="col-md col-sm-12" style="margin-top: 25px;">
+                        <input name="surname" id="surname" type="text" class="floating-input" placeholder=" " required>
+                        <label id="surname_tag" style="font-weight: 100">Apellidos</label>
+                        <span id="surname_asterisk" class="mandatory">*</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top: 25px;">
+                        <input name="tlf" type="text" maxlength="10" class="floating-input" placeholder=" ">
+                        <label id="phone_tag" style="font-weight: 100;">Número de teléfono</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top: 25px;">
+                        <input name="jqueryDate" id="date" type="text" maxlength="10" class="floating-input" placeholder=" ">
+                        <label id="date_tag" style="font-weight: 100;">Fecha de nacimiento</label>
+                        <p class="aclaration" style="margin-top: 15px;">Ejemplo: 01/01/2001</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 1400px;">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col" style="margin: 10px 0px 10px 0px;"><hr></div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 750px; padding: 0px 100px 0px 100px;">
+                <div class="row">
+                    <div class="col">
+                        <input name="email" id="email" type="email" class="floating-input" placeholder=" " required>
+                        <label id="email_tag" style="font-weight: 100;">Correo electrónico</label>
+                        <span id="email_asterisk" class="mandatory">*</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top: 25px;">
+                        <input name="password" id="password" type="password" class="floating-input" placeholder=" " required>
+                        <label id="password_tag" style="font-weight: 100;">Contraseña</label>
+                        <span id="password_asterisk" class="mandatory">*</span>
+                        <span id="password_icon" class="mandatory far fa-eye-slash" style="right: -30px; top: +21.5px; color: #e9e9e9; cursor: pointer; font-size: 22px;" onclick="password_visibility()"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top: 12px;">
+                        <input name="confirm_password" id="confirm_password" type="password" class="floating-input" oninput="check(this)" placeholder=" " required>
+                        <script language='javascript' type='text/javascript'>
+                            function check(input) {
+                                if (input.value != document.getElementById('password').value) {
+                                    input.setCustomValidity('Las contraseñas no coinciden');
+                                } else {
+                                    input.setCustomValidity('');
+                                }
+                            }
+                        </script>
+                        <label id="confirm_password_tag" style="font-weight: 100;">Confirmar Contraseña</label>
+                        <span id="confirm_password_asterisk" class="mandatory">*</span>
+                        <div id="wrapper">
+                            <div id="meter1" class="meter"></div>
+                            <div id="meter2" class="meter"></div>
+                            <div id="meter3" class="meter"></div>
+                            <div id="meter4" class="meter"></div>
+                            <div id="meter5" class="meter"></div>
+                        </div>
+                        <p class="aclaration" style="margin-top: 35px;">Las casillas marcadas con <span style="font-weight:300; vertical-align:sub;">*</span> son de respuesta obligatoria.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 1400px;">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col" style="margin: 0px 0px 10px 0px;"><hr></div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+
+            <div class="container" style="max-width: 700px; margin-bottom: 75px;">
+                <div class="row">
+                    <div class="col">
+                        <p class="aclaration" style="font-size: 15px; text-align: center;">Al pulsar el botón "Continuar" confirmas que has leido y aceptas los 
+                        <a href="#" style="color: #97c1cc; font-weight: 400;">Términos y Condiciones</a> y la 
+                        <a href="#" style="color: #97c1cc; font-weight: 400;">Política de Privacidad</a> de Adóptame.</p>
+                        <button type="submit" id="submit-button" class="button" style="margin-top: 25px;">Continuar</button>  
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        var $jqDate = jQuery('input[name="jqueryDate"]');
+        var $jqPassword = jQuery('input[name="password"]');
+
+        $jqDate.bind('keyup','keydown', function(e) {
+            if (e.which !== 8) {	
+                var numChars = $jqDate.val().length;
+
+                if(numChars === 2 || numChars === 5) {
+                    var thisVal = $jqDate.val();
+                    thisVal += '/';
+                    $jqDate.val(thisVal);
+                }
+            }
+        });
+
+        $jqPassword.bind('keyup','keydown', function(e) {
+            var numChars = $jqPassword.val().length;
+            var strength = 0;
+
+            document.getElementById("meter1").style.backgroundColor = '#f8f8f8';
+            document.getElementById("meter1").style.borderColor = '#e9e9e9';
+            document.getElementById("meter2").style.backgroundColor = '#f8f8f8';
+            document.getElementById("meter2").style.borderColor = '#e9e9e9';
+            document.getElementById("meter3").style.backgroundColor = '#f8f8f8';
+            document.getElementById("meter3").style.borderColor = '#e9e9e9';
+            document.getElementById("meter4").style.backgroundColor = '#f8f8f8';
+            document.getElementById("meter4").style.borderColor = '#e9e9e9';
+            document.getElementById("meter5").style.backgroundColor = '#f8f8f8';
+            document.getElementById("meter5").style.borderColor = '#e9e9e9';
+
+            if (numChars >= 5) {
+                strength += 1;
+
+                if ($jqPassword.val().match(/[0-9]+/)) strength += 1;
+                if ($jqPassword.val().match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) strength += 1;
+                if ($jqPassword.val().match(/([!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1;
+                if ($jqPassword.val().match(/(.*[!,%,&,@,#,$,^,*,?,_,~].*[!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1;
+                if (numChars < 10 && strength >= 2) strength = 2;
+            }
+
+            if (strength == 1) {
+                document.getElementById("meter1").style.backgroundColor = '#4a4a4a';
+                document.getElementById("meter1").style.borderColor = '#303031';
+            } else if (strength == 2) {
+                document.getElementById("meter1").style.backgroundColor = '#ea5658';
+                document.getElementById("meter1").style.borderColor = '#b3424c';
+                document.getElementById("meter2").style.backgroundColor = '#ea5658';
+                document.getElementById("meter2").style.borderColor = '#b3424c';
+            } else if (strength == 3) {
+                document.getElementById("meter1").style.backgroundColor = '#f39333';
+                document.getElementById("meter1").style.borderColor = '#e2853f';
+                document.getElementById("meter2").style.backgroundColor = '#f39333';
+                document.getElementById("meter2").style.borderColor = '#e2853f';
+                document.getElementById("meter3").style.backgroundColor = '#f39333';
+                document.getElementById("meter3").style.borderColor = '#e2853f';
+            } else if (strength == 4) {
+                document.getElementById("meter1").style.backgroundColor = '#72c7d5';
+                document.getElementById("meter1").style.borderColor = '#45baba';
+                document.getElementById("meter2").style.backgroundColor = '#72c7d5';
+                document.getElementById("meter2").style.borderColor = '#45baba';
+                document.getElementById("meter3").style.backgroundColor = '#72c7d5';
+                document.getElementById("meter3").style.borderColor = '#45baba';
+                document.getElementById("meter4").style.backgroundColor = '#72c7d5';
+                document.getElementById("meter4").style.borderColor = '#45baba';
+            } else if (strength == 5) {
+                document.getElementById("meter1").style.backgroundColor = '#7aba4d';
+                document.getElementById("meter1").style.borderColor = '#5ab146';
+                document.getElementById("meter2").style.backgroundColor = '#7aba4d';
+                document.getElementById("meter2").style.borderColor = '#5ab146';
+                document.getElementById("meter3").style.backgroundColor = '#7aba4d';
+                document.getElementById("meter3").style.borderColor = '#5ab146';
+                document.getElementById("meter4").style.backgroundColor = '#7aba4d';
+                document.getElementById("meter4").style.borderColor = '#5ab146';
+                document.getElementById("meter5").style.backgroundColor = '#7aba4d';
+                document.getElementById("meter5").style.borderColor = '#5ab146';
+            }
+        });
+
+        function validate(id) {
+            if (document.getElementById(id).value == "") {
+                change_red(id);
+            }
+            else {
+                change_normal(id);
+            }
+        }
+
+        function change_red(id, req = true) {
+            document.getElementById(id).style.borderColor = '#f48888';
+            if (req) document.getElementById(id + "_asterisk").style.color = '#f48888';
+            document.getElementById(id + "_tag").style.color = '#f48888';
+
+            document.getElementById(id).addEventListener("focus", (e) => {
+                e.target.style.boxShadow = "0 0 5px #f48888";
+                e.target.style.border = "1px solid #f48888";
+            });
+            document.getElementById(id).addEventListener("blur", (e) => {
+                e.target.style.boxShadow = "";
+                e.target.style.border = "1px solid #f48888";
+            });
+        }
+
+        function change_normal(id, req = true) {
+            document.getElementById(id).style.borderColor = '#d0d0d0';
+            if (req) document.getElementById(id + "_asterisk").style.color = '#e9e9e9';
+            document.getElementById(id + "_tag").style.color = '#888888';
+            document.getElementById(id).addEventListener("focus", (e) => {
+                e.target.style.boxShadow = "0 0 5px rgba(81, 203, 238, 1)";
+                e.target.style.border = "1px solid #97c1cc";
+            });
+            document.getElementById(id).addEventListener("blur", (e) => {
+                e.target.style.boxShadow = "";
+                e.target.style.border = "1px solid #d0d0d0";
+            });
+        }
+
+        function password_visibility() {
+            var password_input = document.getElementById('password');
+            var confirm_password_input = document.getElementById('confirm_password');
+            var password_icon = document.getElementById('password_icon');
+                
+                if (password_input.type == 'password') {
+                    password_input.type = 'text';
+                    confirm_password_input.type = 'text';
+                    password_icon.style.color = "#4c4c4c";
+                    password_icon.className = 'mandatory far fa-eye';
+                    password_icon.style.right = "-28.7px";
+                }
+                else {
+                    password_input.type='password';
+                    confirm_password_input.type = 'password';
+                    password_icon.style.color = "#e9e9e9";
+                    password_icon.style.right = "-30px";
+                    password_icon.className = 'mandatory far fa-eye-slash';
+                }
+        }
+
+        function validate_date() {
+            valid_date = true;
+            var date_input = document.getElementById("date");
+            var day_list = [31,28,31,30,31,30,31,31,30,31,30,31];
+
+            if (date_input.value.length > 0 && date_input.value.length < 10) {
+                valid_date = false;
+            }
+            else if (date_input.value.length == 10) {
+                var date = date_input.value.split('/');
+
+                var day = parseInt(date[0]);
+                var month = parseInt(date[1]);
+                var year = parseInt(date[2]);
+
+                if ((!(year % 4) && year % 100) || !(year % 400)) day_list[1] += 1;
+
+                if ((year < 1900 || year > 2020) || (month < 1 || month > 12) || (day < 1 || day > 31 || day > day_list[month])) {
+                    valid_date = false;
+                }
+            }
+
+            if (!valid_date) {
+                date_input.setCustomValidity('Introduce una fecha válida');
+                change_red("date", false);
+            }
+            else {
+                date_input.setCustomValidity('');
+                change_normal("date", false);
+            }
+        }
+
+        function validate_password() {
+            var password_input = document.getElementById("password");
+            var confirm_password_input = document.getElementById("confirm_password");
+
+            if (password_input.value == "" || confirm_password_input.value == "") {
+                change_red("password");
+                change_red("confirm_password");
+            }
+            else {
+                if (password_input.value != confirm_password_input.value) {
+                    change_red("password");
+                    change_red("confirm_password");
+                }
+                else {
+                    change_normal("password");
+                    change_normal("confirm_password");
+                }
+            }
+        }
+
+        function test_email(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            
+            return re.test(email);
+        }
+
+        function validate_email() {
+            var email_input = document.getElementById('email');
+            var ready = 0;
+
+            if (test_email(email_input.value)) {
+                email_input.setCustomValidity('');
+                change_normal('email');
+            }
+            else {
+                email_input.setCustomValidity('Introduce un email válido');
+                change_red('email');
+            }
+        }
+
+        function setInputFilter(textbox, inputFilter) {
+            ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+                textbox.addEventListener(event, function() {
+                
+                    if (inputFilter(this.value)) {
+                        this.oldValue = this.value;
+                        this.oldSelectionStart = this.selectionStart;
+                        this.oldSelectionEnd = this.selectionEnd;
+                    } else if (this.hasOwnProperty("oldValue")) {
+                        this.value = this.oldValue;
+                        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                    } else {
+                        this.value = "";
+                    }
+                });
+            });
+        }
+
+        setInputFilter(document.getElementById("date"), function(value) {
+            return /^-?\d{0,2}[/]?\d*[/]?\d*$/.test(value); 
+        });
+
+        function submit_form() {
+            validate("name");
+            validate("surname");
+            validate_date();
+            validate_email();
+            validate_password();
+        }
+
+    </script>
+
+    <%- include('./Footer'); %>
+</body>
+
+</html>
