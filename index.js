@@ -77,10 +77,10 @@ const userService = new userServices.UserService(pool);
 // Sesión en la base de datos
 const MySQLStore = sessionMSQL(session);
 const sessionStore = new MySQLStore({
-    host: globals.mysqlConfig.host,
-    user: globals.mysqlConfig.user,
-    password: globals.mysqlConfig.password,
-    database: globals.mysqlConfig.database
+    host: globals.mysqlConfigHerokuPostgres.host,
+    user: globals.mysqlConfigHerokuPostgres.user,
+    password: globals.mysqlConfigHerokuPostgres.password,
+    database: globals.mysqlConfigHerokuPostgres.database
 });
 
 // Sesión de la web
