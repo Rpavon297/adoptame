@@ -124,6 +124,7 @@ app.use(function (request,response,next){
  */
 
 app.get("/", (req, res) => {
+  console.log("aqui llega tambien, al get /");
   res.render("Landing", {errMsg: null});
 });
 
