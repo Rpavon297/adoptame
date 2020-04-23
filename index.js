@@ -51,7 +51,7 @@ const pool = mysql.createPool({
     password: globals.mysqlConfig.password,
     database: globals.mysqlConfig.database
 });
-*/
+
 
 //Heroku
 const pool = mysql.createPool({
@@ -59,7 +59,17 @@ const pool = mysql.createPool({
   user: globals.mysqlConfigHeroku.user,
   password: globals.mysqlConfigHeroku.password,
   database: globals.mysqlConfigHeroku.database
+}); */
+
+
+//Heroku postgress
+const pool = mysql.createPool({
+  host: globals.mysqlConfigHerokuPostgres.host,
+  user: globals.mysqlConfigHerokuPostgres.user,
+  password: globals.mysqlConfigHerokuPostgres.password,
+  database: globals.mysqlConfigHerokuPostgres.database
 });
+
 
 // Servicio de usuario
 const userService = new userServices.UserService(pool);
