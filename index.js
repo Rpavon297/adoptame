@@ -44,11 +44,21 @@ app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 
 
 // Pool de conexiones
+/*
 const pool = mysql.createPool({
     host: globals.mysqlConfig.host,
     user: globals.mysqlConfig.user,
     password: globals.mysqlConfig.password,
     database: globals.mysqlConfig.database
+});
+*/
+
+//Heroku
+const pool = mysql.createPool({
+  host: globals.mysqlConfigHeroku.host,
+  user: globals.mysqlConfigHeroku.user,
+  password: globals.mysqlConfigHeroku.password,
+  database: globals.mysqlConfigHeroku.database
 });
 
 // Servicio de usuario
