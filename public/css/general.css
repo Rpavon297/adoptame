@@ -217,3 +217,15 @@ header{
 body .logout{
     color: blue;
 }
+
+
+/* Clase para fijar una altura minima y que el footer no se quede muy arriba*/
+
+.main-content{
+    min-height: 700px;
+}
+
+.error{
+
+
+}
