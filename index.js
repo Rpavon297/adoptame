@@ -44,16 +44,7 @@ app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 
 
 // Pool de conexiones
-/*
-const pool = mysql.createPool({
-    host: globals.mysqlConfig.host,
-    user: globals.mysqlConfig.user,
-    password: globals.mysqlConfig.password,
-    database: globals.mysqlConfig.database
-});
 
-*/
-//Heroku
 const pool = mysql.createPool({
   host: globals.mysqlConfigHeroku.host,
   user: globals.mysqlConfigHeroku.user,
@@ -61,15 +52,6 @@ const pool = mysql.createPool({
   database: globals.mysqlConfigHeroku.database
 }); 
 
-/*
-//Heroku postgress
-const pool = mysql.createPool({
-  host: globals.mysqlConfigHerokuPostgres.host,
-  user: globals.mysqlConfigHerokuPostgres.user,
-  password: globals.mysqlConfigHerokuPostgres.password,
-  database: globals.mysqlConfigHerokuPostgres.database
-});
-*/
 
 // Servicio de usuario
 const userService = new userServices.UserService(pool);
@@ -222,9 +204,9 @@ app.get("/sign-up-adopter", (req, res) => {
 
 app.post("/sign-up-adopter", function(request, response){
   request.body.type = 'adoptante';
+  console.log(request.body)
   userService.createAccount(request.body, (err, check) => {
       if(check === true){
-        console.log("porque explota, i dont understand")
           response.redirect("/confirmation");
       }
       else { console.log("no inserta bien"); response.render("Login", {errMsg: "No se pudo efectuar el registro correctamente"}); }
@@ -268,6 +250,16 @@ app.get("/profileshelter", middCheckUser, (req, res) => {
 
 app.get("/modprofile", middCheckUser , (req, res) => {
   res.render("ModificarPerfilAdoptante", {errMsg: null});
+});
+
+app.post("/modprofile", function(request, response){
+  userService.modifUser(request.body, (err, check) => {
+      if(check === true){
+        console.log("porque explota, i dont understand")
+        response.redirect("/confirmation");
+        }
+        else { response.render("Login", {errMsg: "No se pudo registrar"}); };
+  })
 });
 
 
