@@ -1,0 +1,28 @@
+
+.ucm {}
+.padding{
+	padding: 25px 30px;
+}
+
+.cajatexto {
+    padding: 15px 30px;
+    color: rgb(77, 77, 77);
+    background-color: rgb(242, 242, 242);
+    border-radius: 5px;
+}
+
+.quienes {
+    font-family: 'Bree Serif', serif;
+    font-size: 20px;
+    color: rgb(115, 115, 115);
+}
+
+.centrar {
+    display: flex;
+    align-items: center;
+}
+
+
+.abajo {
+    margin-bottom: 30px;
+}
