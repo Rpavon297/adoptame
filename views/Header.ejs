@@ -4,26 +4,34 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <header>
     <div class="container">
         <div class="row">
             <div class="col-sm-12 menu-content">
-                <img class="logo_negro" src="/resources/img/logo_negro.png">
-                <div class="menu" id="menu_id">
+                <a href="/Home.html"><img class="logo_negro" src="/resources/img/logo_negro.png"></a>
+                <div class="menu"  id="menu_id">
                     <a href="/Home.html">Inicio</a>
-                    <a href="">Animales</a>
-                    <a href="">Protectoras</a>
-                    <a href="">Sobre Nosotros</a>
+                    <a href="/Animals.html">Animales</a>
+                    <a href="/Shelters.html">Protectoras</a>
+                    <a href="/AboutUs.html">Sobre Nosotros</a>
                     <a href="/Contact.html">Contacto</a>
                     <a href="/Ayuda.html">Ayuda</a>
+                    <% if ( login ) { %>
+                    <a href="/profile"> tu perfil</a>
+                    <a href="/Logout" class="logout">desconectar</a>
+                    <% } %>
                     <a class="login-option" href="/Login.html">Iniciar sesión</a>
                     <a href="javascript:void(0);" class="icon" onclick="expandMenu()"><img
-                            src="/resources/icons/menu-expand.png" alt=""></a>
+                            src="/resources/icons/menu-expand2.png" width="40px" alt=""></a>
                 </div>
-                <div class="icon-login" id="login_id">
-                    <a href="/Login.html"><img src="/resources/icons/user-login.png" alt=""></a>
+               
+                    <% if ( !login ) { %>
+                        <div class="icon-login" id="login_id">
+                    <a href="/Login.html"><img src="/resources/icons/user-login2.png" height="27px" alt=""></a>
                 </div>
+                    <% } %>
             </div>
         </div>
     </div>
