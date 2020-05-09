@@ -20,7 +20,7 @@
             <h1 style="margin-top: 80px; margin-bottom: 50px; margin-right: 1200px;">Editar Perfil</h1> <!--210px-->
         </div>
         
-        <form id="reg_adopter" method="POST">
+        <form id="reg_adopter" method="POST" action="modprofile">
             <div class="container" style="max-width: 150px;">
                 <div class="row">
                     <div class="fotoadoptante" style="margin-top: 25px;">
@@ -35,17 +35,23 @@
             <div class="container" style="max-width: 750px; padding: 0px 100px 0px 100px; margin-top: 30px;">
                 <div class="row" style="margin-top: -25px;">
                     <div class="col-md col-sm-12" style="margin-top: 25px;">
-                        <input id="name" type="text" class="floating-input" placeholder=" " required>
+                        <input name="name" id="name"  type="text" class="floating-input" placeholder=" " required>
                         <label id="name_tag" style="font-weight: 100;">Nombre</label>
                     </div>
                     <div class="col-md col-sm-12" style="margin-top: 25px;">
-                        <input id="surname" type="text" class="floating-input" placeholder=" " required>
+                        <input name="surname" id="surname"type="text" class="floating-input" placeholder=" " required>
                         <label id="surname_tag" style="font-weight: 100">Apellidos</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col" style="margin-top: 25px;">
-                        <input id="date"  name="jqueryDate" type="text" maxlength="10" class="floating-input" placeholder=" ">
+                        <input name="tlf" type="text" maxlength="10" class="floating-input" placeholder=" ">
+                        <label id="phone_tag" style="font-weight: 100;">Número de teléfono</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top: 25px;">
+                        <input name="jqueryDate" id="date" type="date"  class="floating-input" >
                         <label id="date_tag" style="font-weight: 100;">Fecha de nacimiento</label>
                         <p class="aclaration" style="margin-top: 15px;">Ejemplo: dd/mm/aaaa</p>
                     </div>
@@ -56,28 +62,14 @@
             <div class="container" style="max-width: 750px; padding: 0px 100px 0px 100px;">
                 <div class="row">
                     <div class="col">
-                        <input id="email" type="email" class="floating-input" placeholder=" " required>
+                        <input name="email" id="email"  class="floating-input" placeholder=" " required>
                         <label id="email_tag" style="font-weight: 100;">Correo electrónico</label>
                         <p class="aclaration" style="margin-top: 15px;">Recibirás un correo de verificación</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
-                        <input id="telephone" type="email" class="floating-input" placeholder=" " required>
-                        <label id="telephone_tag" style="font-weight: 100;">Teléfono</label>
-                        <p style="margin-top: 15px;"></p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <input id="direccion" type="email" class="floating-input" placeholder=" " required>
-                        <label id="direccion_tag" style="font-weight: 100;">Dirección</label>
-                        <p style="margin-top: 15px;"></p>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col" style="margin-top: 15px;">
-                        <input id="password" name="jqueryPassword" type="password" class="floating-input" placeholder=" " required>
+                        <input name="password" id="password"  type="password" class="floating-input" placeholder=" " required>
                         <label id="password_tag" style="font-weight: 100;">Contraseña</label>
                         <span id="password_icon" class="mandatory far fa-eye-slash" style="right: -30px; top: +21.5px; color: #97c1cc; cursor: pointer; font-size: 22px;" onclick="password_visibility()"></span>
                     </div>
@@ -119,7 +111,7 @@
             <div class="container" style="max-width: 700px; margin-bottom: 75px;">
                 <div class="row">
                     <div class="col">
-<!--TODO eliminar-->    <button type="button" class="button" style="margin-top: 25px; background-color: #1a4b83;" onclick="window.location.href='/profile'">Confirmar Cambios</button>
+<!--TODO eliminar-->    <button type="button" class="button" style="margin-top: 25px; background-color: #1a4b83;">Confirmar Cambios</button>
                     </div>
                 </div>
             </div>

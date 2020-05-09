@@ -44,12 +44,14 @@ app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 
 
 // Pool de conexiones
+
 const pool = mysql.createPool({
-    host: globals.mysqlConfig.host,
-    user: globals.mysqlConfig.user,
-    password: globals.mysqlConfig.password,
-    database: globals.mysqlConfig.database
-});
+  host: globals.mysqlConfigHeroku.host,
+  user: globals.mysqlConfigHeroku.user,
+  password: globals.mysqlConfigHeroku.password,
+  database: globals.mysqlConfigHeroku.database
+}); 
+
 
 // Servicio de usuario
 const userService = new userServices.UserService(pool);
@@ -57,10 +59,10 @@ const userService = new userServices.UserService(pool);
 // Sesión en la base de datos
 const MySQLStore = sessionMSQL(session);
 const sessionStore = new MySQLStore({
-    host: globals.mysqlConfig.host,
-    user: globals.mysqlConfig.user,
-    password: globals.mysqlConfig.password,
-    database: globals.mysqlConfig.database
+    host: globals.mysqlConfigHeroku.host,
+    user: globals.mysqlConfigHeroku.user,
+    password: globals.mysqlConfigHeroku.password,
+    database: globals.mysqlConfigHeroku.database
 });
 
 // Sesión de la web
@@ -114,7 +116,7 @@ app.use(function (request,response,next){
  */
 
 app.get("/", (req, res) => {
-  console.log("llega")
+  console.log("aqui llega tambien, al get /");
   res.render("Landing", {errMsg: null});
 });
 
@@ -124,6 +126,15 @@ app.get("/Home.html", (req, res) => {
 
 app.get("/Contact.html", (req, res) => {
   res.render("Contact", {errMsg: null});
+});
+
+app.get("/Animals.html", (req, res) => {
+  res.render("Animals", {errMsg: null});
+});
+
+
+app.get("/Shelters.html", (req, res) => {
+  res.render("Shelters", {errMsg: null});
 });
 
 app.get("/Ayuda.html", (req, res) => {
@@ -146,7 +157,7 @@ app.post("/Login", function(request, response){
               else{
                 userBD.email = request.body.loginMail;
                 request.session.currentUser = userBD;
-                console.log("aqui tienes los datos")
+                console.log("Se ha logueado correctamente, se guardaran estos datos de sesion")
                 console.log(userBD)
                 if(userBD.userType === "adoptante" || userBD.userType === "admin"){
                   response.redirect("/profile");
@@ -193,24 +204,12 @@ app.get("/sign-up-adopter", (req, res) => {
 
 app.post("/sign-up-adopter", function(request, response){
   request.body.type = 'adoptante';
+  console.log(request.body)
   userService.createAccount(request.body, (err, check) => {
       if(check === true){
-          //Guardo en la session el usuario COMPLETO, por comodidad y llevarlo mejor durante toda la practica
-          userService.getUser(request.body.loginMail, (err, userBD)=>{
-            if(err){
-              console.log(err)
-              response.end()
-            }
-            else{
-              console.log(userBD)
-              userBD.email = request.body.loginMail;
-              request.session.currentUser = userBD;
-              response.redirect("/profile");
-            }
-        });
           response.redirect("/confirmation");
       }
-      else { console.log("fuck"); response.render("Login", {errMsg: ""}); }
+      else { console.log("no inserta bien"); response.render("Login", {errMsg: "No se pudo efectuar el registro correctamente"}); }
   })
 }) 
 
@@ -223,25 +222,12 @@ app.post("/sign-up-shelter", function(request, response){
   request.body.type = 'protectora';
   userService.createAccount(request.body, (err, check) => {
       if(check === true){
-          //Guardo en la session el usuario COMPLETO, por comodidad y llevarlo mejor durante toda la practica
-          userService.getUser(request.body.loginMail, (err, userBD)=>{
-            if(err){
-              console.log(err)
-              response.end()
-            }
-            else{
-              console.log(userBD)
-              userBD.email = request.body.loginMail;
-              request.session.currentUser = userBD;
-              response.redirect("/profileshelter");
-            }
-        });
-        // No se que es esto, pero no puede ir aqui, un response no puede pasar por dos redirects
-          //response.redirect("/confirmation");
-      }
-      else { console.log("fuck"); response.render("Login", {errMsg: ""}); }
+        console.log("porque explota, i dont understand")
+        response.redirect("/confirmation");
+        }
+        else { response.render("Login", {errMsg: "No se pudo registrar"}); };
   })
-})
+});
 
 
 app.get("/confirmation", (req, res) => {
@@ -264,6 +250,16 @@ app.get("/profileshelter", middCheckUser, (req, res) => {
 
 app.get("/modprofile", middCheckUser , (req, res) => {
   res.render("ModificarPerfilAdoptante", {errMsg: null});
+});
+
+app.post("/modprofile", function(request, response){
+  userService.modifUser(request.body, (err, check) => {
+      if(check === true){
+        console.log("porque explota, i dont understand")
+        response.redirect("/confirmation");
+        }
+        else { response.render("Login", {errMsg: "No se pudo registrar"}); };
+  })
 });
 
 
