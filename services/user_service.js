@@ -94,38 +94,74 @@ class UserService{
      * @param {*} webpage 
      */
     createAccount(user, callback){
+        if((user.email === "") ||(user.name === "") || (user.password === "") ||  (user.surname === undefined) ){
+            callback(null, false); return;
+        }
         this.pool.getConnection((err,connection) => {
             if(err){
                 callback(err);
                 return;
             }
-            console.log(user)
-            connection.query(
-                "insert into account(email,pass,forename,surnames,birthdate, tlf,  userType) values (?,?,?,?,?,?)",
-                [user.email, user.password, user.name, user.surname, user.jqueryDate, user.tlf, user.type],
-                (err) =>{
-                    if(err){
-                        callback(err);
-                        return ;
-                    }
-                    else{
-                        if(user.type === 'protectora'){
-                            connection.query(
-                                "insert into shelter(userEmail, shelterName, shelterAddress, shelterDescription, webpage) values (?,?,?,?,?)",
-                                [user.email, user.shelter_name, user.location, user.descripcion, user.web],
-                                (err) =>{
-                                    if(err){
-                                        callback(err);
-                                    }
-                                    connection.release();
-                                    callback(null, true);
-                                }
-                            );
-                        }  
-                    }
+            connection.query("select email from account where email = ?", [user.email], (err, result) => {
+                if(err) {callback(err); return;}
+                if(result.length == 0){
+                    connection.query(
+                        "insert into account(email,pass,forename,surnames,birthdate, tlf,  userType) values (?,?,?,?,?,?,?)",
+                        [user.email, user.password, user.name, user.surname, user.jqueryDate, user.tlf, user.type],
+                        (err) =>{
+                            if(err){
+                                callback(err);
+                                return ;
+                            }
+                            else{
+                                if(user.type === 'protectora'){
+                                    connection.query(
+                                        "insert into shelter(userEmail, shelterName, shelterAddress, shelterDescription, webpage) values (?,?,?,?,?)",
+                                        [user.email, user.shelter_name, user.location, user.descripcion, user.web],
+                                        (err) =>{
+                                            if(err){
+                                                callback(err);
+                                            }
+                                            connection.release();
+                                            callback(null, true);
+                                        }
+                                    );
+                                }  else  {connection.release(); callback(null, true);}
+                            }
+                        }
+                    );
                 }
-            );
+                else{  conn.release(); callback(null, false);}
+            }) 
         });
+    }
+
+    modifUser(user, callback){
+        this.pool.getConnection((err, conn) => {
+            conn.query("UPDATE account SET email=?, pass=?, forename=?, surnames=?, birthdate=?, tlf=? WHERE email=?", 
+            [user.email, user.password, user.name, user.surname, user.jqueryDate, user.tlf, user.email],
+           (err, check)=>{
+               if(err){
+                conn.release();
+                callback(err);
+               }else{
+                if(user.type === 'protectora'){
+                    connection.query(
+                        "UPDATE shelter SET userEmail=?, shelterName=?, shelterAddress=?, shelterDescription=?, webpage=?",
+                        [user.email, user.shelter_name, user.location, user.descripcion, user.web],
+                        (err) =>{
+                            if(err){
+                                callback(err);
+                            }
+                            connection.release();
+                            callback(null, true);
+                        }
+                    );
+                }  else  {connection.release(); callback(null, true);}
+               }
+               
+        });
+    });
     }
 }
 
