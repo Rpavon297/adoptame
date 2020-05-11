@@ -1,10 +1,56 @@
+.content {
+    margin-left: 20px;
+}
+
+.negrita {
+    display: inline-block;
+    font-size: 30px;
+    font-family: 'Bree Serif', serif;
+    color: rgb(115, 115, 115);
+}
+
+.botonera {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+
+.volver {
+    font-size: 20px;
+}
+
+.datos {
+    display: inline-block;
+    font-size: 20px;
+    font-family: 'Bree Serif', serif;
+    color: rgb(37, 37, 37);
+}
+
+.externo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textoimagen {
+    font-family: 'Bree Serif', serif;
+    font-size: 40px;
+    color: black;
+}
+
+.externo {
+    margin-top: 50px;
+}
+
 html * {
     font-family: 'Montserrat', sans-serif;
 }
 
 .banner {
     background-color: #e8e8e8;
-    color: #ffffff;
+    color: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -18,18 +64,18 @@ html * {
 }
 
 .text {
-    color: #868686;
+    color: black;
     text-align: center;
 }
 
 .floating-input {
     font-size: 12pt;
     font-weight: 100;
-    color: #4d4d4d;
+    color:black;
     height: 65px;
     width: 100%;
     border-radius: 5px;
-    border: 1px solid #d0d0d0;
+    border: 1px solid #97c1cc;
     padding: 20px 57px 0px 18px;
     margin: auto;
     display: block;
@@ -37,7 +83,7 @@ html * {
   
 .floating-input:focus {
     outline: none !important;
-    border: 1px solid #97c1cc;
+    border: 1px solid black;
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
 }
 
@@ -47,7 +93,7 @@ label {
     left: 15px;
     top: 21px;
     transition: 0.08s ease all;
-    color: #888888;
+    color:black;
     font-size: 12pt;
     padding: 0px 20px 0px 18px;
     -moz-transition:0.08s ease all; 
@@ -74,7 +120,7 @@ label {
 .aclaration {
     font-size: 13px;
     font-weight: 300;
-    color: #868686;
+    color: black;
 }
 
 .button {
@@ -133,7 +179,9 @@ label {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+}
 
+#text-area-id {
     color: #4d4d4d;
     height: 170px;
     width: 100%;
@@ -148,7 +196,7 @@ label {
     resize: none;
 }
 
-.text-area:focus {
+#text-area-id:focus {
     outline: none !important;
     border: 1px solid #97c1cc;
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
@@ -158,36 +206,6 @@ label {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
 }
-
-.sign-up-page h1 {
-    font-size: 35px;
-    font-weight: 500;
-    line-height: 50px;
-    color: #4c4c4c;
-}
-
-.sign-up-page h2 {
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 25px;
-    color: #868686;
-}
-
-.sign-up-page h3 {
-    font-size: 26px;
-    font-weight: 500;
-    margin-top: 30px;
-    color: #4c4c4c;
-}
-
-.sign-up-page p {
-    font-size: 16px;
-    font-weight: 300;
-    margin-top: 20px;
-    line-height: 25px;
-    color: #868686;
-}
-
 .image {
     display: block;
     margin-left: auto;
