@@ -177,8 +177,8 @@ app.get("/Logout", middCheckUser,function(request, response){
   response.redirect("/Login.html");
 })
 
-app.get("/admin", (req, res) => {
-  res.render("Admin", {errMsg: null});
+app.get("/gestionUsuarios", (req, res) => {
+  res.render("GestionUsuarios", {errMsg: null});
 });
 
 app.get("/listarAdoptantes", (req, res) => {
