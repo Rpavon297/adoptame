@@ -188,7 +188,9 @@ app.get("/listarAdoptantes", (req, res) => {
 app.get("/listarProtectoras", (req, res) => {
   res.render("ListarProtectoras", {errMsg: null});
 });
-
+app.get("/detalleprotectora", (req, res) => {
+  res.render("detalleprotectora", {errMsg: null});
+});
 app.get("/solicitudesProtectoras", middCheckUser, (req, res) => {
   res.render("SolicitudesProtectoras", {errMsg: null});
 });
