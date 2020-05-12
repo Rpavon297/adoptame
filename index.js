@@ -177,13 +177,20 @@ app.get("/Logout", middCheckUser,function(request, response){
   response.redirect("/Login.html");
 })
 
-
 app.get("/admin", (req, res) => {
   res.render("Admin", {errMsg: null});
 });
 
+app.get("/listarAdoptantes", (req, res) => {
+  res.render("ListarAdoptantes", {errMsg: null});
+});
+
+app.get("/listarProtectoras", (req, res) => {
+  res.render("ListarProtectoras", {errMsg: null});
+});
+
 app.get("/solicitudesProtectoras", middCheckUser, (req, res) => {
-  res.render("solicitudesProtectoras", {errMsg: null});
+  res.render("SolicitudesProtectoras", {errMsg: null});
 });
 
 app.get("/SolicitudesAdopcion.html", middCheckUser, (req, res) => {
