@@ -60,6 +60,12 @@
     font-size: 20px;
     }
 
+.tipoletra{
+    font-family: 'Bree Serif', serif;
+    color:black;
+    font-size: 20px;
+}
+
 .margenBajo{
 	margin-bottom:10px;
 }
