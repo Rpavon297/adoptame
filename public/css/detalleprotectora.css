@@ -8,17 +8,22 @@
     font-family: 'Bree Serif', serif;
     color: rgb(115, 115, 115);
 }
+.panel {
+    border-color: rgb(32, 31, 31);
+}
 
-.botonera {
+.boton{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 30px;
+    
 }
 
 .colorcuadro{
-
+    color: rgb(7, 7, 7);
+    border-color: darkgray;
     background-color: darkgray;
 }
 .volver {
@@ -51,7 +56,9 @@
     margin-top: 100px;
 }
 
-
+.volver {
+    font-size: 20px;
+    }
 
 .margenBajo{
 	margin-bottom:10px;
