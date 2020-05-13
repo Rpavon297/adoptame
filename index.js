@@ -189,7 +189,15 @@ app.get("/listarProtectoras", (req, res) => {
   res.render("ListarProtectoras", {errMsg: null});
 });
 app.get("/detalleprotectora", (req, res) => {
-  res.render("detalleprotectora", {errMsg: null});
+  var photo = "/resources/img/logo-lamadrilena.png";
+  var nomb="La Madrileña";
+  var descrip="Todas las personas que componemos el equipo de La Madrileña procedemos del mundo de la protección animal, en el que hemos trabajado durante muchos años y por el que seguimos luchando todos los días.";
+  var telef="(+34)648 495 073 ";
+  var ciu="Madrid";
+  var direcci = "calle Siniestro, 28, Madrid ";
+  var corre="l6@gmail.com";
+
+  res.render("detalleprotectora", {errMsg: null,foto:photo,nombre:nomb,descripcion:descrip, telefono:telef,direccion:direcci,correo:corre,ciudad:ciu});
 });
 app.get("/solicitudesProtectoras", middCheckUser, (req, res) => {
   res.render("SolicitudesProtectoras", {errMsg: null});
