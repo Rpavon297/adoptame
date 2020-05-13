@@ -24,7 +24,7 @@
 .colorcuadro{
     color: rgb(7, 7, 7);
     border-color: darkgray;
-    background-color: darkgray;
+    background-color: rgb(242, 242, 242);
 }
 .volver {
     font-size: 20px;

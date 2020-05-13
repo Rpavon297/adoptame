@@ -188,6 +188,20 @@ app.get("/listarAdoptantes", (req, res) => {
 app.get("/listarProtectoras", (req, res) => {
   res.render("ListarProtectoras", {errMsg: null});
 });
+
+app.get("/DescripcionAnimalUsuario", (req, res) => {
+  var photo = "/resources/img/blacky.jpg";
+  var an = "Blacky"
+  var nomb="La Madrileña";
+  var tip="Felino";
+  var col=" Mestizo (blanco y negro) ";
+  var ed="3 años y 1 mes";
+  var pes = "2 kilos";
+  var descrip="La dueña de Blacky falleció dejando al pobre sólito en el mundo. Necesita una nueva familia y un hogar que le devuelva la alegría y la estabilidad que tenía.";
+
+  res.render("DescripcionAnimalUsuario", {errMsg: null, animal:an,foto:photo,nombre:nomb,descripcion:descrip,tipo:tip,color:col,edad:ed,peso:pes});
+});
+
 app.get("/detalleprotectora", (req, res) => {
   var photo = "/resources/img/logo-lamadrilena.png";
   var nomb="La Madrileña";
