@@ -6,16 +6,17 @@
 const express = require("express");
 // Utilidades para trabjar con rutas a ficheros y directorios
 const path = require("path");
-
 const mysql = require("mysql");
-
 const globals = require("./globals");
 const userServices = require("./services/user_service");
-
 const session = require("express-session");
 const sessionMSQL = require("express-mysql-session");
 const expressValidator = require("express-validator");
-const bodyParser = require("body-parser");
+const bodyParser = require("body-parser"); //Crea un json con los parametros de un formulario
+const morgan = require("morgan"); //Muestra el estado de la peticion hecha
+const colors = require("colors"); //Muestra las frases por consola con los colores que quieras, util visualmente al depurar
+const helmet = require("helmet"); //Seguridad web en las cabeceras
+const _ = require("lodash"); //utilidades para arrays y demas, version actualizada del antiguo underscore
 
 
 /**
@@ -41,8 +42,9 @@ app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/js', express.static(__dirname + '/node_modules/popper.js/dist'));
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
-
-
+app.use(morgan("dev"));
+app.use(helmet());
+colors.enable();
 // Pool de conexiones
 
 const pool = mysql.createPool({
