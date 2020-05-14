@@ -297,6 +297,10 @@ app.post("/modprofile", function(request, response){
   })
 });
 
+app.get("/ModificarAnimal", (req, res) => {
+  res.render("ModificarAnimal", {errMsg: null});
+});
+
 
 /**
  * Server Activation
