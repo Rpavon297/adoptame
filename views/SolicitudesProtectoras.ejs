@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoptame</title>
+    <!-- Siempre que creeis una nueva plantilla ejs, importar las hojas de estilos CSS, en especial la de bootstrap-->
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+</head>
+
+<body>
+    <%- include('./Header'); %>
+    <div class="content main-section">
+        <!-- -->
+        <div class="container">
+            <div class="row">
+                <div class="page-header">
+                    <div class="col-md-12">
+                        <h2>Solicitud de Protectoras</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 table-admin">
+                    <table class="table table-striped text-center admin-control">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Dirección</th>
+                            <th scope="col">Web</th>
+                            <th scope="col">Detalles</th>
+                            <th scope="col">Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">Protectora 1</th>
+                            <td><a href="#">l6@gmail.com</a></td>
+                            <td>calle Siniestro, 28, Madrid</td>
+                            <td><a href="#">protectora1.com</a></td>
+                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><ion-icon name="create-outline"></ion-icon></td>
+                            <td> <button type="submit" class="btn btn-success btn-xs aceptarProtectora" idProtectora="1">Aceptar</button>
+                              <button type="submit" class="btn btn-danger btn-xs rechazarProtectora" idProtectora="1">Rechazar</button></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Protectora 1</th>
+                            <td><a href="#">l6@gmail.com</a></td>
+                            <td>calle Siniestro, 28, Madrid</td>
+                            <td><a href="#">protectora1.com</a></td>
+                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><ion-icon name="create-outline"></ion-icon></td>
+                            <td> <button type="submit" class="btn btn-success btn-xs aceptarProtectora" idProtectora="2">Aceptar</button>
+                              <button type="submit" class="btn btn-danger btn-xs rechazarProtectora" idProtectora="2">Rechazar</button></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Protectora 1</th>
+                            <td><a href="#">l6@gmail.com</a></td>
+                            <td>calle Siniestro, 28, Madrid</td>
+                            <td><a href="#">protectora1.com</a></td>
+                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><ion-icon name="create-outline"></ion-icon></td>
+                            <td> <button type="submit" class="btn btn-success btn-xs aceptarProtectora" idProtectora="3">Aceptar</button>
+                              <button type="submit" class="btn btn-danger btn-xs rechazarProtectora" idProtectora="3">Rechazar</button></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Protectora 1</th>
+                            <td><a href="#">l6@gmail.com</a></td>
+                            <td>calle Siniestro, 28, Madrid</td>
+                            <td><a href="#">protectora1.com</a></td>
+                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><ion-icon name="create-outline"></ion-icon></td>
+                            <td> <button type="submit" class="btn btn-success btn-xs aceptarProtectora" idProtectora="4">Aceptar</button>
+                              <button type="submit" class="btn btn-danger btn-xs rechazarProtectora" idProtectora="4">Rechazar</button></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Protectora 1</th>
+                            <td><a href="#">l6@gmail.com</a></td>
+                            <td>calle Siniestro, 28, Madrid</td>
+                            <td><a href="#">protectora1.com</a></td>
+                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><ion-icon name="create-outline"></ion-icon></td>
+                            <td> <button type="submit" class="btn btn-success btn-xs aceptarProtectora" idProtectora="5">Aceptar</button>
+                              <button type="submit" class="btn btn-danger btn-xs rechazarProtectora" idProtectora="5">Rechazar</button></td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Protectora 1</th>
+                            <td><a href="#">l6@gmail.com</a></td>
+                            <td>calle Siniestro, 28, Madrid</td>
+                            <td><a href="#">protectora1.com</a></td>
+                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><ion-icon name="create-outline"></ion-icon></td>
+                            <td> <button type="submit" class="btn btn-success btn-xs aceptarProtectora" idProtectora="6">Aceptar</button>
+                              <button type="submit" class="btn btn-danger btn-xs rechazarProtectora" idProtectora="6">Rechazar</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <!-- Modal -->
+    <div class="modal fade" id="detalleSolicitud" tabindex="-1" role="dialog" aria-labelledby="detalleSolicitudTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="detalleSolicitudTitle">Detalles solicitud</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-5 col-form-label">Nombre de la Protectora:</label>
+                    <div class="col-sm-7">
+                      <h5>Protectora 1</h5>
+                    </div>
+                    <label for="inputEmail3" class="col-sm-5 col-form-label">Dirección:</label>
+                    <div class="col-sm-7">
+                      <h5>calle Siniestro, 28, Madrid</h5>
+                    </div>
+                    <label for="inputEmail3" class="col-sm-5 col-form-label">Web:</label>
+                    <div class="col-sm-7">
+                      <h5><a href="#">protectora1.com</a></h5>
+                    </div>
+                    <label for="inputEmail3" class="col-sm-5 col-form-label">Email:</label>
+                    <div class="col-sm-7">
+                      <h5>protectora1@gmail.com</h5>
+                    </div>
+                    <label for="inputEmail3" class="col-sm-5 col-form-label">Descripción:</label>
+                    <div class="col-sm-12">
+                      <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula ante id congue consectetur. Suspendisse potenti. Pellentesque non risus viverra, aliquet neque sit amet, feugiat leo. Quisque non erat consectetur, gravida purus ac, condimentum massa. Duis blandit velit at molestie venenatis. Nulla quis mauris ex. Donec urna tellus, eleifend non iaculis eget, mollis sed lectus. Duis id nisi enim. Praesent malesuada sem ac tristique aliquet. Vivamus p.</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger rechazarProtectora" idProtectora="6" data-dismiss="modal">Rechazar</button>
+            <button type="button" class="btn btn-success aceptarProtectora" idProtectora="6" data-dismiss="modal">Aceptar</button>                  
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+          $(".aceptarProtectora").click(function(){
+            var idProtectora = $(this).attr('idprotectora');
+            alert("Se ha aceptado la protectora con id "+idProtectora);
+          });
+          $(".rechazarProtectora").click(function(){
+            var idProtectora = $(this).attr('idprotectora');
+            alert("Se ha eliminado la protectora con id "+idProtectora);
+          });
+        });
+    </script> 
+
+    <%- include('./Footer'); %>
+</body>
+
+</html>

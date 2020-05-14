@@ -17,7 +17,7 @@
     
     <div id="content">
         <div class="container-fluid banner" style="background-image: url('/resources/img/banner-shelter.png'); margin-bottom: 75px;">
-            <h1 style="margin-top: 190px; margin-bottom: 130px;">Crea tu cuenta</h1> <!--210px-->
+            <h1 style="margin-top: 180px; margin-bottom: 130px;">Crea tu cuenta</h1> <!--210px-->
         </div>
 
         <div class="container" style="max-width: 925px; padding: 0px 100px 0px 100px;">
@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <form id="reg_shelter" method="POST">
+        <form id="reg_shelter" method="POST" action="/sign-up-shelter">
             <div class="container" style="max-width: 750px; padding: 0px 100px 0px 100px; margin-top: 30px;">
                 <div class="row">
                     <div class="col" style="margin-top: 15px;">
@@ -43,28 +43,28 @@
                 </div>
                 <div class="row">
                     <div class="col" style="margin-top: 35px;">
-                        <input id="shelter_name" type="text" class="floating-input" placeholder=" " required>
+                        <input name="shelter_name" id="shelter_name" type="text" class="floating-input" placeholder=" " required>
                         <label id="shelter_name_tag" style="font-weight: 100;">Nombre protectora</label>
                         <span id="shelter_name_asterisk" class="mandatory">*</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col" style="margin-top: 25px;">
-                        <input id="location" type="text" class="floating-input" placeholder=" " required>
+                        <input name="location" id="location" type="text" class="floating-input" placeholder=" " required>
                         <label id="location_tag" style="font-weight: 100;">Dirección</label>
                         <span id="location_asterisk" class="mandatory">*</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col" style="margin-top: 25px;">
-                        <input id="web" type="text" class="floating-input" placeholder=" ">
+                        <input name="web" id="web" type="text" class="floating-input" placeholder=" ">
                         <label id="web_tag" style="font-weight: 100;">Página web</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <p class="aclaration" style="font-size: 15px; margin-top: 25px;">Escribe una breve descripción</p>
-                        <textarea id="text-area-id" class="input-text text-area" cols="300" rows="100" maxlength="350" onkeyup="countChar(this)"></textarea>
+                        <textarea name="descripcion" class="input-text text-area" cols="300" rows="100" maxlength="350" onkeyup="countChar(this)"></textarea>
                         <p class="aclaration" style="margin-top: 10px; text-align: right; font-size: 15px;"><span id="charNum">350</span> / 350</p>
 
                     </div>
@@ -87,26 +87,32 @@
                 </div>
                 <div class="row" style="margin-top: -25px;">
                     <div class="col-md col-sm-12" style="margin-top: 25px;">
-                        <input id="name" type="text" class="floating-input" placeholder=" " required>
+                        <input name="name" id="name" type="text" class="floating-input" placeholder=" " required>
                         <label id="name_tag" style="font-weight: 100;">Nombre</label>
                         <span id="name_asterisk" class="mandatory">*</span>
                     </div>
                     <div class="col-md col-sm-12" style="margin-top: 25px;">
-                        <input id="surname" type="text" class="floating-input" placeholder=" " required>
+                        <input name="surname" id="surname" type="text" class="floating-input" placeholder=" " required>
                         <label id="surname_tag" style="font-weight: 100">Apellidos</label>
                         <span id="surname_asterisk" class="mandatory">*</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col" style="margin-top: 25px;">
-                        <input id="phone" type="text" maxlength="9" class="floating-input" placeholder=" " required>
-                        <label id="phone_tag" style="font-weight: 100;">Teléfono</label>
-                        <span id="phone_asterisk" class="mandatory">*</span>
+                        <input name="jqueryDate" id="date" type="text" maxlength="10" class="floating-input" placeholder=" ">
+                        <label id="date_tag" style="font-weight: 100;">Fecha de nacimiento</label>
+                        <p class="aclaration" style="margin-top: 15px;">Ejemplo: 01/01/2001</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col" style="margin-top: 25px;">
-                        <input id="email" type="email" class="floating-input" placeholder=" " required>
+                        <input name="tlf" type="text" maxlength="10" class="floating-input" placeholder=" ">
+                        <label id="phone_tag" style="font-weight: 100;">Número de teléfono</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="margin-top: 25px;">
+                        <input name="email" id="email" type="email" class="floating-input" placeholder=" " required>
                         <label id="email_tag" style="font-weight: 100;">Correo electrónico</label>
                         <span id="email_asterisk" class="mandatory">*</span>
                         <p class="aclaration" style="margin-top: 15px;">Recibirás un correo de confirmación</p>
@@ -114,7 +120,7 @@
                 </div>
                 <div class="row">
                     <div class="col" style="margin-top: 15px;">
-                        <input id="password" name="jqueryPassword" type="password" class="floating-input" placeholder=" " required>
+                        <input name="password" id="password" name="jqueryPassword" type="password" class="floating-input" placeholder=" " required>
                         <label id="password_tag" style="font-weight: 100;">Contraseña</label>
                         <span id="password_asterisk" class="mandatory">*</span>
                         <span id="password_icon" class="mandatory far fa-eye-slash" style="right: -30px; top: +21.5px; color: #e9e9e9; cursor: pointer; font-size: 22px;" onclick="password_visibility()"></span>
@@ -122,7 +128,7 @@
                 </div>
                 <div class="row">
                     <div class="col" style="margin-top: 12px;">
-                        <input id="confirm_password" type="password" class="floating-input" oninput="check(this)" placeholder=" " required>
+                        <input name="confirm_password" id="confirm_password" type="password" class="floating-input" oninput="check(this)" placeholder=" " required>
                         <script language='javascript' type='text/javascript'>
                             function check(input) {
                                 if (input.value != document.getElementById('password').value) {
@@ -160,8 +166,8 @@
                         <p class="aclaration" style="font-size: 15px; text-align: center;">Al pulsar el botón "Continuar" confirmas que has leido y aceptas los 
                         <a href="#" style="color: #97c1cc; font-weight: 400;">Términos y Condiciones</a> y la 
                         <a href="#" style="color: #97c1cc; font-weight: 400;">Política de Privacidad</a> de Adóptame.</p>
-                        <button type="submit" id="submit-button" class="button" style="margin-top: 25px;" onclick="submit_form()">Continuar</button>
-<!--TODO eliminar-->    <button type="button" class="button" style="margin-top: 25px; background-color: #ffbb00;" onclick="window.location.href='/confirmation'">Confirmar</button>
+                        <button type="submit" id="submit-button" class="button" style="margin-top: 25px;" ">Continuar</button>
+
                     </div>
                 </div>
             </div>
@@ -212,7 +218,7 @@
             }
         };
 
-        var $jqPassword = jQuery('input[name="jqueryPassword"]');
+        var $jqPassword = jQuery('input[name="password"]');
 
         $jqPassword.bind('keyup','keydown', function(e) {
             var numChars = $jqPassword.val().length;
@@ -390,7 +396,7 @@
         function validate_web() {
             var web_input = document.getElementById('web');
 
-            if (test_web(web_input.value)) {
+            if (web_input.value == "" || test_web(web_input.value)) {
                 web_input.setCustomValidity('');
                 change_normal('web', false);
             }
@@ -418,20 +424,67 @@
             });
         }
 
-        setInputFilter(document.getElementById("phone"), function(value) {
-            return /^-?\d*$/.test(value); 
+        function validate_date() {
+            valid_date = true;
+            var date_input = document.getElementById("date");
+            var day_list = [31,28,31,30,31,30,31,31,30,31,30,31];
+
+            if (date_input.value.length > 0 && date_input.value.length < 10) {
+                valid_date = false;
+            }
+            else if (date_input.value.length == 10) {
+                var date = date_input.value.split('/');
+
+                var day = parseInt(date[0]);
+                var month = parseInt(date[1]);
+                var year = parseInt(date[2]);
+
+                if ((!(year % 4) && year % 100) || !(year % 400)) day_list[1] += 1;
+
+                if ((year < 1900 || year > 2020) || (month < 1 || month > 12) || (day < 1 || day > 31 || day > day_list[month])) {
+                    valid_date = false;
+                }
+            }
+
+            if (!valid_date) {
+                date_input.setCustomValidity('Introduce una fecha válida');
+                change_red("date", false);
+            }
+            else {
+                date_input.setCustomValidity('');
+                change_normal("date", false);
+            }
+        }
+
+        setInputFilter(document.getElementById("date"), function(value) {
+            return /^-?\d{0,2}[/]?\d*[/]?\d*$/.test(value); 
         });
+
+        var $jqDate = jQuery('input[name="jqueryDate"]');
+
+        $jqDate.bind('keyup','keydown', function(e) {
+            if (e.which !== 8) {	
+                var numChars = $jqDate.val().length;
+
+                if(numChars === 2 || numChars === 5) {
+                    var thisVal = $jqDate.val();
+                    thisVal += '/';
+                    $jqDate.val(thisVal);
+                }
+            }
+        });
+
 
         function submit_form() {
             validate("shelter_name");
             validate("location");
             validate("name");
             validate("surname");
-            validate("phone");
 
             validate_web();
             validate_email();
             validate_password();
+            validate_date();
         }
     </script>
 
