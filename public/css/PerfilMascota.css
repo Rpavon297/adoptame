@@ -1,0 +1,58 @@
+.campo{
+    margin-top: 25px;
+}
+
+#campoimg{
+    max-width: 150px;
+}
+
+#camposform{
+    max-width: 750px; 
+    padding: 0px 100px 0px 100px;
+    margin-top: 30px;
+}
+
+#description{
+    height: 130px;
+}
+
+.floating-input {
+    font-size: 12pt;
+    font-weight: 100;
+    color:black;
+    height: 65px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #97c1cc;
+    padding: 20px 57px 0px 18px;
+    margin: auto;
+    display: block;
+}
+  
+.floating-input:focus {
+    outline: none !important;
+    border: 1px solid black;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}
+
+label {
+
+    position: absolute;
+    pointer-events: none;
+    left: 15px;
+    top: 21px;
+    transition: 0.08s ease all;
+    color:black;
+    font-size: 12pt;
+    font-weight: normal !important;
+    padding: 0px 20px 0px 18px;
+    -moz-transition:0.08s ease all; 
+    -webkit-transition:0.08s ease all;
+}
+  
+.floating-input:focus ~ label, .floating-input:not(:placeholder-shown) ~ label {
+    top: 10px;
+    bottom: 10px;
+    left: 15px;
+    font-size: 13px;
+}
