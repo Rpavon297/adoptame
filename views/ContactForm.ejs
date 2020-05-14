@@ -7,8 +7,12 @@
     <title>Adoptame</title>
     <!-- Siempre que creeis una nueva plantilla ejs, importar las hojas de estilos CSS, en especial la de bootstrap-->
     <link rel="stylesheet" href="/css/general.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="/css/contactForm.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+   
 </head>
 
 <body>
@@ -16,11 +20,44 @@
     <%- include('./Header'); %>
     
     <!-- Mi codigo-->
-   
-    
 
+    <div class="cajaglobal">
+        <div class="titulo font-weight-bolder">
+            <h1>CONTACTA CON UNA PROTECTORA</h1>
+        </div>
+        <div class="subtitulo">
+            <h5>Por favor, antes de poder contactar con la protectora deseada, debe rellenar el siguiente formulario:</h5>
+        </div>
+     
+        <div class="cajatexto">
+    
+                <form class="marge texto" action=" " >
+                    
+                    <input type="text" class="form-control input-group-sm chat-input" placeholder="Nombre" required>
+                     </br>
+                    <input type="text" class="form-control input-group-sm chat-input" placeholder="Apellidos" required>
+                    </br>
+                    <input type="email" class="form-control input-group-sm chat-input" name="email" placeholder="Correo" required>
+                    </br>
+                    <input type="text" class="form-control input-group-sm chat-input" placeholder="Teléfono/Móvil" pattern="{9}" required></br>
+                    <textarea rows="5" cols="20" class="form-control input-group-sm chat-input" placeholder="Descripción" required></textarea></br>
+                    <input type="radio" name="ok" required>Acepto la politica de privacidad de datos </br>
+                    </br>
+                    <button type="submit"> Enviar </button>
+                    <input type="reset"  value="Cancelar">
+                                     
+                </form>
+           
+                
+       
+        </div>
+    </div>
+   
+        
+                        
      <!-- el footer tambien deberia ser otro codigo comun a todas las views, copiarlo y pegarlo-->
     <%- include('./Footer'); %>
+    
 </body>
 
 </html>
