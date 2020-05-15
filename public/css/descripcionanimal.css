@@ -11,6 +11,11 @@
     font-family: 'Bree Serif', serif;
     font-weight: bolder;
 }
+.styleletra{
+    font-size: 20px;
+    font-family: 'Bree Serif', serif;
+    font-weight: bolder;
+}
 
 .containerleft{
     padding-left: 100px;
@@ -39,7 +44,7 @@
     float: center;
     margin-top: 5px;
     display: block;
-    height: 280px;
+    height: 250px;
     width:300px;
 }
 
