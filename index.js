@@ -11,6 +11,7 @@ const mysql = require("mysql");
 
 const globals = require("./globals");
 const userServices = require("./services/user_service");
+const shelterServices = require("./services/shelter_service");
 
 const session = require("express-session");
 const sessionMSQL = require("express-mysql-session");
@@ -55,6 +56,7 @@ const pool = mysql.createPool({
 
 // Servicio de usuario
 const userService = new userServices.UserService(pool);
+const shelterService = new shelterServices.ShelterService(pool);
 
 // Sesión en la base de datos
 const MySQLStore = sessionMSQL(session);
@@ -217,10 +219,9 @@ app.post("/sign-up-adopter", function(request, response){
       if(check === true){
           response.redirect("/confirmation");
       }
-      else { console.log("no inserta bien"); response.render("Login", {errMsg: "No se pudo efectuar el registro correctamente"}); }
+      else { response.render("Login", {errMsg: "No se pudo efectuar el registro correctamente"}); }
   })
-}) 
-
+}); 
 
 app.get("/sign-up-shelter", (req, res) => {
   res.render("SignUpShelter", {errMsg: null});
@@ -228,15 +229,15 @@ app.get("/sign-up-shelter", (req, res) => {
 
 app.post("/sign-up-shelter", function(request, response){
   request.body.type = 'protectora';
-  userService.createAccount(request.body, (err, check) => {
+  console.log("1");
+  shelterService.createRequest(request.body, (err, check) => {
+    console.log("2");
       if(check === true){
-        console.log("porque explota, i dont understand")
         response.redirect("/confirmation");
         }
         else { response.render("Login", {errMsg: "No se pudo registrar"}); };
   })
 });
-
 
 app.get("/confirmation", (req, res) => {
   res.render("SignUpConfirmation", {errMsg: null});
@@ -269,7 +270,6 @@ app.post("/modprofile", function(request, response){
         else { response.render("Login", {errMsg: "No se pudo registrar"}); };
   })
 });
-
 
 /**
  * Server Activation
