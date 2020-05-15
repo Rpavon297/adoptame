@@ -1,0 +1,66 @@
+
+.boxDatos{
+    background-color: rgb(242, 242, 242);
+    padding-left: 15px;
+    margin-top: 100px;
+    hyphens: auto;
+}
+
+.styletext {
+    font-size: 25px;
+    font-family: 'Bree Serif', serif;
+    font-weight: bolder;
+}
+.styleletra{
+    font-size: 20px;
+    font-family: 'Bree Serif', serif;
+    font-weight: bolder;
+}
+
+.containerleft{
+    padding-left: 100px;
+    float:left;
+}
+
+.containerright{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    float:center;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.imagenDetalle {
+    margin-left: auto;
+    margin-right: auto;
+    float: center;
+    margin-top: 5px;
+    display: block;
+    height: 250px;
+    width:300px;
+}
+
+.botondetalle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    float:center;
+}
+
+.centerboton{
+    text-align: center;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    float:center;
+}

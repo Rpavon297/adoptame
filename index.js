@@ -177,13 +177,48 @@ app.get("/Logout", middCheckUser,function(request, response){
   response.redirect("/Login.html");
 })
 
-
-app.get("/admin", (req, res) => {
-  res.render("Admin", {errMsg: null});
+app.get("/gestionUsuarios", (req, res) => {
+  res.render("GestionUsuarios", {errMsg: null});
 });
 
+app.get("/listarAdoptantes", (req, res) => {
+  res.render("ListarAdoptantes", {errMsg: null});
+});
+
+app.get("/listarProtectoras", (req, res) => {
+  res.render("ListarProtectoras", {errMsg: null});
+});
+
+app.get("/listarAnimalesProtectora", (req, res) => {
+  res.render("ListarAnimalesProtectora", {errMsg: null});
+});
+
+app.get("/DescripcionAnimalUsuario", (req, res) => {
+  var photo = "/resources/img/blacky.jpg";
+  var an = "Blacky"
+  var nomb="La Madrileña";
+  var tip="Felino";
+  var col=" Mestizo (blanco y negro) ";
+  var ed="3 años y 1 mes";
+  var pes = "2 kilos";
+  var descrip="La dueña de Blacky falleció dejando al pobre sólito en el mundo. Necesita una nueva familia y un hogar que le devuelva la alegría y la estabilidad que tenía.";
+
+  res.render("DescripcionAnimalUsuario", {errMsg: null, animal:an,foto:photo,nombre:nomb,descripcion:descrip,tipo:tip,color:col,edad:ed,peso:pes});
+});
+
+app.get("/detalleprotectora", (req, res) => {
+  var photo = "/resources/img/logo-lamadrilena.png";
+  var nomb="La Madrileña";
+  var descrip="Todas las personas que componemos el equipo de La Madrileña procedemos del mundo de la protección animal, en el que hemos trabajado durante muchos años y por el que seguimos luchando todos los días.";
+  var telef="(+34)648 495 073 ";
+  var ciu="Madrid";
+  var direcci = "calle Siniestro, 28, Madrid ";
+  var corre="l6@gmail.com";
+
+  res.render("detalleprotectora", {errMsg: null,foto:photo,nombre:nomb,descripcion:descrip, telefono:telef,direccion:direcci,correo:corre,ciudad:ciu});
+});
 app.get("/solicitudesProtectoras", middCheckUser, (req, res) => {
-  res.render("solicitudesProtectoras", {errMsg: null});
+  res.render("SolicitudesProtectoras", {errMsg: null});
 });
 
 app.get("/SolicitudesAdopcion.html", middCheckUser, (req, res) => {
@@ -260,6 +295,10 @@ app.post("/modprofile", function(request, response){
         }
         else { response.render("Login", {errMsg: "No se pudo registrar"}); };
   })
+});
+
+app.get("/ModificarAnimal", (req, res) => {
+  res.render("ModificarAnimal", {errMsg: null});
 });
 
 

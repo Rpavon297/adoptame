@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoptame</title>
+    <!-- Siempre que creeis una nueva plantilla ejs, importar las hojas de estilos CSS, en especial la de bootstrap-->
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="/css/modificarAnimal.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+   
+</head>
+
+<body>
+     <!-- el header deberia ser un codigo comun en todas las views-->
+    <%- include('./Header'); %>
+    
+    <!-- Mi codigo-->
+    <div class="cajaglobal">
+        <div class="titulo font-weight-bolder">
+            <h1>MODIFICAR ANIMAL</h1>
+        </div>
+
+        <div class="cajatexto">
+            
+            <div class="marge texto" action=" ">
+                <!--hacer modificaciones pertinentes-->
+                <!--foto-->
+
+
+                <input type="text" class="form-control input-group-sm chat-input" placeholder="Nombre" required>
+                </br>
+                <input type="text" class="form-control input-group-sm chat-input" placeholder="Genero" required>
+                </br>
+                <input type="text" class="form-control input-group-sm chat-input" placeholder="Edad" required>
+                </br>
+                <input type="text" class="form-control input-group-sm chat-input" placeholder="Raza" required>
+                </br>
+                <input type="text" class="form-control input-group-sm chat-input" placeholder="Localidad" required>
+                </br>
+                <textarea rows="5" cols="20" class="form-control input-group-sm chat-input" placeholder="Descripción" required></textarea></br>
+               
+                <button type="submit"> OK </button>
+                <input type="reset"  value="Cancelar">
+            </div>
+               
+                                 
+           
+       
+            
+   
+    </div>
+
+    </div>
+  
+        
+                        
+     <!-- el footer tambien deberia ser otro codigo comun a todas las views, copiarlo y pegarlo-->
+    <%- include('./Footer'); %>
+    
+</body>
+
+</html>
