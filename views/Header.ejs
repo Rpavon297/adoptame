@@ -15,11 +15,16 @@
                     <a href="/Home.html">Inicio</a>
                     <a href="/Animals.html">Animales</a>
                     <a href="/Shelters.html">Protectoras</a>
-                    <a href="/AboutUs.html">Sobre Nosotros</a>
+                    <% if ( user != undefined && user.userType === "admin" ) {%>
+                    <a href="/Requests">Peticiones</a>
+                    <% } %>
+                    <% if ( user == undefined || user.userType != "admin" ) {%>
+                        <a href="/AboutUs.html">Sobre Nosotros</a>
+                    <% } %>
                     <a href="/Contact.html">Contacto</a>
                     <a href="/Ayuda.html">Ayuda</a>
                     <% if ( login ) { %>
-                    <a href="/profile"> tu perfil</a>
+                    <a href="/profile"> Tu perfil</a>
                     <a href="/Logout" class="logout">desconectar</a>
                     <% } %>
                     <a class="login-option" href="/Login.html">Iniciar sesión</a>

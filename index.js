@@ -79,9 +79,13 @@ function initialVarLogin (request, response, next){
   if(request.session.currentUser === undefined){
     response.locals.login = false;
   }else response.locals.login = true;
+
+  response.locals.user = request.session.currentUser;
+
   next();
 };
 
+// Este middleware no se está utilizando y está mal planteado (se comprueba currentUser.emal de currentUser undefined) 17/05
 function middCheckUser(request, response, next){
   //Si existe ese atributo, no puede ser undefined...
   if(request.session.currentUser.email !== undefined){
@@ -269,6 +273,10 @@ app.post("/modprofile", function(request, response){
         }
         else { response.render("Login", {errMsg: "No se pudo registrar"}); };
   })
+});
+
+app.get("/Requests", function(request, response){
+  res.render("ListarPeticiones", {errMsg: null});
 });
 
 /**
