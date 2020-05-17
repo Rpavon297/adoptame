@@ -128,6 +128,9 @@ app.get("/Contact.html", (req, res) => {
   res.render("Contact", {errMsg: null});
 });
 
+app.get("/GestionAnimal.html", (req, res) => {
+  res.render("GestionAnimal", {errMsg: null});
+});
 app.get("/Animals.html", (req, res) => {
   res.render("Animals", {errMsg: null});
 });
@@ -180,6 +183,8 @@ app.get("/Logout", middCheckUser,function(request, response){
 app.get("/gestionUsuarios", (req, res) => {
   res.render("GestionUsuarios", {errMsg: null});
 });
+
+
 
 app.get("/listarAdoptantes", (req, res) => {
   res.render("ListarAdoptantes", {errMsg: null});

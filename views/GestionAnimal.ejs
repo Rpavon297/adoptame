@@ -16,13 +16,17 @@
     <body>
         <%- include('./Header'); %>
         <div id="content">
-            
+            <div class="container-fluid banner">
+                <h1 class="titulo">Editar Mascota</h1> 
+            </div>
+
+
             <form id="gestionanimal" method="POST">
                 <div class="container" id="campoimg">
                     <div class="row">
                         <div class="fotoanimal">
                             <!--<input id="imagen" type="image" class="image" placeholder=" " required>
-                            <label id="imagen_tag" style="font-weight: 150;"><img src="/resources/img/perfilAdoptante.jpg" class="img-thumbnail" width="50"> </label>
+                            <label id="imagen_tag" style="font-weight: 150;"><img src="/resources/img/corgi.jpg" class="main_img"> </label>
                             -->
                             <img src="/resources/img/corgi.jpg" class="main_img">
                         </div>
@@ -53,7 +57,6 @@
 
                     <div class="row campo">
                         <div class="col" >
-                            <!--FIXEAR LABEL-->
                             <label id="type_tag">Tipo de animal</label>
                             <select id="type" class="floating-input">
                                 <option value="dog">Perro</option>

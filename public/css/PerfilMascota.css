@@ -16,8 +16,32 @@
     height: 130px;
 }
 
+#type_tag{
+    position: relative;
+    top: 30px;
+    left: 0px;
+    font-size: 13px;
+}
+.btn{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
 html * {
     font-family: 'Montserrat', sans-serif;
+}
+
+.titulo{
+    margin-top: 80px; margin-bottom: 50px; margin-right: 1200px;
+}
+.banner{
+    background-color: #e8e8e8;
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-image: url('/resources/img/bannermod.jpg'); margin-bottom: 50px;
 }
 
 .example{
