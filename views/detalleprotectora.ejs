@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -22,20 +24,23 @@
             <div class="col-lg-12">
               <div class="col-md-4">
                <figure>
-                <img class="img-thumbnail"  height= 600 width="600">
+                <img src= <%=foto%> class="img-thumbnail"  height= 600 width="600">
+                 
                 <h1 >
                 </figure>
                 <div class="col-md-30">
-                <div class="panel panel-info ">
-                        <div class="colorcuadro panel-heading ">
-                            Contacto
+                <div class="panel  ">
+                        <div class="colorcuadro tipoletra ">
+                            Nombre:  <span style= "color:rgb(115, 115, 115);"><%=nombre%></span> 
                         </div>
                         <div class="panel-body">
-                            <div class="list-decks ">
+                           
+                            <div class="list-decks">
                                 <p>Correo: <span class="glyphicon glyphicon-envelope"></span>
-                             
+                                <span style= "color:rgb(115, 115, 115);"><%=correo%></span>
                                 </p>
                                 Teléfono: <span class="glyphicon glyphicon-earphone"></span>
+                                <span style= "color:rgb(115, 115, 115);"><%=telefono%></span>
                                 
                             </div>  
                         </div>       
@@ -44,33 +49,36 @@
                     </div>
               </div>
               <div class="col-xs-12 col-sm-8">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
+                <div class="panel ">
+                    <div class="colorcuadro tipoletra">
                             Ciudad:
                     </div>
                     <div class="panel-body">
+                        <span style= "color:rgb(115, 115, 115);"><%=ciudad%></span>
                         <div class="list-decks">
                             
                         </div>        
                     </div>
                 </div>
                 
-                    <div class="panel panel-info">
-                            <div class="panel-heading">
+                    <div class="panel ">
+                            <div class="colorcuadro tipoletra">
                                     Dirección:
                             </div>
                             <div class="panel-body">
+                                <span style= "color:rgb(115, 115, 115);"><%=direccion%></span>
                                 <div>
                                     
                             </div>       
                             </div>
                         </div>
                     
-                    <div class="panel panel-info">
-                            <div class="panel-heading">
-                                    Descripción:
+                    <div class=" panel  ">
+                            <div class="colorcuadro tipoletra">
+                                    Detalles:
                             </div>
                             <div class="panel-body">
+                                <span style= "color:rgb(115, 115, 115);"><%=descripcion%></span>
                                 <div class="list-decks">
                                    
                                 </div>        
@@ -81,10 +89,10 @@
           </div>
         </div>
     
-        <form action="/protectoras" method="GET">
+        <form action="/Shelters.html" method="GET">
     
     
-            <div class="botonera">
+            <div class="boton">
                 <input type="submit" class="btn btn-info volver" value="Volver">
             </div>
         </form>

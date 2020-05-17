@@ -18,36 +18,36 @@
     <div id=content>
         <div class="containerleft">
             <div class="boxDatos" style="max-width: 500px;">
-                <p class = "styletext"">Nombre: <span style= "color:rgb(115, 115, 115);">
-
+                <p class = "styletext"">Nombre: <span class= "styleletra" style= "color:rgb(115, 115, 115);">
+                    <%=animal%>
                 </span></p>
-                <p class = "styletext">Protectora: <span style= "color:rgb(115, 115, 115);">
-
+                <p class = "styletext">Protectora: <span class= "styleletra" style= "color:rgb(115, 115, 115);">
+                    <%=nombre%>
                 </span></p>
-                <p class = "styletext">Tipo: <span style= "color:rgb(115, 115, 115);">
-
+                <p class = "styletext">Tipo: <span class= "styleletra" style= "color:rgb(115, 115, 115);">
+                    <%=tipo%>
                 </span></p>
-                <p class = "styletext">Edad: <span style= "color:rgb(115, 115, 115);">
-
+                <p class = "styletext">Edad: <span class= "styleletra" style= "color:rgb(115, 115, 115);">
+                    <%=edad%>
                 </span></p>
-                <p class = "styletext">Color: <span style= "color:rgb(115, 115, 115);">
-
+                <p class = "styletext">Color: <span class= "styleletra" style= "color:rgb(115, 115, 115);">
+                    <%=color%>
                 </span></p>
-                <p class = "styletext">Peso: <span style= "color:rgb(115, 115, 115);">
-
+                <p class = "styletext">Peso: <span class= "styleletra" style= "color:rgb(115, 115, 115);">
+                    <%=peso%>
                 </span></p>
-                <p class = "styletext">Descripción: <span style= "color:rgb(115, 115, 115);">
-
+                <p class = "styletext">Descripción: <span class= "styleletra" style= "color:rgb(115, 115, 115);">
+                    <%=descripcion%>
                 </span></p>   
             </div>
         </div>
         <div class="containerright">
-                <img class="imagenDetalle" src="">
+                <img class="imagenDetalle" src="<%=foto%>">
             </class>
         </div>
     </div>
     <div class="centerboton">
-        <form action="/detalleprotectora.html" method="GET"> <!-- redirige a detalle protectora-->
+        <form action="/detalleprotectora" method="GET"> <!-- redirige a detalle protectora-->
             <input type="hidden" name="ident">
             <input type="submit" class="btn btn-success botondetalle" value="Datos de la protectora a la que pertenece">
         </form>
