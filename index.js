@@ -189,6 +189,10 @@ app.get("/listarProtectoras", (req, res) => {
   res.render("ListarProtectoras", {errMsg: null});
 });
 
+app.get("/listarAnimalesProtectora", (req, res) => {
+  res.render("ListarAnimalesProtectora", {errMsg: null});
+});
+
 app.get("/DescripcionAnimalUsuario", (req, res) => {
   var photo = "/resources/img/blacky.jpg";
   var an = "Blacky"
@@ -291,6 +295,10 @@ app.post("/modprofile", function(request, response){
         }
         else { response.render("Login", {errMsg: "No se pudo registrar"}); };
   })
+});
+
+app.get("/ModificarAnimal", (req, res) => {
+  res.render("ModificarAnimal", {errMsg: null});
 });
 
 
