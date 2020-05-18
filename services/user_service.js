@@ -5,7 +5,6 @@ class UserService{
 
     /**
      * Comprueba que el usuario existe y la contraseña es correcta
-     * 
      * @param {*} email email del usuario
      * @param {*} pass contraseña
      * @param {*} callback 
@@ -80,6 +79,40 @@ class UserService{
         });
     }
 
+
+    getAllUsers(type, callback){
+        this.pool.getConnection((err,connection) => {
+            if(err){ callback(err); return;
+            }
+            if(type === "protectora"){
+                connection.query(
+                    "Select * from account join shelter on email = userEmail", [type], (err, users) => {
+                        if(err){callback(err); return;}
+                        connection.release();
+                        callback(null, users);
+                    }
+                )
+            }else if (type === "all"){
+                connection.query(
+                    "Select * from account", (err, users) => {
+                        if(err){callback(err); return;}
+                        connection.release();
+                        callback(null, users);
+                    })
+            }else{
+                connection.query(
+                    "Select * from account where userType = ?", [type], (err, users) => {
+                        if(err){callback(err); return;}
+                        connection.release();
+                        callback(null, users);
+                    }
+                )
+            }
+           })}
+
+
+
+
     /**
      * Crea una cuenta de adoptante o de protectora
      * @param {*} email 
@@ -146,7 +179,7 @@ class UserService{
                 callback(err);
                }else{
                 if(user.type === 'protectora'){
-                    connection.query(
+                    conn.query(
                         "UPDATE shelter SET userEmail=?, shelterName=?, shelterAddress=?, shelterDescription=?, webpage=?",
                         [user.email, user.shelter_name, user.location, user.descripcion, user.web],
                         (err) =>{
@@ -157,9 +190,8 @@ class UserService{
                             callback(null, true);
                         }
                     );
-                }  else  {connection.release(); callback(null, true);}
+                }  else  {conn.release(); callback(null, true);}
                }
-               
         });
     });
     }

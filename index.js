@@ -78,7 +78,11 @@ const middlewareSession = session ({
 function initialVarLogin (request, response, next){
   if(request.session.currentUser === undefined){
     response.locals.login = false;
-  }else response.locals.login = true;
+  }else{ 
+    response.locals.login = true;
+    response.locals.currentUser = request.session.currentUser;
+    console.log(colors.cyan(response.locals.currentUser))
+  }
   next();
 };
 
@@ -118,7 +122,6 @@ app.use(function (request,response,next){
  */
 
 app.get("/", (req, res) => {
-  console.log("aqui llega tambien, al get /");
   res.render("Landing", {errMsg: null});
 });
 
@@ -159,7 +162,7 @@ app.post("/Login", function(request, response){
               else{
                 userBD.email = request.body.loginMail;
                 request.session.currentUser = userBD;
-                console.log("Se ha logueado correctamente, se guardaran estos datos de sesion")
+                console.log(colors.green("Se ha logueado correctamente, se guardaran estos datos de sesion"))
                 console.log(userBD)
                 if(userBD.userType === "adoptante" || userBD.userType === "admin"){
                   response.redirect("/profile");
@@ -180,15 +183,29 @@ app.get("/Logout", middCheckUser,function(request, response){
 })
 
 app.get("/gestionUsuarios", (req, res) => {
-  res.render("GestionUsuarios", {errMsg: null});
+  userService.getAllUsers( "all", (err, users) => {
+    if(err){
+      console.log(colors.red("error"))
+    }else{
+      console.log(colors.green(users))
+      res.render("GestionUsuarios", {usuarios: users});
+    }
+  })
 });
 
 app.get("/listarAdoptantes", (req, res) => {
   res.render("ListarAdoptantes", {errMsg: null});
 });
 
-app.get("/listarProtectoras", (req, res) => {
-  res.render("ListarProtectoras", {errMsg: null});
+app.get("/listarProtectoras.html", (req, res) => {
+  userService.getAllUsers( "protectora" , (err, protectoras) => {
+    if(err){
+      console.log(colors.red("error"))
+    }else{
+      console.log(colors.green(protectoras))
+      res.render("ListarProtectoras", {protectoras});
+    }
+  })
 });
 
 app.get("/DescripcionAnimalUsuario", (req, res) => {
@@ -255,7 +272,6 @@ app.post("/sign-up-shelter", function(request, response){
   request.body.type = 'protectora';
   userService.createAccount(request.body, (err, check) => {
       if(check === true){
-        console.log("porque explota, i dont understand")
         response.redirect("/confirmation");
         }
         else { response.render("Login", {errMsg: "No se pudo registrar"}); };
@@ -287,11 +303,19 @@ app.get("/modprofile", middCheckUser , (req, res) => {
 
 app.post("/modprofile", function(request, response){
   userService.modifUser(request.body, (err, check) => {
+      console.log(colors.red("datos del usuario modificado"))
+      console.log(colors.red(request.body))
       if(check === true){
-        console.log("porque explota, i dont understand")
-        response.redirect("/confirmation");
+        userService.getUser(request.body.email, (err, user) => {
+          if(err){
+
+          }else {
+            request.session.currentUser = user;
+            response.redirect("/profile");
+          }
+        })
         }
-        else { response.render("Login", {errMsg: "No se pudo registrar"}); };
+        else { response.render("Login", {errMsg: "No se pudo modificar"}); };
   })
 });
 

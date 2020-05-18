@@ -32,53 +32,20 @@
                             <th scope="col">Email</th>
                             <th scope="col">Dirección</th>
                             <th scope="col">Web</th>
-                            <th scope="col">Editar</th>
+                            <th scope="col">ir al perfil</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">Protectora 1</th>
-                            <td><a href="#">l6@gmail.com</a></td>
-                            <td>calle Siniestro, 28, Madrid</td>
-                            <td><a href="#">protectora1.com</a></td>
-                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><a href="editarProtectora/{id}"><ion-icon name="create-outline"></ion-icon></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Protectora 1</th>
-                            <td><a href="#">l6@gmail.com</a></td>
-                            <td>calle Siniestro, 28, Madrid</td>
-                            <td><a href="#">protectora1.com</a></td>
-                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><a href="editarProtectora/{id}"><ion-icon name="create-outline"></ion-icon></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Protectora 1</th>
-                            <td><a href="#">l6@gmail.com</a></td>
-                            <td>calle Siniestro, 28, Madrid</td>
-                            <td><a href="#">protectora1.com</a></td>
-                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><a href="editarProtectora/{id}"><ion-icon name="create-outline"></ion-icon></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Protectora 1</th>
-                            <td><a href="#">l6@gmail.com</a></td>
-                            <td>calle Siniestro, 28, Madrid</td>
-                            <td><a href="#">protectora1.com</a></td>
-                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><a href="editarProtectora/{id}"><ion-icon name="create-outline"></ion-icon></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Protectora 1</th>
-                            <td><a href="#">l6@gmail.com</a></td>
-                            <td>calle Siniestro, 28, Madrid</td>
-                            <td><a href="#">protectora1.com</a></td>
-                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><a href="editarProtectora/{id}"><ion-icon name="create-outline"></ion-icon></a></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Protectora 1</th>
-                            <td><a href="#">l6@gmail.com</a></td>
-                            <td>calle Siniestro, 28, Madrid</td>
-                            <td><a href="#">protectora1.com</a></td>
-                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><a href="editarProtectora/{id}"><ion-icon name="create-outline"></ion-icon></a></td>
-                          </tr>
-                        </tbody>
+                          <% protectoras.map( protectora => { %>
+                           <tr>
+                             <th scope="row"><%= protectora.shelterName %></th>
+                             <td><a href="<%= protectora.userEmail %>"><%= protectora.userEmail %></a></td>
+                             <td><%= protectora.shelterAddress %></td>
+                             <td><%= protectora.webpage %></td>
+                             <td><ion-icon name="create-outline"></ion-icon><a href="#" onclick="delete_user(user.email)"><ion-icon name="close-outline"></ion-icon></a></td>
+                           </tr>
+                         <% }) %>
+                         </tbody>
                       </table>
                 </div>
             </div>

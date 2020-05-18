@@ -33,7 +33,7 @@ header{
     float: left;
     display: block;
     text-align: center;
-    padding: 14px 22px;
+    padding: 14px 21px;
 
     color: #4d4d4d;
     text-decoration: none;
@@ -58,6 +58,10 @@ header{
 
 .menu .login-option{
     display: none;
+}
+
+body .list-user{
+    color: rgb(226, 102, 0);
 }
 
 .text{
