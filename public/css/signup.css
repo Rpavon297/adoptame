@@ -91,6 +91,17 @@ label {
     margin: auto;
 }
 
+.trans-button {
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 5px;
+    background-color: #fafafa;
+    border: none;
+    color: #4d4d4d;
+    text-align: left;
+    text-decoration: none;
+}
+
 .meter {
     display: inline-block;
     margin-top: 10px;

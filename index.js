@@ -133,6 +133,9 @@ app.get("/Contact.html", (req, res) => {
   res.render("Contact", {errMsg: null});
 });
 
+app.get("/GestionAnimal.html", (req, res) => {
+  res.render("GestionAnimal", {errMsg: null});
+});
 app.get("/Animals.html", (req, res) => {
   res.render("Animals", {errMsg: null});
 });
@@ -193,6 +196,8 @@ app.get("/gestionUsuarios", (req, res) => {
   })
 });
 
+
+
 app.get("/listarAdoptantes", (req, res) => {
   res.render("ListarAdoptantes", {errMsg: null});
 });
@@ -206,6 +211,10 @@ app.get("/listarProtectoras.html", (req, res) => {
       res.render("ListarProtectoras", {protectoras});
     }
   })
+});
+
+app.get("/listarAnimalesProtectora", (req, res) => {
+  res.render("ListarAnimalesProtectora", {errMsg: null});
 });
 
 app.get("/DescripcionAnimalUsuario", (req, res) => {
@@ -317,6 +326,10 @@ app.post("/modprofile", function(request, response){
         }
         else { response.render("Login", {errMsg: "No se pudo modificar"}); };
   })
+});
+
+app.get("/ModificarAnimal", (req, res) => {
+  res.render("ModificarAnimal", {errMsg: null});
 });
 
 

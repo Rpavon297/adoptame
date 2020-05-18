@@ -1,0 +1,103 @@
+.campo{
+    margin-top: 25px;
+}
+
+#campoimg{
+    max-width: 150px;
+}
+
+#camposform{
+    max-width: 750px; 
+    padding: 0px 100px 0px 100px;
+    margin-top: 30px;
+}
+
+#description{
+    height: 130px;
+}
+
+#type_tag{
+    position: relative;
+    top: 30px;
+    left: 0px;
+    font-size: 13px;
+}
+.btn{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+html * {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.titulo{
+    margin-top: 80px; margin-bottom: 50px; margin-right: 1200px;
+}
+.banner{
+    background-color: #e8e8e8;
+    color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-image: url('/resources/img/bannermod.jpg'); margin-bottom: 50px;
+}
+
+.example{
+    font-size: 9pt;
+    color: rgb(115, 115, 115);
+}
+
+.fotoanimal{
+    padding: 5px;
+    width: 300px;
+    margin-top: 25px;
+    border-radius: 5px;
+    border: 1px solid #97c1cc;
+}
+
+.main_img{
+    width: 200px;
+}
+
+.floating-input {
+    font-size: 12pt;
+    font-weight: 100;
+    color: rgb(115, 115, 115);
+    height: 65px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #97c1cc;
+    padding: 20px 57px 0px 18px;
+    margin: auto;
+    display: block;
+}
+  
+.floating-input:focus {
+    outline: none !important;
+    border: 1px solid black;
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+}
+
+label {
+
+    position: absolute;
+    pointer-events: none;
+    left: 15px;
+    top: 21px;
+    transition: 0.08s ease all;
+    color: rgb(115, 115, 115);
+    font-size: 12pt;
+    font-weight: normal !important;
+    padding: 0px 20px 0px 18px;
+    -moz-transition:0.08s ease all; 
+    -webkit-transition:0.08s ease all;
+}
+  
+.floating-input:focus ~ label, .floating-input:not(:placeholder-shown) ~ label {
+    top: 10px;
+    bottom: 10px;
+    left: 15px;
+    font-size: 13px;
+}
