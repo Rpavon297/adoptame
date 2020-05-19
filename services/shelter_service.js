@@ -100,6 +100,7 @@ class ShelterService {
 
     // Si existe una petición vinculada al email, pone su estatus como aceptada
     acceptRequest(email, callback){
+        console.log("accepted request");
         for (var key in request) {
             if (key != "img" && (request[key] === "" || request[key] === undefined)) {
                 callback(null, false); return;

@@ -240,8 +240,16 @@ app.get("/detalleprotectora", (req, res) => {
 
   res.render("detalleprotectora", {errMsg: null,foto:photo,nombre:nomb,descripcion:descrip, telefono:telef,direccion:direcci,correo:corre,ciudad:ciu});
 });
+
 app.get("/solicitudesProtectoras", middCheckUser, (req, res) => {
   res.render("SolicitudesProtectoras", {errMsg: null});
+});
+
+app.post("/manageRequest", middCheckUser, (request, response) =>{
+  response.json({
+    a: "ok",
+    b: "yey"
+  });
 });
 
 app.get("/SolicitudesAdopcion.html", middCheckUser, (req, res) => {
@@ -312,23 +320,33 @@ app.get("/modprofile", middCheckUser , (req, res) => {
 app.post("/modprofile", function(request, response){
   userService.modifUser(request.body, (err, check) => {
       if(check === true){
-        console.log("porque explota, i dont understand")
         response.redirect("/confirmation");
-        }
-        else { response.render("Login", {errMsg: "No se pudo registrar"}); };
-  })
+      }
+      else { 
+        response.render("Login", {errMsg: "No se pudo registrar"}); 
+      };
+  });
 });
 
-<<<<<<< HEAD
-app.get("/Requests", function(request, response){
-  res.render("ListarPeticiones", {errMsg: null});
+app.get("/editShelterProfile", (req,res) =>{
+  res.render("ModificarPerfilProtectora", {errMsg: null});
 });
-=======
+
+app.post("/editShelterProfile", (req,res) =>{
+  userService.modifUser(request.body, (err, check) => {
+    if(check === true){
+      response.redirect("/confirmation");
+      }
+      else { 
+        response.render("Login", {errMsg: "No se pudo registrar"}); 
+      };
+});
+});
+
 app.get("/ModificarAnimal", (req, res) => {
   res.render("ModificarAnimal", {errMsg: null});
 });
 
->>>>>>> dev
 
 /**
  * Server Activation

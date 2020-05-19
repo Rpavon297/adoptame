@@ -146,18 +146,18 @@ class UserService{
                 callback(err);
                }else{
                 if(user.type === 'protectora'){
-                    connection.query(
+                    conn.query(
                         "UPDATE shelter SET userEmail=?, shelterName=?, shelterAddress=?, shelterDescription=?, webpage=?",
                         [user.email, user.shelter_name, user.location, user.descripcion, user.web],
                         (err) =>{
                             if(err){
                                 callback(err);
                             }
-                            connection.release();
+                            conn.release();
                             callback(null, true);
                         }
                     );
-                }  else  {connection.release(); callback(null, true);}
+                }  else  {conn.release(); callback(null, true);}
                }
                
         });
