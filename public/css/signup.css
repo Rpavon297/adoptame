@@ -91,6 +91,17 @@ label {
     margin: auto;
 }
 
+.trans-button {
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 5px;
+    background-color: #fafafa;
+    border: none;
+    color: #4d4d4d;
+    text-align: left;
+    text-decoration: none;
+}
+
 .meter {
     display: inline-block;
     margin-top: 10px;
@@ -133,9 +144,7 @@ label {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
-}
 
-#text-area-id {
     color: #4d4d4d;
     height: 170px;
     width: 100%;
@@ -150,7 +159,7 @@ label {
     resize: none;
 }
 
-#text-area-id:focus {
+.text-area:focus {
     outline: none !important;
     border: 1px solid #97c1cc;
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);

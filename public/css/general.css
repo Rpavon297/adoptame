@@ -14,14 +14,15 @@ header{
     top:0;
     height: 4em;
     z-index: 999;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 1);
     width: 100%;
-    border-bottom: 1px solid rgb(133, 134, 134);
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.15);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .menu-content{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     height: max-content;
 }
 .menu{
@@ -32,23 +33,27 @@ header{
     float: left;
     display: block;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 22px;
 
-    color: black;
+    color: #4d4d4d;
     text-decoration: none;
-    font:bold 19px cursive;
-    text-shadow: rgb(202, 228, 223) 2px 2px 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 3px;
+    /*text-shadow: rgb(202, 228, 223) 2px 2px 4px;*/
 }
 
 .menu a:hover{
-    color: rgb(96, 96, 107);
+    color: #1e1e1e;
     text-decoration: none;
-    transform: scale(1.15);
-    transition: 0.5s;
+    transform: scale(1.05);
+    transition: 0.2s;
 }
 
 .menu .icon{
     display: none;
+    margin-top: 4px;
 }
 
 .menu .login-option{
@@ -60,20 +65,22 @@ header{
 }
 
 .logo_negro{
+    margin-top: 12px;
     display: block;
-    justify-content: center;
-    height: 4em;
+    justify-content: right;
+    height: 30px;
 }
 
 .icon-login{
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    transition: transform 0.6s ease-in;
+    margin-top: 4px;
 }
 
 .icon-login:hover{
-    transform: rotate(25deg);
+    transform: rotate(10deg);
+    transition: 0.2s;
 }
 
 /* Query que oculta las opciones del menú que sobresalen de la pantalla y muestra el icono de expandir */
@@ -90,7 +97,7 @@ header{
 @media screen and (max-width: 1000px) {
     .menu.responsive {
         position: relative;
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255);
     }
     .menu.responsive a.icon {
       position: absolute;
@@ -176,37 +183,8 @@ header{
     min-height: 40em;
 }
 
-.prueba{
-    margin: 1em;
-    height: 15em;
-    border: 1px solid black;
-}
 
 
-.cuadro1{
-    background: red;
-}
-
-.cuadro2{
-    background: green;
-}
-
-.cuadro3{
-    background: rgb(12, 185, 216);
-
-}
-
-.cuadro4{
-    background: pink;
-}
-
-.cuadro5{
-    background: orange;
-}
-
-.cuadro6{
-    background: grey;
-}
 /*fin home */
 
 /* admin */
@@ -215,6 +193,39 @@ header{
     text-align: center !important;
 }
 
+.admin-control, .modal-dialog{
+    font-family: 'Bree Serif', serif;
+    font-size: 15px;
+}
+
 .table-admin{
     overflow-x: auto;
+}
+
+.encabezado{
+    padding: 0.5em;
+}
+
+.cuadrarHeader {
+    margin-top: 4em;
+}
+
+.cursor{
+    cursor: pointer;
+}
+
+body .logout{
+    color: blue;
+}
+
+
+/* Clase para fijar una altura minima y que el footer no se quede muy arriba*/
+
+.main-content{
+    min-height: 700px;
+}
+
+.error{
+
+
 }

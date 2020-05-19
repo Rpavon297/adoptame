@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head class="headerColor">
+    <title>Adoptame</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/descripcionanimal.css">
+    <link rel="icon" type="image/png" href="./resources/img/logoazul.png" />
+</head>
+
+<body>
+    <%- include('./header'); %>
+    <div id=content>
+        <div class="containerleft">
+            <div class="boxDatos" style="max-width: 500px;">
+                <p class = "styletext"">Nombre: <span class= "styleletra" style= "color:rgb(115, 115, 115);">
+                    <%=animal%>
+                </span></p>
+                <p class = "styletext">Protectora: <span class= "styleletra" style= "color:rgb(115, 115, 115);">
+                    <%=nombre%>
+                </span></p>
+                <p class = "styletext">Tipo: <span class= "styleletra" style= "color:rgb(115, 115, 115);">
+                    <%=tipo%>
+                </span></p>
+                <p class = "styletext">Edad: <span class= "styleletra" style= "color:rgb(115, 115, 115);">
+                    <%=edad%>
+                </span></p>
+                <p class = "styletext">Color: <span class= "styleletra" style= "color:rgb(115, 115, 115);">
+                    <%=color%>
+                </span></p>
+                <p class = "styletext">Peso: <span class= "styleletra" style= "color:rgb(115, 115, 115);">
+                    <%=peso%>
+                </span></p>
+                <p class = "styletext">Descripción: <span class= "styleletra" style= "color:rgb(115, 115, 115);">
+                    <%=descripcion%>
+                </span></p>   
+            </div>
+        </div>
+        <div class="containerright">
+                <img class="imagenDetalle" src="<%=foto%>">
+            </class>
+        </div>
+    </div>
+    <div class="centerboton">
+        <form action="/detalleprotectora" method="GET"> <!-- redirige a detalle protectora-->
+            <input type="hidden" name="ident">
+            <input type="submit" class="btn btn-success botondetalle" value="Datos de la protectora a la que pertenece">
+        </form>
+
+        <form action="/animals.html" method="GET"> <!-- redirige a lista de los animales (Animals)-->
+            <input type="submit" class="btn btn-info botondetalle" value="Volver">
+        </form>
+
+        <!--if( registro == "adoptante"){-->
+        <form action="/ContactForm.html" method="GET"> <!-- redirige al formulario de pre-adopcion-->
+            <input type="submit" class="btn btn-info botondetalle" value="Adoptame">
+        </form>
+        <!-- } -->
+
+    </div>   
+
+    <%- include('./footer'); %>
+</body>
+
+</html>
