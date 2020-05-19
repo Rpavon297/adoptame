@@ -333,8 +333,8 @@ app.post("/modprofile", function(request, response){
   })
 });
 
-app.get("/ModificarAnimal", (req, res) => {
-  res.render("ModificarAnimal", {errMsg: null});
+app.get("/modificarProtectora", (req, res) => {
+  res.render("modificarProtectora", {errMsg: null});
 });
 
 
