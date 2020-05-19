@@ -230,7 +230,14 @@ app.get("/DescripcionAnimalUsuario", (req, res) => {
   res.render("DescripcionAnimalUsuario", {errMsg: null, animal:an,foto:photo,nombre:nomb,descripcion:descrip,tipo:tip,color:col,edad:ed,peso:pes});
 });
 
-app.get("/detalleprotectora", (req, res) => {
+app.get("/detalleprotectora/:id", (req, res) => {
+  console.log(colors.dim(req.params.id + "req.param"))
+  userService.getUser(req.params.id, (err, user) => {
+    if(err){}
+    else{
+      res.render("detalleprotectora", {errMsg: null,nombre:user.shelterName,descripcion:user.shelterDescription, telefono:user.tlf,direccion:user.shelterAddress,correo:user.email, webpage: user.webpage});
+    }
+  })
   var photo = "/resources/img/logo-lamadrilena.png";
   var nomb="La Madrileña";
   var descrip="Todas las personas que componemos el equipo de La Madrileña procedemos del mundo de la protección animal, en el que hemos trabajado durante muchos años y por el que seguimos luchando todos los días.";
@@ -238,8 +245,6 @@ app.get("/detalleprotectora", (req, res) => {
   var ciu="Madrid";
   var direcci = "calle Siniestro, 28, Madrid ";
   var corre="l6@gmail.com";
-
-  res.render("detalleprotectora", {errMsg: null,foto:photo,nombre:nomb,descripcion:descrip, telefono:telef,direccion:direcci,correo:corre,ciudad:ciu});
 });
 app.get("/solicitudesProtectoras", middCheckUser, (req, res) => {
   res.render("SolicitudesProtectoras", {errMsg: null});

@@ -1,3 +1,4 @@
+const _ = require("lodash")
 class UserService{
     constructor(pool){
         this.pool = pool;
@@ -52,20 +53,17 @@ class UserService{
                     if(err){
                         callback(err);
                     }
-                    if(user.userType === 'protectora'){
+                    console.log(user)
+                    if(user[0].userType === 'protectora'){
                         connection.query(
                             "Select * from shelter where userEmail = ?",
                             [email],
                             (err, shelter) => {
-                                console.log(shelter)
                                 if(err){
                                     callback(err);
                                 }
                                 else{
-                                    user = user[0]
-                                    shelter = shelter[0]
-                                    full_account = {user, shelter};
-                                    console.log(full_account)
+                                    let full_account = _.merge(user[0], shelter[0]);
                                     callback(false, full_account);
                                 }
                             }

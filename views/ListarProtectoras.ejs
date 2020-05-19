@@ -42,7 +42,7 @@
                              <td><a href="<%= protectora.userEmail %>"><%= protectora.userEmail %></a></td>
                              <td><%= protectora.shelterAddress %></td>
                              <td><%= protectora.webpage %></td>
-                             <td><ion-icon name="create-outline"></ion-icon><a href="#" onclick="delete_user(user.email)"><ion-icon name="close-outline"></ion-icon></a></td>
+                             <td><a href="/detalleprotectora/<%= protectora.userEmail %>">ver</a></td>
                            </tr>
                          <% }) %>
                          </tbody>
