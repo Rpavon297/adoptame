@@ -1,3 +1,4 @@
+const _ = require("lodash")
 class UserService{
     constructor(pool){
         this.pool = pool;
@@ -5,7 +6,6 @@ class UserService{
 
     /**
      * Comprueba que el usuario existe y la contraseña es correcta
-     * 
      * @param {*} email email del usuario
      * @param {*} pass contraseña
      * @param {*} callback 
@@ -53,20 +53,17 @@ class UserService{
                     if(err){
                         callback(err);
                     }
-                    if(user.userType === 'protectora'){
+                    console.log(user)
+                    if(user[0].userType === 'protectora'){
                         connection.query(
                             "Select * from shelter where userEmail = ?",
                             [email],
                             (err, shelter) => {
-                                console.log(shelter)
                                 if(err){
                                     callback(err);
                                 }
                                 else{
-                                    user = user[0]
-                                    shelter = shelter[0]
-                                    full_account = {user, shelter};
-                                    console.log(full_account)
+                                    let full_account = _.merge(user[0], shelter[0]);
                                     callback(false, full_account);
                                 }
                             }
@@ -79,6 +76,40 @@ class UserService{
             connection.release();
         });
     }
+
+
+    getAllUsers(type, callback){
+        this.pool.getConnection((err,connection) => {
+            if(err){ callback(err); return;
+            }
+            if(type === "protectora"){
+                connection.query(
+                    "Select * from account join shelter on email = userEmail", [type], (err, users) => {
+                        if(err){callback(err); return;}
+                        connection.release();
+                        callback(null, users);
+                    }
+                )
+            }else if (type === "all"){
+                connection.query(
+                    "Select * from account", (err, users) => {
+                        if(err){callback(err); return;}
+                        connection.release();
+                        callback(null, users);
+                    })
+            }else{
+                connection.query(
+                    "Select * from account where userType = ?", [type], (err, users) => {
+                        if(err){callback(err); return;}
+                        connection.release();
+                        callback(null, users);
+                    }
+                )
+            }
+           })}
+
+
+
 
     /**
      * Crea una cuenta de adoptante o de protectora
@@ -146,7 +177,7 @@ class UserService{
                 callback(err);
                }else{
                 if(user.type === 'protectora'){
-                    connection.query(
+                    conn.query(
                         "UPDATE shelter SET userEmail=?, shelterName=?, shelterAddress=?, shelterDescription=?, webpage=?",
                         [user.email, user.shelter_name, user.location, user.descripcion, user.web],
                         (err) =>{
@@ -157,9 +188,8 @@ class UserService{
                             callback(null, true);
                         }
                     );
-                }  else  {connection.release(); callback(null, true);}
+                }  else  {conn.release(); callback(null, true);}
                }
-               
         });
     });
     }
