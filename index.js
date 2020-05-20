@@ -6,9 +6,7 @@
 const express = require("express");
 // Utilidades para trabjar con rutas a ficheros y directorios
 const path = require("path");
-
 const mysql = require("mysql");
-
 const globals = require("./globals");
 const userServices = require("./services/user_service");
 const shelterServices = require("./services/shelter_service");
@@ -16,7 +14,11 @@ const shelterServices = require("./services/shelter_service");
 const session = require("express-session");
 const sessionMSQL = require("express-mysql-session");
 const expressValidator = require("express-validator");
-const bodyParser = require("body-parser");
+const bodyParser = require("body-parser"); //Crea un json con los parametros de un formulario
+const morgan = require("morgan"); //Muestra el estado de la peticion hecha
+const colors = require("colors"); //Muestra las frases por consola con los colores que quieras, util visualmente al depurar
+const helmet = require("helmet"); //Seguridad web en las cabeceras
+const _ = require("lodash"); //utilidades para arrays y demas, version actualizada del antiguo underscore
 
 
 /**
@@ -42,8 +44,9 @@ app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/js', express.static(__dirname + '/node_modules/popper.js/dist'));
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
-
-
+app.use(morgan("dev"));
+app.use(helmet());
+colors.enable();
 // Pool de conexiones
 
 const pool = mysql.createPool({
@@ -78,10 +81,11 @@ const middlewareSession = session ({
 function initialVarLogin (request, response, next){
   if(request.session.currentUser === undefined){
     response.locals.login = false;
-  }else response.locals.login = true;
-
-  response.locals.user = request.session.currentUser;
-
+  }else{ 
+    response.locals.login = true;
+    response.locals.currentUser = request.session.currentUser;
+    console.log(colors.cyan(response.locals.currentUser))
+  }
   next();
 };
 
@@ -122,7 +126,6 @@ app.use(function (request,response,next){
  */
 
 app.get("/", (req, res) => {
-  console.log("aqui llega tambien, al get /");
   res.render("Landing", {errMsg: null});
 });
 
@@ -174,7 +177,7 @@ app.post("/Login", function(request, response){
               else{
                 userBD.email = request.body.loginMail;
                 request.session.currentUser = userBD;
-                console.log("Se ha logueado correctamente, se guardaran estos datos de sesion")
+                console.log(colors.green("Se ha logueado correctamente, se guardaran estos datos de sesion"))
                 console.log(userBD)
                 if(userBD.userType === "adoptante" || userBD.userType === "admin"){
                   response.redirect("/profile");
@@ -195,7 +198,14 @@ app.get("/Logout", middCheckUser,function(request, response){
 })
 
 app.get("/gestionUsuarios", (req, res) => {
-  res.render("GestionUsuarios", {errMsg: null});
+  userService.getAllUsers( "all", (err, users) => {
+    if(err){
+      console.log(colors.red("error"))
+    }else{
+      console.log(colors.green(users))
+      res.render("GestionUsuarios", {usuarios: users});
+    }
+  })
 });
 
 
@@ -204,8 +214,15 @@ app.get("/listarAdoptantes", (req, res) => {
   res.render("ListarAdoptantes", {errMsg: null});
 });
 
-app.get("/listarProtectoras", (req, res) => {
-  res.render("ListarProtectoras", {errMsg: null});
+app.get("/listarProtectoras.html", (req, res) => {
+  userService.getAllUsers( "protectora" , (err, protectoras) => {
+    if(err){
+      console.log(colors.red("error"))
+    }else{
+      console.log(colors.green(protectoras))
+      res.render("ListarProtectoras", {protectoras});
+    }
+  })
 });
 
 app.get("/listarAnimalesProtectora", (req, res) => {
@@ -229,7 +246,14 @@ app.get("/DescripcionAnimalUsuario", (req, res) => {
   res.render("DescripcionAnimalUsuario", {errMsg: null, animal:an,foto:photo,nombre:nomb,descripcion:descrip,tipo:tip,color:col,edad:ed,peso:pes});
 });
 
-app.get("/detalleprotectora", (req, res) => {
+app.get("/detalleprotectora/:id", (req, res) => {
+  console.log(colors.dim(req.params.id + "req.param"))
+  userService.getUser(req.params.id, (err, user) => {
+    if(err){}
+    else{
+      res.render("detalleprotectora", {errMsg: null,nombre:user.shelterName,descripcion:user.shelterDescription, telefono:user.tlf,direccion:user.shelterAddress,correo:user.email, webpage: user.webpage});
+    }
+  })
   var photo = "/resources/img/logo-lamadrilena.png";
   var nomb="La Madrileña";
   var descrip="Todas las personas que componemos el equipo de La Madrileña procedemos del mundo de la protección animal, en el que hemos trabajado durante muchos años y por el que seguimos luchando todos los días.";
@@ -237,8 +261,6 @@ app.get("/detalleprotectora", (req, res) => {
   var ciu="Madrid";
   var direcci = "calle Siniestro, 28, Madrid ";
   var corre="l6@gmail.com";
-
-  res.render("detalleprotectora", {errMsg: null,foto:photo,nombre:nomb,descripcion:descrip, telefono:telef,direccion:direcci,correo:corre,ciudad:ciu});
 });
 
 app.get("/solicitudesProtectoras", middCheckUser, (req, res) => {
@@ -319,6 +341,8 @@ app.get("/modprofile", middCheckUser , (req, res) => {
 
 app.post("/modprofile", function(request, response){
   userService.modifUser(request.body, (err, check) => {
+      console.log(colors.red("datos del usuario modificado"))
+      console.log(colors.red(request.body))
       if(check === true){
         response.redirect("/confirmation");
       }
@@ -343,8 +367,8 @@ app.post("/editShelterProfile", (req,res) =>{
 });
 });
 
-app.get("/ModificarAnimal", (req, res) => {
-  res.render("ModificarAnimal", {errMsg: null});
+app.get("/modificarProtectora", (req, res) => {
+  res.render("modificarProtectora", {errMsg: null});
 });
 
 
