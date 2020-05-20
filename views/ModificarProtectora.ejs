@@ -19,16 +19,65 @@
 <body>
     <%- include('./header'); %>
 
-    <div class="two-columns">
-        <p>
-            <!--datos -->
-        </p>
-        <p>
-          <!--datos -->
-        </p>
+    <div id="content">
+        <div class= "cajaglobal">
+
+            <div class="titulo font-weight-bolder">
+                <h1>EDITAR UNA PROTECTORA</h1>
+            </div>
+
+            <div class="alineacion three-columns marge">
+                <div><img src="/resources/img/pet_care.jpg" class="imagen" width="300" height="350"></br>
+                    <form class= "texto alineacion" action="" method="GET"> 
+                        <input type="submit"  value="Cambiar foto"> 
+                    </form>
+                </div>
+                
+
+                <div class="titulo font-weight-bolder">
+                    <h5>INFORMACIÓN DEL PERFIL</h5>
+
+                    <div class= "texto">
+
+                        <input type="text" class="form-control input-group-sm chat-input" placeholder="Nombre"> </br>
+                        <input type="text" class="form-control input-group-sm chat-input" placeholder="Dirección"></br>
+                        <input type="text" class="form-control input-group-sm chat-input" placeholder="Teléfono/Móvil" pattern="{9}"></br>
+                        <textarea rows="16" cols="20" class="form-control input-group-sm chat-input" placeholder="Biografía"></textarea>
+                  
+                    </div>
+                
+
+                
+                    <h5>CONTACTO</h5>
+                    <div class= "texto">
+                        <input type="text" class="form-control input-group-sm chat-input" placeholder="Pagina web" ></br>
+                        <input type="email" class="form-control input-group-sm chat-input" name="email" placeholder="Correo"></br>
+                        <input type="text" class="form-control input-group-sm chat-input" placeholder="Redes Sociales"></br>
+                    </div>
+                
+                
+                    <h5>LOGIN CUENTA</h5>
+                    <div class= "texto">
+                        <input type="email" class="form-control input-group-sm chat-input" name="Nuevo email" placeholder="Correo"></br>
+                        <input type="text" class="form-control input-group-sm chat-input" placeholder="Contraseña nueva"></br>
+                        <input type="text" class="form-control input-group-sm chat-input" placeholder="Repetir Contraseña"></br>
+                    </div>
+                </div>
+
+                <form class= "texto" action="" method="GET"> 
+                    <input type="submit"  value="Ok"> 
+                    <input type="submit"  value="Cancelar"> 
+                </form>
+            </div>
+
+
+
+        </div>
     </div>
-        
-                        
+
+   
+             
+    
      <!-- el footer tambien deberia ser otro codigo comun a todas las views, copiarlo y pegarlo-->
     <%- include('./Footer'); %>
     
