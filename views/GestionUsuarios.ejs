@@ -30,21 +30,23 @@
                           <tr>
                             <th scope="col">Nombres</th>
                             <th scope="col">Apellidos</th>
+                            
                             <th scope="col">Email</th>
                             <th scope="col">Rol</th>
                             <th scope="col">Eliminar</th>
                           </tr>
                         </thead>
                         <tbody>
-                         <% usuarios.map( user => { %>
+                          <% usuarios.map( user => { %>
                           <tr>
                             <th scope="row"><%= user.forename %></th>
                             <td><%= user.surnames %></td>
                             <td><a href="#"><%= user.email %></a></td>
                             <td><%= user.userType %></td>
-                            <td><a href="/deleteUser/<%= user.email %>"><ion-icon name="close-outline"></ion-icon></a></td>
+                            <td><ion-icon name="create-outline"></ion-icon><a href="#" onclick="delete_user(user.email)"><ion-icon name="close-outline"></ion-icon></a></td>
+
                           </tr>
-                        <% }) %>
+                          <% }) %>
                         </tbody>
                       </table>
                 </div>

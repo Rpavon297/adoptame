@@ -143,7 +143,8 @@ class UserService{
      * @param {*} webpage 
      */
     createAccount(user, callback){
-        if((user.email === "") ||(user.name === "") || (user.password === "") ||  (user.surname === undefined) ){
+        if((user.email === "") ||(user.forename === "") || (user.pass=== "") ||  (user.surnames === undefined) ){
+            console.log("incorrecto");
             callback(null, false); return;
         }
         this.pool.getConnection((err,connection) => {
@@ -156,17 +157,17 @@ class UserService{
                 if(result.length == 0){
                     connection.query(
                         "insert into account(email,pass,forename,surnames,birthdate, tlf,  userType) values (?,?,?,?,?,?,?)",
-                        [user.email, user.password, user.name, user.surname, user.jqueryDate, user.tlf, user.type],
+                        [user.email, user.pass, user.forename, user.surnames, user.birthdate, user.tlf, user.userType],
                         (err) =>{
                             if(err){
                                 callback(err);
                                 return ;
                             }
                             else{
-                                if(user.type === 'protectora'){
+                                if(user.userType === 'protectora'){
                                     connection.query(
                                         "insert into shelter(userEmail, shelterName, shelterAddress, shelterDescription, webpage) values (?,?,?,?,?)",
-                                        [user.email, user.shelter_name, user.location, user.descripcion, user.web],
+                                        [user.email, user.shelterName, user.shelterAddress, user.shelterDescription, user.webpage],
                                         (err) =>{
                                             if(err){
                                                 callback(err);
@@ -180,7 +181,7 @@ class UserService{
                         }
                     );
                 }
-                else{  conn.release(); callback(null, false);}
+                else{  connection.release(); callback(null, false);}
             }) 
         });
     }
@@ -202,7 +203,7 @@ class UserService{
                             if(err){
                                 callback(err);
                             }
-                            connection.release();
+                            conn.release();
                             callback(null, true);
                         }
                     );
