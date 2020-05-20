@@ -198,6 +198,16 @@ app.get("/gestionUsuarios", (req, res) => {
 
 
 
+app.get("/deleteUser/:id", (req, res) => {
+  userService.deleteUser( req.params.id , (err) => {
+    if(err){
+      console.log(colors.red("error al borrar"))
+    }else{
+      res.redirect("/gestionUsuarios");
+    }
+  })
+});
+
 app.get("/listarAdoptantes", (req, res) => {
   res.render("ListarAdoptantes", {errMsg: null});
 });
@@ -208,7 +218,7 @@ app.get("/listarProtectoras.html", (req, res) => {
       console.log(colors.red("error"))
     }else{
       console.log(colors.green(protectoras))
-      res.render("ListarProtectoras", {protectoras});
+      res.render("Shelters", {protectoras});
     }
   })
 });
@@ -238,14 +248,8 @@ app.get("/detalleprotectora/:id", (req, res) => {
       res.render("detalleprotectora", {errMsg: null,nombre:user.shelterName,descripcion:user.shelterDescription, telefono:user.tlf,direccion:user.shelterAddress,correo:user.email, webpage: user.webpage});
     }
   })
-  var photo = "/resources/img/logo-lamadrilena.png";
-  var nomb="La Madrileña";
-  var descrip="Todas las personas que componemos el equipo de La Madrileña procedemos del mundo de la protección animal, en el que hemos trabajado durante muchos años y por el que seguimos luchando todos los días.";
-  var telef="(+34)648 495 073 ";
-  var ciu="Madrid";
-  var direcci = "calle Siniestro, 28, Madrid ";
-  var corre="l6@gmail.com";
 });
+
 app.get("/solicitudesProtectoras", middCheckUser, (req, res) => {
   res.render("SolicitudesProtectoras", {errMsg: null});
 });

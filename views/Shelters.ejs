@@ -35,200 +35,34 @@
                 <!-- Protectoras (Cards) -->
                 <div class="row">
                     <!-- Animalia -->
-                    <div class="col">
+                    <% protectoras.map( protectora => { %>
+                    <div class="col card-shelter">
                         <div class="row d-flex justify-content-center" style="margin-bottom: 30px;">
                             <div class="my-card">
                                 <img src="/resources/img/protectora_lista1.jpg">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col"><h5>Animalia</h5></div>
-                                        <div class="col"><h6>Coslada</h6></div>
+                                        <div class="col"><h5><%= protectora.shelterName %></h5></div>
+                                        <div class="col"><h6><%= protectora.shelterAddress %></h6></div>
                                     </div>
-                                    <p>Animalia es una organizacion sin animo de lucro centrada en dar una buena vida a animales sin hogar</p>
+                                    <p><%= protectora.shelterDescription %></p>
                                 </div>
                                 <div class="row">
                                     <div class="col my-card-information">
-                                        <i class="fas fa-map-marker-alt"></i> &nbsp; AnimaliaProtectora@gmail.com
+                                        <i class="fas fa-map-marker-alt"></i> &nbsp; <%= protectora.userEmail %>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-5 my-card-information">
-                                        <i class="fas fa-mars" style="font-size: 20px;"></i> &nbsp; +34 264 346 356
+                                        <i class="fas fa-mars" style="font-size: 20px;"></i> &nbsp; +34 <%= protectora.tlf %>
                                     </div>
                                 </div>
                                 
-                                <button type="button" class="my-card-button">Más Información</button>
+                                <button type="button" class="my-card-button"><a href="/detalleprotectora/<%= protectora.userEmail %>">más Información</a></button>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Gatoshelter-->
-                    <div class="col">
-                        <div class="row d-flex justify-content-center" style="margin-bottom: 30px;">
-                            <div class="my-card">
-                                <img src="/resources/img/protectora_lista2.jpg">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col"><h5>Gatoshelter</h5></div>
-                                        <div class="col"><h6>Galicia</h6></div>
-                                    </div>
-                                    <p>Gatoshelter tiene por objetivo que ningun gato se quede sin familia !contactanos sin compromiso!</p>
-                                </div>
-                                <div class="row">
-                                    <div class="col my-card-information">
-                                        <i class="fas fa-map-marker-alt"></i> &nbsp; GatoshelterGalicia@gatoMail.com
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-5 my-card-information">
-                                        <i class="fas fa-mars" style="font-size: 20px;"></i> &nbsp; +34 264 346 356
-                                    </div>
-                                </div>
-                                
-                                <button type="button" class="my-card-button">Más Información</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- New Life-->
-                    <div class="col">
-                        <div class="row d-flex justify-content-center" style="margin-bottom: 30px;">
-                            <div class="my-card">
-                                <img src="/resources/img/protectora_lista3.jpg">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col"><h5>New Life</h5></div>
-                                        <div class="col"><h6>Todo España</h6></div>
-                                    </div>
-									<p>En new life nos centramos en dar una segunda oportunidad a mascotas que han perdido una familia, nuesto enfasis esta en reeducar, y realocar</p>
-                                </div>
-                                <div class="row">
-                                    <div class="col my-card-information">
-                                        <i class="fas fa-map-marker-alt"></i> &nbsp; newLifeShelter@hhrrnl.com
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-5 my-card-information">
-                                        <i class="fas fa-mars" style="font-size: 20px;"></i> &nbsp; +34 347 298 102
-                                    </div>
-                                </div>
-                                
-                                <button type="button" class="my-card-button">Más Información</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Exotimales -->
-                    <div class="col">
-                        <div class="row d-flex justify-content-center" style="margin-bottom: 30px;">
-                            <div class="my-card">
-                                <img src="/resources/img/protectora_lista4.jpg">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col"><h5>Exotimales</h5></div>
-                                        <div class="col"><h6>Madrid, Barcelona</h6></div>
-                                    </div>
-                                    <p>¿Tienes una mascota exotica? ¿No sabes como cuidarla? ¡Contactanos!</p>
-                                </div>
-                                <div class="row">
-                                    <div class="col my-card-information">
-                                        <i class="fas fa-map-marker-alt"></i> &nbsp; Exotimalesmascots@clietserviceex.com 
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-5 my-card-information">
-                                        <i class="fas fa-mars" style="font-size: 20px;"></i> &nbsp; +34 447 283 289
-                                    </div>
-                                </div>
-                                
-                                <button type="button" class="my-card-button">Más Información</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Volaran-->
-                    <div class="col">
-                        <div class="row d-flex justify-content-center" style="margin-bottom: 30px;">
-                            <div class="my-card">
-                                <img src="/resources/img/protectora_lista5.jpg">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col"><h5>Volaran</h5></div>
-                                        <div class="col"><h6>Andalucia</h6></div>
-                                    </div>
-                                    <p>En Volaran le damos a tus pajaros  unas nuevas alas para que vuelen directamente a tu hogar, y tu corazon!</p>
-                                </div>
-                                <div class="row">
-                                    <div class="col my-card-information">
-                                        <i class="fas fa-map-marker-alt"></i> &nbsp; volaranContact@bussinesmail.com
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-5 my-card-information">
-                                        <i class="fas fa-mars" style="font-size: 20px;"></i> &nbsp; +34 134 445 121
-                                    </div>
-                                </div>
-                                
-                                <button type="button" class="my-card-button">Más Información</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Naturdoge-->
-                    <div class="col">
-                        <div class="row d-flex justify-content-center" style="margin-bottom: 30px;">
-                            <div class="my-card">
-                                <img src="/resources/img/protectora_lista6.jpg">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col"><h5>Naturdoge</h5></div>
-                                        <div class="col"><h6>Comunidad Valenciana</h6></div>
-                                    </div>
-                                    <p>Naturdoge es una Protectoras que cuida de todo tipo de animales</p>
-                                </div>
-                                <div class="row">
-                                    <div class="col my-card-information">
-                                        <i class="fas fa-map-marker-alt"></i> &nbsp; ClienteND@gmail.com
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-5 my-card-information">
-                                        <i class="fas fa-mars" style="font-size: 20px;"></i> &nbsp; +34 264 425 543
-                                    </div>
-                                </div>
-                                
-                                <button type="button" class="my-card-button">Más Información</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Aquahome-->
-                    <div class="col">
-                        <div class="row d-flex justify-content-center" style="margin-bottom: 30px;">
-                            <div class="my-card">
-                                <img src="/resources/img/protectora_lista7.jpg">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col"><h5>Aquahome</h5></div>
-                                        <div class="col"><h6>Islas baleares</h6></div>
-                                    </div>
-                                    <p>Aquahome le da una nueva vida a todas esas criaturas que viven en el agua.</p>
-                                </div>
-                                <div class="row">
-                                    <div class="col my-card-information">
-                                        <i class="fas fa-map-marker-alt"></i> &nbsp; Aquahome@AHMail.com
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-5 my-card-information">
-                                        <i class="fas fa-mars" style="font-size: 20px;"></i> &nbsp; +34 515 555 355
-                                    </div>
-                                </div>
-                                
-                                <button type="button" class="my-card-button">Más Información</button>
-                            </div>
-                        </div>
-                    </div>
+                    <% }) %>
                 </div>
             </div>
     </div>
