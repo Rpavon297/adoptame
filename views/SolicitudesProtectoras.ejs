@@ -40,12 +40,11 @@
                           <% protectoras.map( protectora => { %>
                            <tr>
                              <th scope="row"><%= protectora.shelterName %></th>
-                             <td><a href="<%= protectora.userEmail %>"><%= protectora.userEmail %></a></td>
+                             <td><a href="<%= protectora.userEmail %>"><%= protectora.email %></a></td>
                              <td><%= protectora.shelterAddress %></td>
                              <td><%= protectora.webpage %></td>
-                             <td><a href="/detalleprotectora/<%= protectora.userEmail %>">ver</a></td>
-                             <td><a href="/solicitudesProtectoras/aceptar/<%= protectora.userEmail %>"><button type="submit" class="btn btn-success btn-xs aceptarProtectora">Aceptar</button></a>
-                              <a href="/solicitudesProtectoras/cancelar/<%= protectora.userEmail %>"><button type="submit" class="btn btn-danger btn-xs rechazarProtectora">Rechazar</button></a></td>
+                             <td><button type="submit" email="<%= protectora.email %>" class="btn btn-success btn-xs aceptarProtectora">Aceptar</button>
+                              <button type="submit" email="<%= protectora.email %>" class="btn btn-danger btn-xs rechazarProtectora">Rechazar</button></a>
                            </tr>
                           <% }) %>
                         </tbody>
@@ -56,5 +55,31 @@
     </div>
     <%- include('./Footer'); %>
 </body>
+<script>
+  $(document).ready(function(){
+    $(".aceptarProtectora").click(function(){
+      var email = $(this).attr('email');
+      alert("Se ha aceptado la protectora con id " + email);
+
+      $.post("/manageRequest", {email: email, accepted: true}, function(request, response){
+        
+      }); 
+    });
+    $(".rechazarProtectora").click(function(){
+      var email = $(this).attr('email');
+      alert("Se ha eliminado la protectora con id " + email);
+
+      $.post("/manageRequest", {email: email, accepted: false}, function(request, response){
+        
+      });          
+    });
+    var data = {};
+      data.idProtectora = $(this).attr('idprotectora');
+      data.accepted = false;
+      $.post("/manageRequest", data, function(request, response){
+        
+      }); 
+  });
+</script> 
 
 </html>
