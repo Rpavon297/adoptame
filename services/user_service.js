@@ -1,4 +1,5 @@
 const _ = require("lodash")
+const color = require("colors")
 class UserService{
     constructor(pool){
         this.pool = pool;
@@ -76,6 +77,23 @@ class UserService{
             connection.release();
         });
     }
+
+
+    deleteUser(usermail, callback){
+        console.log(color.blue(usermail))
+        this.pool.getConnection((err,connection) => {
+            if(err){ callback(err); return;
+            }
+            connection.query(
+                    "delete from account where email = ?", [usermail], (err) => {
+                        if(err){callback(err); return;}
+                        connection.release();
+                        callback(null);
+                    }
+                )
+            
+    })}
+
 
 
     getAllUsers(type, callback){
