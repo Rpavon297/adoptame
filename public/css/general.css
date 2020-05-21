@@ -33,7 +33,7 @@ header{
     float: left;
     display: block;
     text-align: center;
-    padding: 14px 22px;
+    padding: 14px 21px;
 
     color: #4d4d4d;
     text-decoration: none;
@@ -58,6 +58,10 @@ header{
 
 .menu .login-option{
     display: none;
+}
+
+body .list-user{
+    color: rgb(226, 102, 0);
 }
 
 .text{
@@ -88,8 +92,8 @@ header{
     .menu a:not(:first-child) {display: none;}
     .icon-login{display: none;}
     .menu a.icon {
-      float: right;
-      display: block;
+    float: right;
+    display: block;
     }
 }
 
@@ -100,17 +104,17 @@ header{
         background: rgba(255, 255, 255);
     }
     .menu.responsive a.icon {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
+    position: absolute;
+    right: 0;
+    top: 0;
+}
     .menu.responsive a {
-      float: none;
-      display: block;
-      text-align: left;
+    float: none;
+    display: block;
+    text-align: left;
     }
 }
-  
+
 
 /* fin main menu */
 
@@ -145,7 +149,6 @@ header{
 
 .footer-navigation .section-footer{
     padding: 1.5em 5%;
-   
 }
 .logo{
     height: 8em;
@@ -153,15 +156,11 @@ header{
     padding-top: 15px;
 }
 .logo1{
-    
     height: 4.5em;
     padding-left: 40px;
-    
 }
 .RRSS{
-    
     height: 2.5em;
-   
 }
 
 /*fin footer navigation */
@@ -169,7 +168,7 @@ header{
 
 /*home */
 .main-img{   
-   /* min-height: 1000px; 
+    /* min-height: 1000px; 
     background-image: url("/resources/img/dog2.png");
     background-attachment: fixed;
     background-position: center;

@@ -4,61 +4,105 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Gestion Animal - Adoptame</title>
-        <!-- Falta estilo -->
+        <link rel="stylesheet" href="/css/general.css">
+        <link rel="stylesheet" href="/css/PerfilMascota.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
     
     
     </head>
     <body>
         <%- include('./Header'); %>
         <div id="content">
-            <!--TITULO NO SE VE POR HEADER, ARREGLAR EN CSS-->
-            <h1>Gestion de Animal</h1>
+            <div class="container-fluid banner">
+                <h1 class="titulo">Editar Mascota</h1> 
+            </div>
+
+
             <form id="gestionanimal" method="POST">
-                <h2>Editar mascota</h2>
-                <div>
-                    <!--CAMPOS Y TITULOS-->
-                    <div>
-                        <div>
-                            <label id="name_tag">Nombre</label>
-                            <input id="name" type="text">
+                <div class="container" id="campoimg">
+                    <div class="row">
+                        <div class="fotoanimal">
+                            <!--<input id="imagen" type="image" class="image" placeholder=" " required>
+                            <label id="imagen_tag" style="font-weight: 150;"><img src="/resources/img/corgi.jpg" class="main_img"> </label>
+                            -->
+                            <img src="/resources/img/corgi.jpg" class="main_img">
                         </div>
-                        <div>
-                            <label id="genre_tag">Género</label>      
+                    </div>
+                </div>
+    
+                <div class="container" id="camposform">
+                    <div class="row campo">
+                        <div class="col" >
+                            <input id="name" type="text" class="floating-input" placeholder=" ">
+                            <label id="name_tag">Nombre</label>         
                         </div>
-                        <div>
+                    </div>
+                    <div class="row campo">
+                        <div class="col" >
+							<input id="date" type="date" class="floating-input">
                             <label id="date_tag">Fecha de nacimiento</label>
-                            <input id="date" type="text">
-                            <p>Ejemplo:dd/mm/aaaa</p>
+                            
+                            <p class="example">Ejemplo:dd/mm/aaaa</p>
                         </div>
-                        <div>
+                    </div>
+                    <div class="row campo">
+                        <div class="col" >
+                            <input id="weight" type="number" class="floating-input" placeholder=" ">
                             <label id="weight_tag">Peso (kg)</label>
-                            <input id="weight" type="number">
                         </div>
-                        <div>
+                    </div>
+
+                    <div class="row campo">
+                        <div class="col" >
                             <label id="type_tag">Tipo de animal</label>
-                            <select id="type">
+                            <select id="type" class="floating-input">
                                 <option value="dog">Perro</option>
                                 <option value="cat">Gato</option>
                                 <option value="rabbit">Conejo</option>
                             </select>
                         </div>
-                        <div>
+                    </div>
+
+                    <div class="row campo">
+                        <div class="col" >
+                            <input id="city" type="text" class="floating-input" placeholder=" ">
                             <label id="city_tag">Ciudad</label>
-                            <input id="city" type="text">
-                        </div>
-                        <div>
-                            <label id="description_tag">Descripción</label>
-                            <textarea id="description" rows="4" cols="50">
-                                
-                            </textarea>
+                            
                         </div>
                     </div>
-                    <!--FOTO-->
-                    <div></div>
+                    <div class="row campo">
+                        <div class="col">
+                            <textarea id="description" cols="15" class="floating-input" placeholder=" "></textarea>
+							<label id="description_tag">Descripción</label>
+                            
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="row text-center">
+                        <div class="col">
+                            <button type="button" class="btn btn-primary" >Confirmar Cambios</button>
+                           
+                        </div>
+                    </div>
+
+
                 </div>
+    
+    
+                
+    
+    
+    
+                
+    
             </form>
-
-
         </div>
 
         

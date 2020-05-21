@@ -7,67 +7,94 @@
     <title>Protectoras - Adoptame</title>
     <link rel="stylesheet" href="/css/general.css">
     <link rel="stylesheet" href="/css/signup.css">
+    <link rel="stylesheet" href="/css/shelter.css">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <%- include('./Header'); %>
-
     <div id=content>
-        <div class="container" style="max-width: 630px;">
+        <div class="container-fluid">
+            <img src="/resources/img/animal-banner.png" alt="" style="width: 800px; float: right; margin-top: -20px; margin-right: -15px;">
             <div class="row">
-                <div class="col sign-up-page" style="margin-top: 110px;"> <!--130px-->
-                    <h1>¡Esta seccion estara disponible en el proximo sprint!</h1>
-                   
-                    <img src="/resources/img/building.png" width="450px">
-                    <h2>Ten paciencia, estamos programando con el maximo cuidado para que disfrutes de la mejor experiencia de usuario posible.</h2>
-                    
-                    <div style="margin-top: 30px; margin-bottom: 100px;">
-                        <!--<button id="redend_button" class="button" onclick=""> Inicio</button>-->
-                    </div>
+                <div class="col">
+                    <h1 style="margin-left: 200px; margin-top: -335px; font-weight: 600; font-size: 50px; max-width: 600px; background-color: #ffffff;">Encuentra un nuevo amigo</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="margin-left: 200px; margin-top: -160px">
+                    <input style="background-color: #ffffff;" type="text" class="search" />
+		            <div class="line-1"></div>
+		            <div class="line-2"></div>
                 </div>
             </div>
         </div>
-    </div>
-    <%- include('./Footer'); %>
-</body>
+            <div class="container-fluid" style="margin-top: 100px; display: flex; align-items: center; justify-content: center; max-width: 1400px;">
 
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animales - Adoptame</title>
-    <link rel="stylesheet" href="/css/general.css">
-    <link rel="stylesheet" href="/css/signup.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/listarperros.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-</head>
-
-
-
-<body>
-    <%- include('./Header'); %>
-
-    <div id=content>
-        <div class="container" style="max-width: 630px;">
-            <div class="row">
-                <div class="col sign-up-page" style="margin-top: 110px;"> <!--130px-->
-                    <h1>¡Esta seccion estara disponible en el proximo sprint!</h1>
-
-                    <img src="/resources/img/building.png" width="450px">
-                    <h2>Ten paciencia, estamos programando con el maximo cuidado para que disfrutes de la mejor experiencia de usuario posible.</h2>
-
-                    <div style="margin-top: 30px; margin-bottom: 100px;">
-                        <!--<button id="redend_button" class="button" onclick=""> Inicio</button>-->
+                <!-- Protectoras (Cards) -->
+                <div class="row">
+                    <!-- Animalia -->
+                    <% protectoras.map( protectora => { %>
+                    <div class="col card-shelter">
+                        <div class="row d-flex justify-content-center" style="margin-bottom: 30px;">
+                            <div class="my-card">
+                                <img src="/resources/img/protectora_lista1.jpg">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col"><h5><%= protectora.shelterName %></h5></div>
+                                        <div class="col"><h6><%= protectora.shelterAddress %></h6></div>
+                                    </div>
+                                    <p><%= protectora.shelterDescription %></p>
+                                </div>
+                                <div class="row">
+                                    <div class="col my-card-information">
+                                        <i class="fas fa-map-marker-alt"></i> &nbsp; <%= protectora.userEmail %>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5 my-card-information">
+                                        <i class="fas fa-mars" style="font-size: 20px;"></i> &nbsp; +34 <%= protectora.tlf %>
+                                    </div>
+                                </div>
+                                
+                                <button type="button" class="my-card-button"><a href="/detalleprotectora/<%= protectora.userEmail %>">más Información</a></button>
+                            </div>
+                        </div>
                     </div>
+                    <% }) %>
                 </div>
             </div>
-        </div>
     </div>
 
+    <script>
+        $(document).ready(function() {
+		$('.search').click(function() {
+				$('.search').addClass('active');
+				$('.line-1').css({
+						'transform': 'rotate(45deg)',
+						'top': '0px',
+						'left': '0px'
+				});
+				$('.line-2').css({
+						'height':'40px',
+						'opacity':'1'
+				});
+		});
+		$('.line-1, .line-2').click(function() {
+				$('.search').removeClass('active').val('');
+				$('.line-1').css({
+						'transform': 'rotate(-45deg)',
+						'top': '-20px',
+						'left': '45px'
+				});
+				$('.line-2').css({
+						'height':'0px',
+						'opacity':'0'
+				});
+
+		});
+});
+    </script>
     <%- include('./Footer'); %>
 </body>

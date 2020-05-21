@@ -1,3 +1,5 @@
+const _ = require("lodash")
+const color = require("colors")
 class UserService{
     constructor(pool){
         this.pool = pool;
@@ -5,7 +7,6 @@ class UserService{
 
     /**
      * Comprueba que el usuario existe y la contraseña es correcta
-     * 
      * @param {*} email email del usuario
      * @param {*} pass contraseña
      * @param {*} callback 
@@ -53,20 +54,17 @@ class UserService{
                     if(err){
                         callback(err);
                     }
-                    if(user.userType === 'protectora'){
+                    console.log(user)
+                    if(user[0].userType === 'protectora'){
                         connection.query(
                             "Select * from shelter where userEmail = ?",
                             [email],
                             (err, shelter) => {
-                                console.log(shelter)
                                 if(err){
                                     callback(err);
                                 }
                                 else{
-                                    user = user[0]
-                                    shelter = shelter[0]
-                                    full_account = {user, shelter};
-                                    console.log(full_account)
+                                    let full_account = _.merge(user[0], shelter[0]);
                                     callback(false, full_account);
                                 }
                             }
@@ -79,6 +77,57 @@ class UserService{
             connection.release();
         });
     }
+
+
+    deleteUser(usermail, callback){
+        console.log(color.blue(usermail))
+        this.pool.getConnection((err,connection) => {
+            if(err){ callback(err); return;
+            }
+            connection.query(
+                    "delete from account where email = ?", [usermail], (err) => {
+                        if(err){callback(err); return;}
+                        connection.release();
+                        callback(null);
+                    }
+                )
+            
+    })}
+
+
+
+    getAllUsers(type, callback){
+        this.pool.getConnection((err,connection) => {
+            if(err){ callback(err); return;
+            }
+            if(type === "protectora"){
+                connection.query(
+                    "Select * from account join shelter on email = userEmail", [type], (err, users) => {
+                        if(err){callback(err); return;}
+                        connection.release();
+                        callback(null, users);
+                    }
+                )
+            }else if (type === "all"){
+                connection.query(
+                    "Select * from account", (err, users) => {
+                        if(err){callback(err); return;}
+                        connection.release();
+                        callback(null, users);
+                    })
+            }else{
+                connection.query(
+                    "Select * from account where userType = ?", [type], (err, users) => {
+                        if(err){callback(err); return;}
+                        connection.release();
+                        callback(null, users);
+                    }
+                )
+            }
+           })}
+
+
+
 
     /**
      * Crea una cuenta de adoptante o de protectora
@@ -94,7 +143,8 @@ class UserService{
      * @param {*} webpage 
      */
     createAccount(user, callback){
-        if((user.email === "") ||(user.name === "") || (user.password === "") ||  (user.surname === undefined) ){
+        if((user.email === "") ||(user.forename === "") || (user.pass=== "") ||  (user.surnames === undefined) ){
+            console.log("incorrecto");
             callback(null, false); return;
         }
         this.pool.getConnection((err,connection) => {
@@ -107,17 +157,17 @@ class UserService{
                 if(result.length == 0){
                     connection.query(
                         "insert into account(email,pass,forename,surnames,birthdate, tlf,  userType) values (?,?,?,?,?,?,?)",
-                        [user.email, user.password, user.name, user.surname, user.jqueryDate, user.tlf, user.type],
+                        [user.email, user.pass, user.forename, user.surnames, user.birthdate, user.tlf, user.userType],
                         (err) =>{
                             if(err){
                                 callback(err);
                                 return ;
                             }
                             else{
-                                if(user.type === 'protectora'){
+                                if(user.userType === 'protectora'){
                                     connection.query(
                                         "insert into shelter(userEmail, shelterName, shelterAddress, shelterDescription, webpage) values (?,?,?,?,?)",
-                                        [user.email, user.shelter_name, user.location, user.descripcion, user.web],
+                                        [user.email, user.shelterName, user.shelterAddress, user.shelterDescription, user.webpage],
                                         (err) =>{
                                             if(err){
                                                 callback(err);
@@ -131,7 +181,7 @@ class UserService{
                         }
                     );
                 }
-                else{  conn.release(); callback(null, false);}
+                else{  connection.release(); callback(null, false);}
             }) 
         });
     }
@@ -146,20 +196,19 @@ class UserService{
                 callback(err);
                }else{
                 if(user.type === 'protectora'){
-                    connection.query(
+                    conn.query(
                         "UPDATE shelter SET userEmail=?, shelterName=?, shelterAddress=?, shelterDescription=?, webpage=?",
                         [user.email, user.shelter_name, user.location, user.descripcion, user.web],
                         (err) =>{
                             if(err){
                                 callback(err);
                             }
-                            connection.release();
+                            conn.release();
                             callback(null, true);
                         }
                     );
-                }  else  {connection.release(); callback(null, true);}
+                }  else  {conn.release(); callback(null, true);}
                }
-               
         });
     });
     }
