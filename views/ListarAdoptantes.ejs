@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoptame</title>
+    <!-- Siempre que creeis una nueva plantilla ejs, importar las hojas de estilos CSS, en especial la de bootstrap-->
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+</head>
+
+<body>
+    <%- include('./Header'); %>
+    <div class="content main-section">
+        <!-- -->
+        <div class="container">
+            <div class="row">
+                <div class="page-header">
+                    <div class="col-md-12">
+                        <h2>Lista de Adoptantes</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 table-admin">
+                    <table class="table table-striped text-center admin-control">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">Fecha de Nacimiento</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Telefono</th>
+                            <th scope="col">Editar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% usuarios.map( usuario => { %>
+                            <tr>
+                              <th scope="row"><%= usuario.forename %></th>
+                              <td><%= usuario.surnames %></td>
+                              <td><%= usuario.birthdate %></td>
+                              <td><a href="<%= usuario.email %>"><%= usuario.email %></a></td>
+                              <td><%= usuario.tlf %></td>
+                              <td><a href="/profile/<%= usuario.email %>">ver</a></td>
+                            </tr>
+                           <% }) %>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('./Footer'); %>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoptame</title>
+    <!-- Siempre que creeis una nueva plantilla ejs, importar las hojas de estilos CSS, en especial la de bootstrap-->
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+</head>
+
+<body>
+    <%- include('./Header'); %>
+    <div class="content main-section">
+        <!-- -->
+        <div class="container">
+            <div class="row">
+                <div class="page-header">
+                    <div class="col-md-12">
+                        <h2>Gestión de usuarios</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 table-admin">
+                    <table class="table table-striped text-center admin-control">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Apellidos</th>
+                            
+                            <th scope="col">Email</th>
+                            <th scope="col">Rol</th>
+                            <th scope="col">Eliminar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% usuarios.map( user => { %>
+                          <tr>
+                            <th scope="row"><%= user.forename %></th>
+                            <td><%= user.surnames %></td>
+                            <td><a href="#"><%= user.email %></a></td>
+                            <td><%= user.userType %></td>
+                            <td><ion-icon name="create-outline"></ion-icon><a href="#" onclick="delete_user(user.email)"><ion-icon name="close-outline"></ion-icon></a></td>
+
+                          </tr>
+                          <% }) %>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('./Footer'); %>
+</body>
+
+</html>

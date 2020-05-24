@@ -1,0 +1,91 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protectoras - Adoptame</title>
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/signup.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/detalleprotectora.css">
+</head>
+
+<body>
+    <body>
+        <%- include('./header'); %>
+                            </div>       
+        <div class="container externoarriba cuadrarHeader ">
+            <img src="/resources/img/descripprotect.png" alt="" style="width:600px ; margin-top: -20px; margin-right: -15px;">
+        <div class="row col-md-offset-0 col-md-10 custyle">
+            <div class="col-lg-12">
+              <div class="col-md-4">
+                <div class="col-md-30">
+                <div class="panel color  ">
+                        <div class="colorcuadro tipoletra negrita">
+                            Nombre:  <span style= "color:rgb(115, 115, 115);"><%=nombre%></span> 
+                        </div>
+                        <div class="panel-body ">
+                           
+                            <div class="list-decks">
+                                <p>Correo: <span class="glyphicon glyphicon-envelope"></span>
+                                <span style= "color:rgb(115, 115, 115);"><%=correo%></span>
+                                </p>
+                                Teléfono: <span class="glyphicon glyphicon-earphone"></span>
+                                <span style= "color:rgb(115, 115, 115);"><%=telefono%></span>
+                                
+                            </div>  
+                        </div>       
+                        </div>
+                        </div> 
+                    </div>
+              </div>
+              <div class="col-xs-12 col-sm-8">
+                
+                    <div class="panel">
+                            <div class="color tipoletra">
+                                    Dirección:
+                            </div>
+                            <div class="panel-body">
+                                <span style= "color:rgb(115, 115, 115);"><%=direccion%></span>
+                                <div>
+                                    
+                            </div>       
+                            </div>
+                        </div>
+                    
+                    <div class=" panel colorcuadro ">
+                            <div class=" tipoletra ">
+                                    Detalles:
+                            </div>
+                            <div class="panel-body ">
+                                <span style= "color:rgb(115, 115, 115);"><%=descripcion%></span>
+                                <div class="list-decks">
+                                   
+                                </div>        
+                            </div>
+                        </div>
+                        <div class=" panel  ">
+                            <div class="colorcuadro tipoletra">
+                                    Webpage:
+                            </div>
+                            <div class="panel-body">
+                                <span style= "color:rgb(115, 115, 115);"><%=webpage%></span>
+                                <div class="list-decks">
+                                   
+                                </div>        
+                            </div>
+                        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+            </div>
+    <%- include('./Footer'); %>
+</body>
+
+</html>

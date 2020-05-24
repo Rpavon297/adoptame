@@ -29,147 +29,57 @@
                         <thead>
                           <tr>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Telefono</th>
-                            <th scope="col">Fecha de Solicitud</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Provicia</th>
+                            <th scope="col">Dirección</th>
+                            <th scope="col">Web</th>
                             <th scope="col">Detalles</th>
                             <th scope="col">Acciones</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">Protectora 1</th>
-                            <td>123456789</td>
-                            <td>15/03/2020</td>
-                            <td><a href="#">l6@gmail.com</a></td>
-                            <td>Madrid</td>
-                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><ion-icon name="create-outline"></ion-icon></td>
-                            <td> <button type="submit" class="btn btn-success btn-xs aceptarProtectora" idProtectora="1">Aceptar</button>
-                              <button type="submit" class="btn btn-danger btn-xs rechazarProtectora" idProtectora="1">Rechazar</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Protectora 1</th>
-                            <td>123456789</td>
-                            <td>15/03/2020</td>
-                            <td><a href="#">l6@gmail.com</a></td>
-                            <td>Madrid</td>
-                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><ion-icon name="create-outline"></ion-icon></td>
-                            <td> <button type="submit" class="btn btn-success btn-xs aceptarProtectora" idProtectora="2">Aceptar</button>
-                              <button type="submit" class="btn btn-danger btn-xs rechazarProtectora" idProtectora="2">Rechazar</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Protectora 1</th>
-                            <td>123456789</td>
-                            <td>15/03/2020</td>
-                            <td><a href="#">l6@gmail.com</a></td>
-                            <td>Madrid</td>
-                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><ion-icon name="create-outline"></ion-icon></td>
-                            <td> <button type="submit" class="btn btn-success btn-xs aceptarProtectora" idProtectora="3">Aceptar</button>
-                              <button type="submit" class="btn btn-danger btn-xs rechazarProtectora" idProtectora="3">Rechazar</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Protectora 1</th>
-                            <td>123456789</td>
-                            <td>15/03/2020</td>
-                            <td><a href="#">l6@gmail.com</a></td>
-                            <td>Madrid</td>
-                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><ion-icon name="create-outline"></ion-icon></td>
-                            <td> <button type="submit" class="btn btn-success btn-xs aceptarProtectora" idProtectora="4">Aceptar</button>
-                              <button type="submit" class="btn btn-danger btn-xs rechazarProtectora" idProtectora="4">Rechazar</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Protectora 1</th>
-                            <td>123456789</td>
-                            <td>15/03/2020</td>
-                            <td><a href="#">l6@gmail.com</a></td>
-                            <td>Madrid</td>
-                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><ion-icon name="create-outline"></ion-icon></td>
-                            <td> <button type="submit" class="btn btn-success btn-xs aceptarProtectora" idProtectora="5">Aceptar</button>
-                              <button type="submit" class="btn btn-danger btn-xs rechazarProtectora" idProtectora="5">Rechazar</button></td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Protectora 1</th>
-                            <td>123456789</td>
-                            <td>15/03/2020</td>
-                            <td><a href="#">l6@gmail.com</a></td>
-                            <td>Madrid</td>
-                            <td class="cursor" data-toggle="modal" data-target="#detalleSolicitud"><ion-icon name="create-outline"></ion-icon></td>
-                            <td> <button type="submit" class="btn btn-success btn-xs aceptarProtectora" idProtectora="6">Aceptar</button>
-                              <button type="submit" class="btn btn-danger btn-xs rechazarProtectora" idProtectora="6">Rechazar</button></td>
-                          </tr>
+                          <% protectoras.map( protectora => { %>
+                           <tr>
+                             <th scope="row"><%= protectora.shelterName %></th>
+                             <td><a href="<%= protectora.userEmail %>"><%= protectora.email %></a></td>
+                             <td><%= protectora.shelterAddress %></td>
+                             <td><%= protectora.webpage %></td>
+                             <td><button type="submit" email="<%= protectora.email %>" class="btn btn-success btn-xs aceptarProtectora">Aceptar</button>
+                              <button type="submit" email="<%= protectora.email %>" class="btn btn-danger btn-xs rechazarProtectora">Rechazar</button></a>
+                           </tr>
+                          <% }) %>
                         </tbody>
                       </table>
                 </div>
             </div>
         </div>
     </div>
-   
-    <!-- Modal -->
-    <div class="modal fade" id="detalleSolicitud" tabindex="-1" role="dialog" aria-labelledby="detalleSolicitudTitle" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3 class="modal-title" id="detalleSolicitudTitle">Detalles solicitud</h3>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="container-fluid">
-              <div class="row">
-                <div class="col-12">
-                  <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-5 col-form-label">Nombre de la Protectora:</label>
-                    <div class="col-sm-7">
-                      <h5>Protectora 1</h5>
-                    </div>
-                    <label for="inputEmail3" class="col-sm-5 col-form-label">Telefono:</label>
-                    <div class="col-sm-7">
-                      <h5>123456789</h5>
-                    </div>
-                    <label for="inputEmail3" class="col-sm-5 col-form-label">Dirección:</label>
-                    <div class="col-sm-7">
-                      <h5>Calle juarez 1</h5>
-                    </div>
-                    <label for="inputEmail3" class="col-sm-5 col-form-label">Provicia:</label>
-                    <div class="col-sm-7">
-                      <h5>Madrid</h5>
-                    </div>
-                    <label for="inputEmail3" class="col-sm-5 col-form-label">Email:</label>
-                    <div class="col-sm-7">
-                      <h5>protectora1@gmail.com</h5>
-                    </div>
-                    <label for="inputEmail3" class="col-sm-5 col-form-label">Detalles:</label>
-                    <div class="col-sm-12">
-                      <h6>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula ante id congue consectetur. Suspendisse potenti. Pellentesque non risus viverra, aliquet neque sit amet, feugiat leo. Quisque non erat consectetur, gravida purus ac, condimentum massa. Duis blandit velit at molestie venenatis. Nulla quis mauris ex. Donec urna tellus, eleifend non iaculis eget, mollis sed lectus. Duis id nisi enim. Praesent malesuada sem ac tristique aliquet. Vivamus p.</h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger rechazarProtectora" idProtectora="6" data-dismiss="modal">Rechazar</button>
-            <button type="button" class="btn btn-success aceptarProtectora" idProtectora="6" data-dismiss="modal">Aceptar</button>                  
-          </div>
-        </div>
-      </div>
-    </div>
-    <script>
-        $(document).ready(function(){
-          $(".aceptarProtectora").click(function(){
-            var idProtectora = $(this).attr('idprotectora');
-            alert("Se ha aceptado la protectora con id "+idProtectora);
-          });
-          $(".rechazarProtectora").click(function(){
-            var idProtectora = $(this).attr('idprotectora');
-            alert("Se ha eliminado la protectora con id "+idProtectora);
-          });
-        });
-    </script> 
-
     <%- include('./Footer'); %>
 </body>
+<script>
+  $(document).ready(function(){
+    $(".aceptarProtectora").click(function(){
+      var email = $(this).attr('email');
+      alert("Se ha aceptado la protectora con id " + email);
+
+      $.post("/manageRequest", {email: email, accepted: true}, function(request, response){
+        
+      }); 
+    });
+    $(".rechazarProtectora").click(function(){
+      var email = $(this).attr('email');
+      alert("Se ha eliminado la protectora con id " + email);
+
+      $.post("/manageRequest", {email: email, accepted: false}, function(request, response){
+        
+      });          
+    });
+    var data = {};
+      data.idProtectora = $(this).attr('idprotectora');
+      data.accepted = false;
+      $.post("/manageRequest", data, function(request, response){
+        
+      }); 
+  });
+</script> 
 
 </html>

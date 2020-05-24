@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adoptame</title>
+    <!-- Siempre que creeis una nueva plantilla ejs, importar las hojas de estilos CSS, en especial la de bootstrap-->
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"> 
+    <link rel="stylesheet" href="/css/modificarProtectora.css">
+    <link rel="stylesheet" href="./style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+   
+</head>
+
+<body>
+    <%- include('./header'); %>
+
+    <div id="content">
+        <div class= "cajaglobal">
+
+            <div class="titulo font-weight-bolder">
+                <h1>EDITAR UNA PROTECTORA</h1>
+            </div>
+
+            <div class="alineacion three-columns marge">
+                <div><img src="/resources/img/pet_care.jpg" class="imagen" width="300" height="350"></br>
+                    <form class= "texto alineacion" action="" method="GET"> 
+                        <input type="submit"  value="Cambiar foto"> 
+                    </form>
+                </div>
+                
+
+                <div class="titulo font-weight-bolder">
+                    <h5>INFORMACIÓN DEL PERFIL</h5>
+
+                    <div class= "texto">
+
+                        <input type="text" class="form-control input-group-sm chat-input" placeholder="Nombre"> </br>
+                        <input type="text" class="form-control input-group-sm chat-input" placeholder="Dirección"></br>
+                        <input type="text" class="form-control input-group-sm chat-input" placeholder="Teléfono/Móvil" pattern="{9}"></br>
+                        <textarea rows="16" cols="20" class="form-control input-group-sm chat-input" placeholder="Biografía"></textarea>
+                  
+                    </div>
+                
+
+                
+                    <h5>CONTACTO</h5>
+                    <div class= "texto">
+                        <input type="text" class="form-control input-group-sm chat-input" placeholder="Pagina web" ></br>
+                        <input type="email" class="form-control input-group-sm chat-input" name="email" placeholder="Correo"></br>
+                        <input type="text" class="form-control input-group-sm chat-input" placeholder="Redes Sociales"></br>
+                    </div>
+                
+                
+                    <h5>LOGIN CUENTA</h5>
+                    <div class= "texto">
+                        <input type="email" class="form-control input-group-sm chat-input" name="Nuevo email" placeholder="Correo"></br>
+                        <input type="text" class="form-control input-group-sm chat-input" placeholder="Contraseña nueva"></br>
+                        <input type="text" class="form-control input-group-sm chat-input" placeholder="Repetir Contraseña"></br>
+                    </div>
+                </div>
+
+                <form class= "texto" action="" method="GET"> 
+                    <input type="submit"  value="Ok"> 
+                    <input type="submit"  value="Cancelar"> 
+                </form>
+            </div>
+
+
+
+        </div>
+    </div>
+
+   
+             
+    
+     <!-- el footer tambien deberia ser otro codigo comun a todas las views, copiarlo y pegarlo-->
+    <%- include('./Footer'); %>
+    
+</body>
+
+</html>

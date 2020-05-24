@@ -1,0 +1,78 @@
+.content {
+    margin-left: 20px;
+}
+
+.negrita {
+    display: inline-block;
+    font-size: 30px;
+    font-family: 'Bree Serif', serif;
+    color: rgb(115, 115, 115);
+}
+.panel {
+    border-color: rgb(0, 0, 0);
+   margin-top: 15px;
+}
+
+.boton{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+    
+}
+
+.colorcuadro{
+    color: rgb(7, 7, 7);
+    border-color: darkgray;
+    background-color: rgb(242, 242, 242);
+}
+.volver {
+    font-size: 20px;
+}
+.imagenprotectora{
+    padding-top: 50px ;
+
+}
+.datos {
+    display: inline-block;
+    font-size: 20px;
+    font-family: 'Bree Serif', serif;
+    color: rgb(7, 7, 7);
+}
+
+.externo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textoimagen {
+    font-family: 'Bree Serif', serif;
+    font-size: 40px;
+    color: rgb(32, 31, 31);
+}
+
+.externoarriba {
+    margin-top: 100px;
+}
+
+.volver {
+    font-size: 20px;
+    }
+
+.tipoletra{
+    font-family: 'Bree Serif', serif;
+    color:black;
+    font-size: 20px;
+}
+.margenArriba{
+	margin-bottom:30px;
+}
+.margenBajo{
+	margin-bottom:10px;
+}
+
+.letra{
+    font-size: 20px;
+}

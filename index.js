@@ -6,16 +6,19 @@
 const express = require("express");
 // Utilidades para trabjar con rutas a ficheros y directorios
 const path = require("path");
-
 const mysql = require("mysql");
-
 const globals = require("./globals");
 const userServices = require("./services/user_service");
+const shelterServices = require("./services/shelter_service");
 
 const session = require("express-session");
 const sessionMSQL = require("express-mysql-session");
 const expressValidator = require("express-validator");
-const bodyParser = require("body-parser");
+const bodyParser = require("body-parser"); //Crea un json con los parametros de un formulario
+const morgan = require("morgan"); //Muestra el estado de la peticion hecha
+const colors = require("colors"); //Muestra las frases por consola con los colores que quieras, util visualmente al depurar
+const helmet = require("helmet"); //Seguridad web en las cabeceras
+const _ = require("lodash"); //utilidades para arrays y demas, version actualizada del antiguo underscore
 
 
 /**
@@ -41,8 +44,9 @@ app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/js', express.static(__dirname + '/node_modules/popper.js/dist'));
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
-
-
+app.use(morgan("dev"));
+app.use(helmet());
+colors.enable();
 // Pool de conexiones
 
 const pool = mysql.createPool({
@@ -55,6 +59,7 @@ const pool = mysql.createPool({
 
 // Servicio de usuario
 const userService = new userServices.UserService(pool);
+const shelterService = new shelterServices.ShelterService(pool);
 
 // Sesión en la base de datos
 const MySQLStore = sessionMSQL(session);
@@ -76,10 +81,15 @@ const middlewareSession = session ({
 function initialVarLogin (request, response, next){
   if(request.session.currentUser === undefined){
     response.locals.login = false;
-  }else response.locals.login = true;
+  }else{ 
+    response.locals.login = true;
+    response.locals.currentUser = request.session.currentUser;
+    
+  }
   next();
 };
 
+// Este middleware no se está utilizando y está mal planteado (se comprueba currentUser.emal de currentUser undefined) 17/05
 function middCheckUser(request, response, next){
   //Si existe ese atributo, no puede ser undefined...
   if(request.session.currentUser.email !== undefined){
@@ -107,7 +117,7 @@ app.use(function (request,response,next){
   else{
       response.status(500);
       response.end("Error, al conectar con la base de datos!");
-      console.log("Error, al conectar con la base de datos!");
+      
   }
 });
 
@@ -116,7 +126,6 @@ app.use(function (request,response,next){
  */
 
 app.get("/", (req, res) => {
-  console.log("aqui llega tambien, al get /");
   res.render("Landing", {errMsg: null});
 });
 
@@ -128,6 +137,9 @@ app.get("/Contact.html", (req, res) => {
   res.render("Contact", {errMsg: null});
 });
 
+app.get("/GestionAnimal.html", (req, res) => {
+  res.render("GestionAnimal", {errMsg: null});
+});
 app.get("/Animals.html", (req, res) => {
   res.render("Animals", {errMsg: null});
 });
@@ -142,7 +154,15 @@ app.get("/Ayuda.html", (req, res) => {
 });
 
 app.get("/Login.html", function (request, response) {
-  response.render("Login", {errMsg: null});
+  if(request.session.currentUser != undefined){
+    if(request.session.currentUser.userType === "adoptante" || request.session.currentUser.userType === "admin"){
+      response.redirect("/profile");
+    }if(request.session.currentUser.userType === "protectora"){
+      response.redirect("/profileshelter");
+    }
+  }else{
+    response.render("Login", {errMsg: null});
+  }
 })
 
 app.post("/Login", function(request, response){
@@ -151,13 +171,13 @@ app.post("/Login", function(request, response){
           //Guardo en la session el usuario COMPLETO, por comodidad y llevarlo mejor durante toda la practica
           userService.getUser(request.body.loginMail, (err, userBD)=>{
               if(err){
-                console.log(err)
+                
                 response.end()
               }
               else{
                 userBD.email = request.body.loginMail;
                 request.session.currentUser = userBD;
-                console.log("Se ha logueado correctamente, se guardaran estos datos de sesion")
+                console.log(colors.green("Se ha logueado correctamente, se guardaran estos datos de sesion"))
                 console.log(userBD)
                 if(userBD.userType === "adoptante" || userBD.userType === "admin"){
                   response.redirect("/profile");
@@ -177,13 +197,110 @@ app.get("/Logout", middCheckUser,function(request, response){
   response.redirect("/Login.html");
 })
 
+app.get("/gestionUsuarios", (req, res) => {
+  userService.getAllUsers( "all", (err, users) => {
+    if(err){
+      console.log(colors.red("error"))
+    }else{
+      console.log(colors.green(users))
+      res.render("GestionUsuarios", {usuarios: users});
+    }
+  })
+});
+
+
+
+app.get("/deleteUser/:id", (req, res) => {
+  userService.deleteUser( req.params.id , (err) => {
+    if(err){
+      console.log(colors.red("error al borrar"))
+    }else{
+      res.redirect("/gestionUsuarios");
+    }
+  })
+});
+
+app.get("/listarAdoptantes", (req, res) => {
+  res.render("ListarAdoptantes", {errMsg: null});
+});
+
+app.get("/listarProtectoras.html", (req, res) => {
+  userService.getAllUsers( "protectora" , (err, protectoras) => {
+    if(err){
+      console.log(colors.red("error"))
+    }else{
+      console.log(colors.green(protectoras))
+      res.render("Shelters", {protectoras});
+    }
+  })
+});
+
+app.get("/listarAnimalesProtectora", (req, res) => {
+  res.render("ListarAnimalesProtectora", {errMsg: null});
+});
 
 app.get("/admin", (req, res) => {
   res.render("Admin", {errMsg: null});
 });
 
+app.get("/DescripcionAnimalUsuario", (req, res) => {
+  var photo = "/resources/img/blacky.jpg";
+  var an = "Blacky"
+  var nomb="La Madrileña";
+  var tip="Felino";
+  var col=" Mestizo (blanco y negro) ";
+  var ed="3 años y 1 mes";
+  var pes = "2 kilos";
+  var descrip="La dueña de Blacky falleció dejando al pobre sólito en el mundo. Necesita una nueva familia y un hogar que le devuelva la alegría y la estabilidad que tenía.";
+
+  res.render("DescripcionAnimalUsuario", {errMsg: null, animal:an,foto:photo,nombre:nomb,descripcion:descrip,tipo:tip,color:col,edad:ed,peso:pes});
+});
+
+app.get("/detalleprotectora/:id", (req, res) => {
+  console.log(colors.dim(req.params.id + "req.param"))
+  userService.getUser(req.params.id, (err, user) => {
+    if(err){}
+    else{
+      res.render("detalleprotectora", {errMsg: null,nombre:user.shelterName,descripcion:user.shelterDescription, telefono:user.tlf,direccion:user.shelterAddress,correo:user.email, webpage: user.webpage});
+    }
+  })
+});
+
 app.get("/solicitudesProtectoras", middCheckUser, (req, res) => {
-  res.render("solicitudesProtectoras", {errMsg: null});
+  shelterService.getRequests((err, protectoras) =>{
+    res.render("SolicitudesProtectoras", {errMsg: null, protectoras: protectoras});
+  });
+});
+
+app.post("/manageRequest", middCheckUser, (request, response) =>{
+  console.log(request.body)
+  if(request.body.accepted){
+    shelterService.acceptRequest(request.body.email, (err, result) =>{
+      if(err){
+        response.end();
+      }else{
+        result.userType = "protectora";
+        delete result.currentStatus;
+
+        userService.createAccount(result, (err, done) =>{
+          console.log(err);
+          console.log(done);
+          
+        });
+      }
+    });
+  }else{
+    shelterService.rejectRequest(request.body.email, (err, done) =>{
+      if(err){
+        console.log(err);
+        response.end();
+      }else{
+        if(done){
+          console.log("Peticion rechazada");
+        }
+      }
+    });
+  }
 });
 
 app.get("/SolicitudesAdopcion.html", middCheckUser, (req, res) => {
@@ -203,32 +320,62 @@ app.get("/sign-up-adopter", (req, res) => {
 });
 
 app.post("/sign-up-adopter", function(request, response){
-  request.body.type = 'adoptante';
-  console.log(request.body)
+  request.body.userType = 'adoptante';
+  
+  // Inventarse los nombres de los atributos está feo, el MVC existe para que no haya que hacer estas chapuzas ahora
+  request.body.forename = request.body.name;
+  request.body.surnames = request.body.surname;
+  request.body.birthdate = request.body.jqueryDate;
+  request.body.pass = request.body.password;
+
+  delete request.body.name;
+  delete request.body.surname;
+  delete request.body.jqueryDate;
+  delete request.body.password;
+
   userService.createAccount(request.body, (err, check) => {
       if(check === true){
           response.redirect("/confirmation");
       }
-      else { console.log("no inserta bien"); response.render("Login", {errMsg: "No se pudo efectuar el registro correctamente"}); }
+      else { response.render("Login", {errMsg: "No se pudo efectuar el registro correctamente"}); }
   })
-}) 
-
+}); 
 
 app.get("/sign-up-shelter", (req, res) => {
   res.render("SignUpShelter", {errMsg: null});
 });
 
 app.post("/sign-up-shelter", function(request, response){
-  request.body.type = 'protectora';
-  userService.createAccount(request.body, (err, check) => {
+  request.body.userType = 'protectora';
+
+  console.log(request.body);
+
+  request.body.forename = request.body.name;
+  request.body.surnames = request.body.surname;
+  request.body.birthdate = request.body.jqueryDate;
+  request.body.pass = request.body.password;
+  request.body.shelterName = request.body.shelter_name;
+  request.body.shelterAddress = request.body.location;
+  request.body.webpage = request.body.web;
+  request.body.shelterDescription = request.body.descripcion;
+
+  delete request.body.name;
+  delete request.body.surname;
+  delete request.body.jqueryDate;
+  delete request.body.password;
+  delete request.body.shelter_name;
+  delete request.body.location;
+  delete request.body.web;
+  delete request.body.descripcion;
+  
+  shelterService.createRequest(request.body, (err, check) => {
+    
       if(check === true){
-        console.log("porque explota, i dont understand")
         response.redirect("/confirmation");
         }
         else { response.render("Login", {errMsg: "No se pudo registrar"}); };
   })
 });
-
 
 app.get("/confirmation", (req, res) => {
   res.render("SignUpConfirmation", {errMsg: null});
@@ -254,12 +401,33 @@ app.get("/modprofile", middCheckUser , (req, res) => {
 
 app.post("/modprofile", function(request, response){
   userService.modifUser(request.body, (err, check) => {
+    
       if(check === true){
-        console.log("porque explota, i dont understand")
         response.redirect("/confirmation");
-        }
-        else { response.render("Login", {errMsg: "No se pudo registrar"}); };
-  })
+      }
+      else { 
+        response.render("Login", {errMsg: "No se pudo registrar"}); 
+      };
+  });
+});
+
+app.get("/editShelterProfile", (req,res) =>{
+  res.render("ModificarPerfilProtectora", {errMsg: null});
+});
+
+app.post("/editShelterProfile", (req,res) =>{
+  userService.modifUser(request.body, (err, check) => {
+    if(check === true){
+      response.redirect("/confirmation");
+      }
+      else { 
+        response.render("Login", {errMsg: "No se pudo registrar"}); 
+      };
+});
+});
+
+app.get("/modificarProtectora", (req, res) => {
+  res.render("modificarProtectora", {errMsg: null});
 });
 
 
