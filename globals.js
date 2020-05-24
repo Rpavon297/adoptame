@@ -1,17 +1,17 @@
 module.exports = {
     // Datos de acceso para la base de datos
-  
+  /*
     mysqlConfigHeroku: {
         database: "adoptame",
         host: "localhost",
         user: "root",
         password: ""
-    },
- /*
-    mysqlConfigHeroku: {
-        database: "heroku_69c8de7055d792b",
-        host: "eu-cdbr-west-03.cleardb.net",
-        user: "bb8fb3efb33790",
-        password: "d4801e94"
     },*/
+ 
+    mysqlConfigHeroku: {
+        database: "heroku_80ff31ed5332988",
+        host: "eu-cdbr-west-02.cleardb.net",
+        user: "bf5dbb1dcf1e9e",
+        password: "ff182bf9"
+    },
 }
